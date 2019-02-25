@@ -8,8 +8,8 @@ const port = 3001;
 const app = express();
 const router = express.Router();
 
-//TODO add mongodb URL
-const dbUrl = "";
+//TODO hide mongodb conection information
+const dbUrl = "mongodb://swe_dev_user:devAdmin123@ds042138.mlab.com:42138/swe_studyabroad_datastore";
 
 //connects our back end code with the database
 mongoose.connect(
