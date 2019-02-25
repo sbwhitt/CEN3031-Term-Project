@@ -9,7 +9,7 @@ npx create-react-app
 
 After cloning project repo, run
 ```
-npm i -S mongoose express body-parser morgan
+npm i -S mongoose express
 ```
 to install libraries.
 
