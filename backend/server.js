@@ -30,6 +30,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger("dev"));
 
+/*database post, put, delete, etc. functions will be implemented here
+
+*/
+
 //append /api for our http requests
 app.use("/api", router);
 
