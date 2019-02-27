@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 
-const Logo = (props) => {
+class HeaderBar extends Component {
+  render() {
+    return (
+      <div className="header-bar">
+        <Logo/>
+        <button className="login-button">Sign Up/Log In</button>
+      </div>
+    );
+  }
+}
+
+const Logo = () => {
   return (
     <div className="logo-container">
       <div className="logo-img"/>
@@ -14,9 +25,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="header-bar">
-          <Logo/>
-        </div>
+        <HeaderBar/>
       </div>
     );
   }

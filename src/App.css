@@ -4,11 +4,12 @@
 
 .header-bar {
   width: 100%;
-  background-color: gray;
+  background-color: #1111cc;
   height: 72px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  box-shadow: 0 2px 5px 0 #00000045;
 }
 
 .logo-container {
@@ -19,9 +20,22 @@
 .logo-img {
   height: 100%;
   width: 72px;
-  background-color: black;
+  background-color: orange;
 }
 
 .logo-title {
   margin-left: 8px;
+  color: #efefef;
+}
+
+.login-button {
+  margin-top: 18px;
+  margin-right: 18px;
+  border: 0;
+  height: 36px;
+  background-color: #efefef;
+}
+
+.login-button:hover {
+  background-color: #dedede;
 }
