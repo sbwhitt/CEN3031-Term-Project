@@ -1,3 +1,27 @@
 .App {
   text-align: center;
 }
+
+.header-bar {
+  width: 100%;
+  background-color: gray;
+  height: 72px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.logo-img {
+  height: 100%;
+  width: 72px;
+  background-color: black;
+}
+
+.logo-title {
+  margin-left: 8px;
+}
