@@ -12,10 +12,25 @@ class HeaderBar extends Component {
   }
 }
 
+class SideBar extends Component {
+  render() {
+    return (
+      <div className="sidebar-container">
+        <ul>
+          <li>Home</li>
+          <li>Members</li>
+          <li>Profile</li>
+          <li>About</li>
+        </ul>
+      </div>
+    );
+  }
+}
+
 const Logo = () => {
   return (
     <div className="logo-container">
-      <div className="logo-img"/>
+      <div className="logo-img"><h2 style={{marginTop: "16px", color: "white", fontSize: "36px"}}>UF</h2></div>
       <h2 className="logo-title">UF Study Abroad Peer Advisors</h2>
     </div>
   );
@@ -26,6 +41,7 @@ class App extends Component {
     return (
       <div className="App">
         <HeaderBar/>
+        <SideBar/>
       </div>
     );
   }

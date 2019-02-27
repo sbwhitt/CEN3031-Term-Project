@@ -2,9 +2,13 @@
   text-align: center;
 }
 
+html {
+  background: #faf8f1;
+}
+
 .header-bar {
   width: 100%;
-  background-color: #1111cc;
+  background-color: #bc581a;
   height: 72px;
   display: flex;
   flex-direction: row;
@@ -20,11 +24,13 @@
 .logo-img {
   height: 100%;
   width: 72px;
-  background-color: orange;
+  background-color: #00529b;
+  color: #efefef;
+  font-family: Georgia;
 }
 
 .logo-title {
-  margin-left: 8px;
+  margin-left: 16px;
   color: #efefef;
 }
 
@@ -32,10 +38,41 @@
   margin-top: 18px;
   margin-right: 18px;
   border: 0;
+  border-radius: 8px;
   height: 36px;
   background-color: #efefef;
 }
 
 .login-button:hover {
   background-color: #dedede;
+}
+
+.sidebar-container {
+  width: 15%;
+  height: 512px;
+  padding: 8px;
+  margin-top: 16px;
+  margin-left: 32px;
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #efefef;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul li {
+  height: 2em;
+  cursor: pointer;
+  padding-top: 16px;
+  font-size: 24px;
+  font-family: monospace;
+  color: #00529b;
+}
+
+ul li:hover {
+  background-color: #efefef;
 }
