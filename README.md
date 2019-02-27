@@ -1,10 +1,5 @@
 # CEN3031 Spring 2019 Term Project
 
-Project initialized with
-```
-npx create-react-app
-```
-
 ## Setup
 
 After cloning project repo, run
@@ -28,8 +23,6 @@ To connect to mongodb backend run
 node server.js
 ```
 in ./backend.
-
-<hr>
 
 ## Helpful Links
 mongoose/mongodb: https://medium.com/javascript-in-plain-english/full-stack-mongodb-react-node-js-express-js-in-one-simple-app-6cc8ed6de274
