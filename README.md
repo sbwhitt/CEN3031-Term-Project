@@ -38,9 +38,6 @@ jsx: https://reactjs.org/docs/introducing-jsx.html
 Anatomy of react app: https://medium.freecodecamp.org/quick-guide-to-understanding-and-creating-reactjs-apps-8457ee8f7123
 
 ##Colaborator Name | Initial Push
-
 Edwin Carvajal
-
 Chasen Barrett
-
 Samuel Whittenberger
