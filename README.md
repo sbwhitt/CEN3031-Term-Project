@@ -32,9 +32,6 @@ React routing library: https://github.com/ReactTraining/react-router
 
 Deploying React app with Heroku: https://medium.com/jeremy-gottfrieds-tech-blog/tutorial-how-to-deploy-a-production-react-app-to-heroku-c4831dfcfa08
 
-<<<<<<< HEAD
-##Colaborator Name | Initial Push Nicholas Alvarez
-=======
 ### React basics
 jsx: https://reactjs.org/docs/introducing-jsx.html
 
@@ -50,5 +47,4 @@ Samuel Whittenberger
 
 Ethan Lin
 
-Nicholas Alvarez
->>>>>>> bead8b645d3a4b673bd5515e5bcf190df9b7990f
+Matthew Sabin
