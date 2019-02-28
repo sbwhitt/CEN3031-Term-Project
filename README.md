@@ -40,3 +40,4 @@ Anatomy of react app: https://medium.freecodecamp.org/quick-guide-to-understandi
 ##Colaborator Name | Initial Push
 Edwin Carvajal
 Chasen Barrett
+Samuel Whittenberger
