@@ -1,10 +1,5 @@
 # CEN3031 Spring 2019 Term Project
 
-Project initialized with
-```
-npx create-react-app
-```
-
 ## Setup
 
 After cloning project repo, run
@@ -29,13 +24,31 @@ node server.js
 ```
 in ./backend.
 
-<hr>
-
 ## Helpful Links
+### Project Structure
 mongoose/mongodb: https://medium.com/javascript-in-plain-english/full-stack-mongodb-react-node-js-express-js-in-one-simple-app-6cc8ed6de274
 
 React routing library: https://github.com/ReactTraining/react-router
 
 Deploying React app with Heroku: https://medium.com/jeremy-gottfrieds-tech-blog/tutorial-how-to-deploy-a-production-react-app-to-heroku-c4831dfcfa08
 
+<<<<<<< HEAD
 ##Colaborator Name | Initial Push Nicholas Alvarez
+=======
+### React basics
+jsx: https://reactjs.org/docs/introducing-jsx.html
+
+Anatomy of react app: https://medium.freecodecamp.org/quick-guide-to-understanding-and-creating-reactjs-apps-8457ee8f7123
+
+##Colaborator Name | Initial Push
+
+Edwin Carvajal
+
+Chasen Barrett
+
+Samuel Whittenberger
+
+Ethan Lin
+
+Nicholas Alvarez
+>>>>>>> bead8b645d3a4b673bd5515e5bcf190df9b7990f
