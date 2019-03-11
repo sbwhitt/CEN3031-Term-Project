@@ -4,7 +4,7 @@
 
 .header-bar {
   width: 100%;
-  background-color: gray;
+  background-color: #bc581a;
   height: 72px;
   display: flex;
   flex-direction: row;
@@ -19,9 +19,10 @@
 .logo-img {
   height: 100%;
   width: 72px;
-  background-color: black;
+  background-color: #00529b;
 }
 
 .logo-title {
   margin-left: 8px;
+  color: white;
 }
