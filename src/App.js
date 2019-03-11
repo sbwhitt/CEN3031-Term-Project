@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import UFLogo from "./UF_white.png";
 
 class HeaderBar extends Component {
   render() {
@@ -30,7 +31,7 @@ class SideBar extends Component {
 const Logo = () => {
   return (
     <div className="logo-container">
-      <div className="logo-img"><h2 style={{marginTop: "16px", color: "white", fontSize: "36px"}}>UF</h2></div>
+      <img className="logo-img" src={UFLogo}/>
       <h2 className="logo-title">UF Study Abroad Peer Advisors</h2>
     </div>
   );
