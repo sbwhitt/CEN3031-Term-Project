@@ -27,8 +27,6 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 */
 
-//append /api for our http requests
-app.use("/api", router);
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, 'build')));
 app.get('/ping', function (req, res) {
