@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const path = require('path'); 
-const schema = require("./schema.js");
+const schema = require("./backend/schema.js");
 
 const port = process.env.PORT || 8080;
 const app = express();
