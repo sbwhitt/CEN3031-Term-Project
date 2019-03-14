@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import './App.css';
+import WelcomePage from './pages/WelcomePage.js';
+import MemberPage from './pages/MemberPage.js';
+import EventPage from './pages/EventPage.js';
+import ProfilePage from './pages/ProfilePage.js';
 import UFLogo from "./UF_white.png";
+import './App.css';
 
 class HeaderBar extends Component {
   render() {
@@ -15,24 +19,6 @@ class HeaderBar extends Component {
           <HLink name="Profile" link="/profile"/>
         </div>
         <button className="login-button">Sign Up/Log In</button>
-      </div>
-    );
-  }
-}
-
-class WelcomePage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isVisible: true,
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        <h3 style={this.state.isVisible ? {display: "block"} : {display: "none"}}>Welcome</h3>
-        <button onClick={() => this.setState({isVisible: !this.state.isVisible})}>click</button>
       </div>
     );
   }
@@ -54,29 +40,18 @@ const Logo = () => {
   );
 }
 
-function Members () {
-  return <h3>Members</h3>;
-}
-
-function Events () {
-  return <h3>Events</h3>;
-}
-
-function Profile () {
-  return <h3>Profile</h3>;
-}
-
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="App">
           <HeaderBar/>
-
-          <Route exact path="/" component={WelcomePage}/>
-          <Route path="/members" component={Members}/>
-          <Route path="/events" component={Events}/>
-          <Route path="/profile" component={Profile}/>
+          <div style={{marginTop: "5em"}}>
+            <Route exact path="/" component={WelcomePage}/>
+            <Route path="/members" component={MemberPage}/>
+            <Route path="/events" component={EventPage}/>
+            <Route path="/profile" component={ProfilePage}/>
+          </div>
         </div>
       </Router>
     );

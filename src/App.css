@@ -7,6 +7,9 @@ html {
 }
 
 .header-bar {
+  z-index: 1;
+  position: fixed;
+  top: 0;
   width: 100%;
   background-color: #bc581a;
   height: 64px;
@@ -55,9 +58,29 @@ html {
   padding: 0 1em 0;
   font-size: 20px;
   color: #efefef;
-  /*color: #00529b;*/
+  /*good blue color: #00529b;*/
 }
 
 .hlink:hover {
   background-color: #cf6b3d;
+}
+
+.welcome-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-content {
+  text-align: left;
+  background-color: #efefef;
+  width: 65%;
+  height: 100%;
+  box-shadow: 0 2px 5px 0 #00000045;
+}
+
+.welcome-text {
+  margin-left: 5%;
+  width: 90%;
 }
