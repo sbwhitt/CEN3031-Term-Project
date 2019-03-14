@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css';
 import UFLogo from "./UF_white.png";
 
@@ -8,10 +9,10 @@ class HeaderBar extends Component {
       <div className="header-bar">
         <Logo/>
         <div style={{display: "flex", flexDirection: "row", marginRight: "50%"}}>
-          <HLink name="Home"/>
-          <HLink name="Members"/>
-          <HLink name="Events"/>
-          <HLink name="Profile"/>
+          <HLink name="Home" link="/"/>
+          <HLink name="Members" link="/members"/>
+          <HLink name="Events" link="/events"/>
+          <HLink name="Profile" link="/profile"/>
         </div>
         <button className="login-button">Sign Up/Log In</button>
       </div>
@@ -19,29 +20,65 @@ class HeaderBar extends Component {
   }
 }
 
+class WelcomePage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isVisible: true,
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <h3 style={this.state.isVisible ? {display: "block"} : {display: "none"}}>Welcome</h3>
+        <button onClick={() => this.setState({isVisible: !this.state.isVisible})}>click</button>
+      </div>
+    );
+  }
+}
+
 const HLink = (props) => {
   return (
-    <div className="hlink">
+    <Link className="hlink" to={props.link}>
       <p style={{margin: "18px 0 0 0"}}>{props.name}</p>
-    </div>
+    </Link>
   );
 }
 
-//<h2 className="logo-title">UF Study Abroad Peer Advisors</h2>
 const Logo = () => {
   return (
-    <div className="logo-container">
+    <Link className="logo-container" to="/">
       <img className="logo-img" src={UFLogo}/>
-    </div>
+    </Link>
   );
+}
+
+function Members () {
+  return <h3>Members</h3>;
+}
+
+function Events () {
+  return <h3>Events</h3>;
+}
+
+function Profile () {
+  return <h3>Profile</h3>;
 }
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <HeaderBar/>
-      </div>
+      <Router>
+        <div className="App">
+          <HeaderBar/>
+
+          <Route exact path="/" component={WelcomePage}/>
+          <Route path="/members" component={Members}/>
+          <Route path="/events" component={Events}/>
+          <Route path="/profile" component={Profile}/>
+        </div>
+      </Router>
     );
   }
 }
