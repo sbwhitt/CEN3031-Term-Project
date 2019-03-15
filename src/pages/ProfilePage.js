@@ -8,8 +8,12 @@ class ProfilePage extends Component {
 
   render() {
     return (
-      <div>
-        Profile
+      <div className="page-wrapper">
+        <div className="page-content">
+          <h1 className="page-text">Profile</h1>
+          <hr className="page-divider"/>
+          <p className="page-text">Profile.</p>
+        </div>
       </div>
     );
   }

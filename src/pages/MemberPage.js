@@ -8,8 +8,12 @@ class MemberPage extends Component {
 
   render() {
     return (
-      <div>
-        Members
+      <div className="page-wrapper">
+        <div className="page-content">
+          <h1 className="page-text">Members</h1>
+          <hr className="page-divider"/>
+          <p className="page-text">Members.</p>
+        </div>
       </div>
     );
   }

@@ -12,6 +12,7 @@ class WelcomePage extends Component {
       <div className="page-wrapper">
         <div className="page-content">
           <h1 className="page-text">UF SAPA</h1>
+          <hr className="page-divider"/>
           <p className="page-text">Welcome to the UF SAPA website.</p>
         </div>
       </div>
