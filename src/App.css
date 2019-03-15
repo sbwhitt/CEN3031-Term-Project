@@ -6,6 +6,19 @@ html {
   background: #faf8f1;
 }
 
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+h2 {
+  font-weight: 600;
+}
+
 .header-bar {
   z-index: 1;
   position: fixed;
@@ -57,7 +70,6 @@ html {
 }
 
 .hlink {
-  text-decoration: none;
   cursor: pointer;
   width: 100%;
   height: 100%;
@@ -71,14 +83,14 @@ html {
   background-color: #cf6b3d;
 }
 
-.about-wrapper {
+.page-wrapper {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
 }
 
-.about-content {
+.page-content {
   text-align: left;
   background-color: #efefef;
   width: 65%;
@@ -86,7 +98,34 @@ html {
   box-shadow: 0 2px 5px 0 #00000045;
 }
 
-.about-text {
+.page-text {
   margin-left: 5%;
   width: 90%;
+}
+
+.page-divider {
+  width: 90%;
+  height: 1px;
+  border: 1px solid #ababab;
+  border-radius: 4px;
+  background-color: #ababab;
+}
+
+.contact-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 128px;
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 5%;
+}
+
+.contact-link {
+  padding: 1em;
+  color: black;
+}
+
+.contact-link:hover {
+  background-color: #dedede;
 }

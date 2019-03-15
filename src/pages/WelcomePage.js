@@ -9,8 +9,11 @@ class WelcomePage extends Component {
 
   render() {
     return (
-      <div>
-        welcome
+      <div className="page-wrapper">
+        <div className="page-content">
+          <h1 className="page-text">UF SAPA</h1>
+          <p className="page-text">Welcome to the UF SAPA website.</p>
+        </div>
       </div>
     );
   }
