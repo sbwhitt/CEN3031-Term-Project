@@ -24,6 +24,11 @@ html {
   flex-direction: row;
 }
 
+.splash-img {
+  height: 100%;
+  width: 100%;
+}
+
 .logo-img {
   height: 64px;
   background-color: #00529b;
@@ -39,6 +44,7 @@ html {
 .login-button {
   cursor: pointer;
   margin-right: 18px;
+  padding: 0 1em 0;
   border: 0;
   height: 64px;
   background-color: #bc581a;
@@ -65,14 +71,14 @@ html {
   background-color: #cf6b3d;
 }
 
-.welcome-wrapper {
+.about-wrapper {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
 }
 
-.welcome-content {
+.about-content {
   text-align: left;
   background-color: #efefef;
   width: 65%;
@@ -80,7 +86,7 @@ html {
   box-shadow: 0 2px 5px 0 #00000045;
 }
 
-.welcome-text {
+.about-text {
   margin-left: 5%;
   width: 90%;
 }
