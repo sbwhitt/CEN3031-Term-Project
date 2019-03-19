@@ -56,7 +56,7 @@ h2 {
 
 .login-button {
   cursor: pointer;
-  margin-right: 18px;
+  margin-right: 0;
   padding: 0 1em 0;
   border: 0;
   height: 64px;
@@ -92,6 +92,8 @@ h2 {
 }
 
 .page-content {
+  padding: 1em;
+  margin-bottom: 2em;
   text-align: left;
   background-color: #efefef;
   width: 65%;
@@ -107,9 +109,9 @@ h2 {
 .page-divider {
   width: 90%;
   height: 1px;
-  border: 1px solid #ababab;
+  border: 1px solid #00529b;
   border-radius: 4px;
-  background-color: #ababab;
+  background-color: #00529b;
 }
 
 .contact-block {
@@ -129,4 +131,41 @@ h2 {
 
 .contact-link:hover {
   background-color: #dedede;
+}
+
+.member-container {
+  cursor: pointer;
+  width: 90%;
+  margin-left: 5%;
+  background-color: white;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  box-shadow: 0 1px 3px 0 #00000045;
+}
+
+.member-container:hover {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+  box-shadow: 1px 2px 6px 1px #00000045;
+}
+
+.member-card {
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+}
+
+.member-img {
+  height: 100%;
+  width: 25%;
+  padding: 1em;
+  padding-right: 0;
+  padding-top: 1.5em;
+}
+
+.member-text {
+  padding-left: 1em;
+  padding-bottom: 1em;
+  margin-right: 2em;
 }
