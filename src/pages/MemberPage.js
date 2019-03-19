@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import ProfilePic from "./pfp_placeholder.jpg";
 
 var lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-
 var testArr = [
   {firstName: "George", lastName: "Washington", quote: lorem, id: 0},
   {firstName: "Abraham", lastName: "Lincoln", quote: lorem, id: 1},
@@ -22,11 +21,11 @@ const MemberItem = (props) => {
   return (
     <Link to={{
       pathname: url,
-      person: testArr[props.item.id]
+      member: testArr[props.item.id]
     }} style={{color: "black"}}>
     <div className="member-container">
         <div className="member-card">
-          <img className="member-img" src={ProfilePic} alt="member profile image"/>
+          <img className="member-img" src={ProfilePic} alt="member profile"/>
           <div className="member-text">
             <h2>{props.item.firstName} {props.item.lastName}</h2>
             <p>{props.item.quote}</p>
