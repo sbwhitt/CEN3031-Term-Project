@@ -4,16 +4,16 @@ import ProfilePic from "./pfp_placeholder.jpg";
 
 var lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 var testArr = [
-  {firstName: "George", lastName: "Washington", quote: lorem, id: 0},
-  {firstName: "Abraham", lastName: "Lincoln", quote: lorem, id: 1},
-  {firstName: "John", lastName: "Adams", quote: lorem, id: 2},
-  {firstName: "Dwight", lastName: "Eisenhower", quote: lorem, id: 3},
-  {firstName: "Herbert", lastName: "Hoover", quote: lorem, id: 4},
-  {firstName: "Randy", lastName: "Jackson", quote: lorem, id: 5},
-  {firstName: "Barack", lastName: "Obama", quote: lorem, id: 6},
-  {firstName: "Jeff", lastName: "Goldblum", quote: lorem, id: 7},
-  {firstName: "George", lastName: "Bush", quote: lorem, id: 8},
-  {firstName: "Bill", lastName: "Clinton", quote: lorem, id: 9}
+  {firstName: "George", lastName: "Washington", quote: lorem},
+  {firstName: "Abraham", lastName: "Lincoln", quote: lorem},
+  {firstName: "John", lastName: "Adams", quote: lorem},
+  {firstName: "Dwight", lastName: "Eisenhower", quote: lorem},
+  {firstName: "Herbert", lastName: "Hoover", quote: lorem},
+  {firstName: "Randy", lastName: "Jackson", quote: lorem},
+  {firstName: "Barack", lastName: "Obama", quote: lorem},
+  {firstName: "Jeff", lastName: "Goldblum", quote: lorem},
+  {firstName: "George", lastName: "Bush", quote: lorem},
+  {firstName: "Bill", lastName: "Clinton", quote: lorem}
 ];
 
 const MemberItem = (props) => {
@@ -21,7 +21,7 @@ const MemberItem = (props) => {
   return (
     <Link to={{
       pathname: url,
-      member: testArr[props.item.id]
+      member: testArr[props.index]
     }} style={{color: "black"}}>
     <div className="member-container">
         <div className="member-card">
@@ -36,18 +36,35 @@ const MemberItem = (props) => {
   );
 }
 
+const MemberSearch = (props) => {
+  return (
+    <div style={{display: "flex", justifyContent: "center", width: "90%", marginLeft: "5%", marginTop: "1em"}}>
+      <input onChange={props.onChange} style={{width: "100%", fontSize: "18px", borderWidth: "0px", height: "36px", boxShadow: "0 1px 2px 0 #00000045", paddingLeft: "0.5em"}} placeholder="Search for members here..."/>
+    </div>
+  );
+}
+
 class MemberPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      currentQuery: ""
+    }
   }
 
-  _renderItems = (props) => {
+  _onSearchChange = (e) => {
+    this.setState({currentQuery: e.target.value}, () => console.log(this.state.currentQuery));
+  }
+
+  _renderItems = (arr, filter) => {
     return (
       <div>
-        {props.map((item, index) => (
-          <MemberItem item={item} index={index}/>
-        ))}
+        {arr.filter((item) => this.state.currentQuery === "" || 
+          (item.firstName + ' ' + item.lastName).toLowerCase().includes(this.state.currentQuery.toLowerCase()))
+          .map((item, index) => (
+            <MemberItem item={item} key={index} index={index}/>
+          )
+        )}
       </div>
     );
   }
@@ -58,7 +75,8 @@ class MemberPage extends Component {
         <div className="page-content">
           <h1 className="page-text">Members</h1>
           <hr className="page-divider"/>
-          {this._renderItems(testArr)}
+          <MemberSearch onChange={(e) => this._onSearchChange(e)}/>
+          {this._renderItems(testArr, this.state.currentQuery)}
         </div>
       </div>
     );
