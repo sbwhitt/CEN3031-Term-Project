@@ -38,12 +38,12 @@ const MemberItem = (props) => {
 
 const MemberSearch = (props) => {
   return (
-    <div style={{display: "flex", justifyContent: "center", width: "90%", marginLeft: "5%", marginTop: "1em"}}>
-      <input onChange={props.onChange} style={{width: "100%", fontSize: "18px", borderWidth: "0px", height: "36px", boxShadow: "0 1px 2px 0 #00000045", paddingLeft: "0.5em"}} placeholder="Search for members here..."/>
+    <div className="search-container">
+      <input className="search-bar" onChange={props.onChange} placeholder="Search for members here..."/>
     </div>
   );
 }
-
+  
 class MemberPage extends Component {
   constructor(props) {
     super(props);
