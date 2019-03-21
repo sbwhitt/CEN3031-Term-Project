@@ -21,7 +21,7 @@ h2 {
 
 .header-bar {
   z-index: 1;
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   background-color: #bc581a;
