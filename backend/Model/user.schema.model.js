@@ -9,13 +9,16 @@ const userSchema = new Schema(
             firstName: String, required: true,
             lastName: String, required: true
         },
-        isAdmin : {type: Boolean, required: true},
+        privileges : {
+            isAdmin: Boolean, required: true, 
+            isExecutive: Boolean, required: true
+        },
         studyAbroadProgram : {type: String, required: true},
         contactInfo : {
             phoneNumber : Number, 
             email       : String
         },
-        points  : {type: Number}
+        points : {type: Number}
     }
 );
 
