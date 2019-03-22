@@ -1,18 +1,19 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const path = require('path'); 
-const schema = require("./backend/schema.js");
+// const schema = require("./backend/schema.js");
+const config = require('./backend/Config/config.js'); //not a correct path
 
 const port = process.env.PORT || 8080;
 const app = express();
 const router = express.Router();
 
 //TODO hide mongodb conection information
-const dbUrl = "mongodb+srv://ufsapa-db:ufsapa-backend@cluster0-dhfy9.mongodb.net/test?retryWrites=true";
+// const dbUrl = "mongodb+srv://ufsapa-db:ufsapa-backend@cluster0-dhfy9.mongodb.net/test?retryWrites=true";
 
 //connects our back end code with the database
 mongoose.connect(
-  dbUrl,
+  config.db.uri,
   { useNewUrlParser: true }
 );
 
