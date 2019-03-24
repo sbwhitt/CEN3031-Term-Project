@@ -6,7 +6,9 @@ const eventSchema = new Schema(
         event : {
             name: String, required:true, 
             category: String, required:true, 
-            points: String, required: true
+            points: String, required: true,
+            date:String, required: true,
+            eventID: Number, required: true
         }
     }
 );

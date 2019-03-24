@@ -6,15 +6,12 @@
 var fs = require('fs'),
     mongoose = require('mongoose'), 
     Schema = mongoose.Schema, 
-    // Listing = require('./ListingSchema.js'), 
-    userSchema = require('../Model/user.schema.model.js'),
     profileSchema = require('../Model/profile.schema.model.js'),
     eventSchema = require('../Model/event.schema.model.js'),
     config = require('../Config/config.js'),
-    currentMemberJson = require('../Datastore/CurrentMembers-Members.json'),
+    cominedMembersJson = require('../Datastore/combinedMembers.json'),
     eventAttendanceJson = require('../Datastore/EventAttendanceSpring2019.json'),
-    pointsSpringJson = require('../Datastore/PointsSpring2019.json'),
-    websiteDataJson = require('../Datastore/WebsiteData-Data.json');
+    pointsSpringJson = require('../Datastore/PointsSpring2019.json');
 
 /* Connect to your database */
 
@@ -28,12 +25,12 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:')); //pote
   and then save it to your Mongo database 
  */
 
-for(var listing in listingJson.entries){  //iterate through all the listings in
-  var listingToAdd = new Listing(listingJson.entries[listing]);
+for(var member in cominedMembersJson.entries){  //iterate through all the listings in
+  var memberToAdd = new member(combinedMembersJson.member);
 
-  listingToAdd.save(function (err, listingToAdd) 
+  listingToAdd.save(function (err, memberToAdd) 
     { 
-      console.log(listingToAdd);
+      console.log(memberToAdd);
       if (err) console.log ('Error on save! File Source: ./JSONtoMongo.js');
     }
   );

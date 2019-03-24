@@ -8,20 +8,31 @@ const profileSchema = new Schema(
             lastName: String, required: true
         },
         isActive: {type: Boolean, required: true},
-        email: {type: String}, 
+        contactInfo : {
+            phoneNumber : Number, 
+            email       : String
+        },
+        studyAbroad : {
+            program: String, required: true, 
+            country: String
+        },  
+        graduationSemester: {type: String, required: true},
+        yearsLeft: {type:String, required: true},
+        inducted: {type:String, required:true}, 
+        birthday: {type:String},     
         schoolStudy : {
             Major: Array,
             Minor: Array
-        }, 
-        studyAbroad : {
-            program: Array, required: true, 
-            country: Array
+        },   
+        question: {type:Array, required: true},
+        image: {type: String},
+        officeHours: {type: String},   
+        privileges : {
+            isAdmin: Boolean, required: true, 
+            isExecutive: Boolean, required: true
         },
-        graduation: {type: String, required: true}, 
-        yearsLeft: {type:String, required: true}, 
-        inducted: {type:String, required:true}, 
-        birthday: {type:String}, 
-        question: {type:Array, required: true}
+        eventAttendedbyID: {type:Array},
+        points : {type: Number}
     }
 );
 
