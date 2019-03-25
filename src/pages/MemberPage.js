@@ -48,9 +48,29 @@ class MemberPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      members: [],
+      interval: false,
       currentQuery: ""
     }
   }
+
+  componentDidMount() {
+    this.getMembers();
+    /*if (!this.state.interval) {
+      let interval = setInterval(this.getMembers, 1000);
+      this.setState({ interval: interval });
+    }*/
+  }
+
+  getMembers = () => {
+    fetch("http://localhost:8080/api/getMembers")
+      .then(function(res) {
+        return res.json();
+      })
+      .then((res) => {
+        this.setState({ members: res.data });
+      });
+  };
 
   _onSearchChange = (e) => {
     this.setState({currentQuery: e.target.value}, () => console.log(this.state.currentQuery));

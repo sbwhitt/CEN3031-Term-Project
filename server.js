@@ -1,40 +1,38 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const path = require('path'); 
-// const schema = require("./backend/schema.js");
-const config = require('./backend/Config/config.js'); //not a correct path
+const profile = require("./backend/Model/schema.js");
+const config = require('./backend/Config/config.js');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const port = process.env.PORT || 8080;
 const app = express();
 const router = express.Router();
 
-//TODO hide mongodb conection information
-// const dbUrl = "mongodb+srv://ufsapa-db:ufsapa-backend@cluster0-dhfy9.mongodb.net/test?retryWrites=true";
-
 //connects our back end code with the database
-mongoose.connect(
-  config.db.uri,
-  { useNewUrlParser: true }
-);
-
+mongoose.connect(config.db.uri);
 let db = mongoose.connection;
-
 db.once("open", () => console.log("connected to the database"));
-
-//checks if connection with the database is successful
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
-/*database post, put, delete, etc. functions will be implemented here
-
-*/
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
+app.use(bodyParser.json());
 
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, 'build')));
-app.get('/ping', function (req, res) {
- return res.send('pong');
-});
+app.use("/api", router);
+
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+router.get("/getMembers", (req, res) => {
+  profile.find((err, data) => {
+    if (err) return res.json({ success: false, error: err });
+    return res.json({ success: true, data: data });
+  });
 });
 
 //launch our backend into a port
