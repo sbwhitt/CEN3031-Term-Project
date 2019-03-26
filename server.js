@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 const express = require("express");
-const schema = require("./schema.js");
+const path = require('path'); 
+const schema = require("./backend/schema.js");
 
-const port = 3001;
+const port = process.env.PORT || 8080;
 const app = express();
 const router = express.Router();
 
 //TODO hide mongodb conection information
-const dbUrl = "mongodb://swe_dev_user:devAdmin123@ds042138.mlab.com:42138/swe_studyabroad_datastore";
+const dbUrl = "mongodb+srv://ufsapa-db:ufsapa-backend@cluster0-dhfy9.mongodb.net/test?retryWrites=true";
 
 //connects our back end code with the database
 mongoose.connect(
@@ -26,8 +27,14 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 */
 
-//append /api for our http requests
-app.use("/api", router);
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('/ping', function (req, res) {
+ return res.send('pong');
+});
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 //launch our backend into a port
 app.listen(port, () => console.log(`LISTENING ON PORT ${port}`));
