@@ -7,7 +7,7 @@ const MemberItem = (props) => {
   return (
     <Link to={{
       pathname: url,
-      member: testArr[props.index]
+      member: props.item
     }} style={{color: "black"}}>
     <div className="member-container">
         <div className="member-card">
@@ -50,7 +50,7 @@ class MemberPage extends Component {
         return res.json();
       })
       .then((res) => {
-        this.setState({ members: res.data });
+        this.setState({ members: res.data }, () => console.log(this.state.members));
       });
   };
 
