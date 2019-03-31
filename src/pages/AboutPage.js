@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
-import FacebookIcon from "./facebook_icon.png";
-import InstagramIcon from "./instagram_icon.png";
-import EmailIcon from "./email_icon.png";
+import FacebookIcon from "./icons/facebook_icon.png";
+import InstagramIcon from "./icons/instagram_icon.png";
+import EmailIcon from "./icons/email_icon.png";
 
 const ContactLink = (props) => {
   return (
