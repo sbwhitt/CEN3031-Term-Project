@@ -1,15 +1,17 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const event = mongoose.model('event', new mongoose.Schema({
-    name: { type: String },
-    category: { type: String },
-    points: { type: Number },
-    date: { type: String },
-    duration: { type: Number },
-    location: { type: String },
-    description: { type: String },
-    attended: [String],
-})
+const eventSchema = new Schema(
+    {
+        event : {
+            name: String, required:true, 
+            category: String, required:true, 
+            points: String, required: true,
+            date:String, required: true,
+            eventID: Number, required: true
+        }
+    }
 );
 
-module.exports = event;
+// export the new Schema so we could modify it using Node.js
+module.exports = mongoose.model("eventSchema", eventSchema);
