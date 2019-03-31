@@ -63,3 +63,32 @@ exports.update = function(req, res) {
       });
   
   };
+
+  // Delete a listing
+  exports.delete = function(req, res) {
+    var member = req.member;
+
+    member.remove(function(err){
+      if(err){
+        console.log(err);
+        res.status(404).send(err); 
+        throw err;
+      }
+  
+      console.log("Member successfully removed");
+      res.end();
+    })
+  };
+
+  /* Retreive all the directory listings, sorted alphabetically by listing code */
+exports.list = function(req, res) {
+ 
+  Member.find().sort({code: 'asc'}).exec(function(err, data){
+    if(err){
+      res.status(404).send(err);
+      throw err;
+    }
+
+    res.json(data);
+  })
+};
