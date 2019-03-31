@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'), 
-    Member = require('../models/schema.js');
+    Member = require('../Model/ProfileSchema.js');
 
 /* Create a member */
 exports.create = function(req, res) {
@@ -32,8 +32,8 @@ exports.update = function(req, res) {
     /** TODO **/
     /* Replace the article's properties with the new properties found in req.body */
     /* Save the article */
-      member.firstname           = req.body.firstname;
-      member.lastname            = req.body.lastname;
+      member.firstName           = req.body.firstName;
+      member.lastName            = req.body.lastName;
       member.isActive            = req.body.isActive;
       member.phoneNumber         = req.body.phoneNumber;
       member.email               = req.body.email;
@@ -80,15 +80,54 @@ exports.update = function(req, res) {
     })
   };
 
-  /* Retreive all the directory listings, sorted alphabetically by listing code */
-exports.list = function(req, res) {
+  /* Retrieve all the members, sorted alphabetically by firstName */
+exports.listSorted = function(req, res) {
  
-  Member.find().sort({code: 'asc'}).exec(function(err, data){
+  Member.find().sort({lastName: 'asc'}).exec(function(err, data){
     if(err){
       res.status(404).send(err);
       throw err;
     }
 
     res.json(data);
+  })
+};
+
+exports.list = function(req, res){
+  Member.find((err, data) => {
+    if (err) return res.json({ success: false, error: err });
+    return res.json({ success: true, data: data });
+  });
+}
+
+exports.promoteExecutive = function(req, res){
+  Member.findAndModify({
+    query: {firstName: req.body.firstName, lastName: req.body.lastName}, 
+    update: {isExecutive: true}, 
+    upsert: true
+  }).exec(function(err, data){
+    if(err){
+      res.stats(404).send(err);
+      throw err;
+    }
+
+    console.log("Member promoted to Executive");
+    res.end();
+  })
+};
+
+exports.demoteExecutive = function(req, res){
+  Member.findAndModify({
+    query: {firstName: req.body.firstName, lastName: req.body.lastName}, 
+    update: {isExecutive: false}, 
+    upsert: true
+  }).exec(function(err, data){
+    if(err){
+      res.stats(404).send(err);
+      throw err;
+    }
+
+    console.log("Executive demoted to member");
+    res.end();
   })
 };

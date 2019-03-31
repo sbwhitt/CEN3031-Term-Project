@@ -1,13 +1,10 @@
-const ProfileSchema = require("../Model/ProfileSchema.js");
+const memberController = require("../Controller/members.server.controller.js");
 const express = require("express");
 
 const router = express.Router();
 
-router.get("/getMembers", (req, res) => {
-  ProfileSchema.find((err, data) => {
-    if (err) return res.json({ success: false, error: err });
-    return res.json({ success: true, data: data });
-  });
-});
+router.route("/getMembers")
+  .get(memberController.list);
+
 
 module.exports = router;

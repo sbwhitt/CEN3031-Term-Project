@@ -10,6 +10,7 @@ const port = config.port;
 const app = express();
 
 const memberRouter = require("../Routing/members.router.server.js");
+const eventRouter  = require("../Routing/events.router.server.js");
 
 module.exports.start = function() {
 
