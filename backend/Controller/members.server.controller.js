@@ -23,15 +23,12 @@ exports.create = function(req, res) {
 exports.read = function(req, res) {
     /* send back the listing as json from the request */
     res.json(req.member);
-  };
+};
 
-  /* Update a listing */
+  /* Update a member */
 exports.update = function(req, res) {
     var member = req.member;
   
-    /** TODO **/
-    /* Replace the article's properties with the new properties found in req.body */
-    /* Save the article */
       member.firstName           = req.body.firstName;
       member.lastName            = req.body.lastName;
       member.isActive            = req.body.isActive;
@@ -64,7 +61,7 @@ exports.update = function(req, res) {
   
   };
 
-  // Delete a listing
+  // Delete a member
   exports.delete = function(req, res) {
     var member = req.member;
 
@@ -93,6 +90,7 @@ exports.listSorted = function(req, res) {
   })
 };
 
+//Retrieve all members without sort
 exports.list = function(req, res){
   Member.find((err, data) => {
     if (err) return res.json({ success: false, error: err });
@@ -100,6 +98,7 @@ exports.list = function(req, res){
   });
 }
 
+//Change the permissions of a member to executive
 exports.promoteExecutive = function(req, res){
   Member.findAndModify({
     query: {firstName: req.body.firstName, lastName: req.body.lastName}, 
@@ -112,10 +111,12 @@ exports.promoteExecutive = function(req, res){
     }
 
     console.log("Member promoted to Executive");
+    console.log(res);
     res.end();
   })
 };
 
+//Change the permissions of an executive to member
 exports.demoteExecutive = function(req, res){
   Member.findAndModify({
     query: {firstName: req.body.firstName, lastName: req.body.lastName}, 
@@ -127,7 +128,23 @@ exports.demoteExecutive = function(req, res){
       throw err;
     }
 
+    console.log(res);
     console.log("Executive demoted to member");
     res.end();
   })
+};
+
+exports.memberByFirstLast = function(req, res, next, first, last) {
+  console.log(first + last);
+  Member.findOne({
+    firstName: first,
+    lastName: last
+  }).exec(function(err, member) {
+    if(err) {
+      res.status(400).send(err);
+    } else {
+      req.member = member;
+      next();
+    }
+  });
 };

@@ -6,5 +6,24 @@ const router = express.Router();
 router.route("/getMembers")
   .get(memberController.list);
 
+router.route("/getMembers/sorted")
+  .get(memberController.listSorted);
+
+router.route("/:idMember")
+  .get(memberController.read)
+  .delete(memberController.delete)
+  .put(memberController.update);
+
+router.route("/:idMember/demote")
+  .put(memberController.demoteExecutive);
+
+router.route("/:idMember/promote")
+  .put(memberController.promoteExecutive);
+
+router.route("/createMember")
+  .put(memberController.create);
+
+
+router.param('idMember', memberController.memberByFirstLast);
 
 module.exports = router;
