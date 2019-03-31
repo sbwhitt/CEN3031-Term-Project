@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Krishna",
+        "category": "Social Events",
+        "points": 0.5,
+        "date": "2019-02-01T12:00:00",
+        "duration": 4,
+        "location": "Plaza of the Americas",
+        "description": "Food",
+        "attended": []
+    },
+    {
+        "name": "Study Abroad Fair",
+        "category": "Outreach Events",
+        "points": 1,
+        "date": "2019-01-15T09:00:00",
+        "duration": 12,
+        "location": "Reitz North Lawn",
+        "description": "Conference style event",
+        "attended": []
+    },
+    {
+        "name": "Study Social",
+        "category": "Social Events",
+        "points": 0.5,
+        "date": "2019-02-06T19:00:00",
+        "duration": 2,
+        "location": "Reitz North Lawn",
+        "description": "Conference style event",
+        "attended": []
+    },
+    {
+        "name": "GBM Attendance",
+        "category": "Miscellaneous",
+        "points": 1,
+        "date": "",
+        "duration": 0,
+        "location": "",
+        "description": "Attendance record of first GBM",
+        "attended": []
+    }
+]
