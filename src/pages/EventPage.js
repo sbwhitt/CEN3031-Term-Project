@@ -6,7 +6,7 @@ var testArr = [
   {eventName: "office meeting", eventType: "business talk " + "event", points: 2, date: "2019-05-01", timestart: "15:00", timeend: "16:45", location: "Library west", description: "discuss business stuff"},
   {eventName: "need money", eventType: "fundraising " + "event", points: 3, date: "2019-04-05", timestart: "16:10", timeend: "16:35", location: "space", description: "make money"}
 ];
-const EvenItem = (props) => {
+const EventItem = (props) => {
 	return (
     <div className="member-container">
         <div className="member-card">
