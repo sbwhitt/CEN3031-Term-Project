@@ -26,7 +26,8 @@
         "officeHours": "Tuesday 9:35 - 10:25",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "AlexisMurrow"
     },
     {
         "firstName": "Andrew",
@@ -54,7 +55,8 @@
         "officeHours": "Tuesday 3:00 - 3:50",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "AndrewSchnake"
     },
     {
         "firstName": "Ariana",
@@ -82,7 +84,8 @@
         "officeHours": "Thursday 12:50 - 1:40",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "ArianaJohnson"
     },
     {
         "firstName": "Becca",
@@ -110,7 +113,8 @@
         "officeHours": "Monday 11:45 - 12:35",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "BeccaCorbin"
     },
     {
         "firstName": "Benjamin",
@@ -138,7 +142,8 @@
         "officeHours": "N/A",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "BenjaminCabral"
     },
     {
         "firstName": "Cameron",
@@ -168,7 +173,8 @@
         "officeHours": "Wednesday 1:55 - 2:45",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "CameronMockabee"
     },
     {
         "firstName": "Carolyn",
@@ -199,7 +205,8 @@
         "officeHours": "Monday 10:40 - 11:30",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "CarolynImes"
     },
     {
         "firstName": "Catherine",
@@ -226,7 +233,8 @@
         "officeHours": "Thursday 3:00 - 3:50",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "CatherineBush"
     },
     {
         "firstName": "Cy-Anne",
@@ -254,7 +262,8 @@
         "officeHours": "Friday 9:35 - 10:25",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "Cy-AnneSmall"
     },
     {
         "firstName": "Elizabeth",
@@ -284,7 +293,8 @@
         "officeHours": "Tuesday 11:45 - 12:35",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "ElizabethBarbour"
     },
     {
         "firstName": "Elizabeth",
@@ -311,7 +321,8 @@
         "officeHours": "Not at UF",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "ElizabethValdes"
     },
     {
         "firstName": "Emili",
@@ -340,7 +351,8 @@
         "officeHours": "Thursday 9:35 - 10:25",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "EmiliMellor"
     },
     {
         "firstName": "Emily",
@@ -369,7 +381,8 @@
         "officeHours": "Monday 9:35 - 10:25",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "EmilyFennell"
     },
     {
         "firstName": "Emma",
@@ -398,7 +411,8 @@
         "officeHours": "Thursday 1:55 - 2:45",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "EmmaFrierson"
     },
     {
         "firstName": "Erin",
@@ -429,7 +443,8 @@
         "officeHours": "Tuesday 1:55 - 2:45",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "ErinConnors"
     },
     {
         "firstName": "Erin",
@@ -456,7 +471,8 @@
         "officeHours": "Wednesday 11:45 - 12:35",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "ErinFox"
     },
     {
         "firstName": "Erin",
@@ -486,7 +502,8 @@
         "officeHours": "Friday 9:35 - 10:25",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "ErinSnyder"
     },
     {
         "firstName": "Gabriela",
@@ -516,7 +533,8 @@
         "officeHours": "Tuesday 9:35 - 10:25",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "GabrielaDiaz"
     },
     {
         "firstName": "Isabel",
@@ -545,7 +563,8 @@
         "officeHours": "Wednesday 1:55 - 2:45",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "IsabelSanchez"
     },
     {
         "firstName": "Isabella",
@@ -573,7 +592,8 @@
         "officeHours": "Wednesday 9:35 - 10:25",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "IsabellaBrown"
     },
     {
         "firstName": "Julianna",
@@ -603,7 +623,8 @@
         "officeHours": "Thursday 1:55 - 2:45",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "JuliannaJohnson"
     },
     {
         "firstName": "Justas",
@@ -632,7 +653,8 @@
         "officeHours": "Thursday 12:50 - 1:40",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "JustasSchillinger"
     },
     {
         "firstName": "Kathy",
@@ -663,7 +685,8 @@
         "officeHours": "Thursday 10:40 - 11:30",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "KathyXie"
     },
     {
         "firstName": "Katie",
@@ -693,7 +716,8 @@
         "officeHours": "TBA",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "KatieSimpson"
     },
     {
         "firstName": "Keilly",
@@ -721,7 +745,8 @@
         "officeHours": "Tuesday 12:50 - 1:40",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "KeillyPulgar"
     },
     {
         "firstName": "Kendal",
@@ -750,7 +775,8 @@
         "officeHours": "Thursday 11:45 - 12:35",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "KendalFrazier"
     },
     {
         "firstName": "Kendall",
@@ -778,7 +804,8 @@
         "officeHours": "Monday 10:40 - 11:30",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "KendallTodd"
     },
     {
         "firstName": "Laura",
@@ -807,7 +834,8 @@
         "officeHours": "Tuesday 3:00 - 3:50",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "LauraFroneberger"
     },
     {
         "firstName": "Liam",
@@ -835,7 +863,8 @@
         "officeHours": "Monday 12:50 - 1:40",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "LiamBrennan"
     },
     {
         "firstName": "Luke",
@@ -864,7 +893,8 @@
         "officeHours": "Wednesday 9:35 - 10:25",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "LukeBickell"
     },
     {
         "firstName": "Meredith",
@@ -891,7 +921,8 @@
         "officeHours": "Wednesday 12:50 - 1:40",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "MeredithRiccardi"
     },
     {
         "firstName": "Mia",
@@ -914,7 +945,8 @@
         "officeHours": "Tuesday 12:50 - 1:40",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "MiaFrisiello"
     },
     {
         "firstName": "Minhthi",
@@ -944,7 +976,8 @@
         "officeHours": "Friday 1:55 - 2:45",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "MinhthiNguyen"
     },
     {
         "firstName": "Narrelle",
@@ -972,7 +1005,8 @@
         "officeHours": "Wednesday 12:50 - 1:40",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "NarrelleGilchrist"
     },
     {
         "firstName": "Nheissa",
@@ -1002,7 +1036,8 @@
         "officeHours": "Tuesday 1:55 - 2:45",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "NheissaIsidor"
     },
     {
         "firstName": "Olivia",
@@ -1033,7 +1068,8 @@
         "officeHours": "Monday 9:35 - 10:25",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "OliviaMeadows"
     },
     {
         "firstName": "Rachel",
@@ -1063,7 +1099,8 @@
         "officeHours": "Monday 3:00 - 3:50",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "RachelCathey"
     },
     {
         "firstName": "Rachel",
@@ -1091,7 +1128,8 @@
         "officeHours": "Wednesday 10:40 - 11:30",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "RachelWagner"
     },
     {
         "firstName": "Riley",
@@ -1120,7 +1158,8 @@
         "officeHours": "Monday 3:00 - 3:50",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "RileyBailey"
     },
     {
         "firstName": "Ryan",
@@ -1148,7 +1187,8 @@
         "officeHours": "Friday 1:55 - 2:45",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "RyanGonzalez"
     },
     {
         "firstName": "Sana",
@@ -1177,7 +1217,8 @@
         "officeHours": "Monday 12:50 - 1:40",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "SanaNguyen"
     },
     {
         "firstName": "Sydney",
@@ -1205,7 +1246,8 @@
         "officeHours": "Tuesday 10:40 - 11:30",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "SydneyShaner"
     },
     {
         "firstName": "Trey",
@@ -1233,7 +1275,8 @@
         "officeHours": "Monday 11:45 - 12:35",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "TreyColeman"
     },
     {
         "firstName": "Trey",
@@ -1261,7 +1304,8 @@
         "officeHours": "Monday 1:55 - 2:45",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "TreyLaNasa"
     },
     {
         "firstName": "Urmeen",
@@ -1290,7 +1334,8 @@
         "officeHours": "Tuesday 11:45 - 12:35",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "UrmeenMansoor"
     },
     {
         "firstName": "Yousef",
@@ -1313,6 +1358,7 @@
         "officeHours": "Wednesday 10:40 - 11:30",
         "isAdmin": false,
         "isExecutive": false,
-        "points": 0
+        "points": 0,
+        "firstLast": "YousefGhabour"
     }
 ]
