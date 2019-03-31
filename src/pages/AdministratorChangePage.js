@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import ManagementDashboard from './ManagementDashboard';
 class AdministratorChangePage extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +12,7 @@ class AdministratorChangePage extends Component {
         <div className="page-content">
           <h1 className="page-text">administrator change</h1>
           <hr className="page-divider"/>
+		  <ManagementDashboard/>
           <p className="page-text">administrator change.</p>
         </div>
       </div>

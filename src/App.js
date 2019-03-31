@@ -22,9 +22,7 @@ class HeaderBar extends Component {
           <HLink name="Events" link="/events"/>
           <HLink name="Profile" link="/profile"/>
           <HLink name="About" link="/about"/>
-          <HLink name="Manage Members" link="/managemembers"/>
-          <HLink name="Manage Executives" link="/manageexecutives"/>
-          <HLink name="Administrator Change" link="/administratorchange"/>
+          <HLink name="Management" link="/managemembers"/>
         </div>
         <button className="login-button">Log In</button>
       </div>
@@ -54,15 +52,15 @@ class App extends Component {
       <Router>
         <div className="App">
           <HeaderBar/>
-          <div style={{marginTop: "5em"}}>
+          <div style={{marginTop: "2em"}}>
             <Route exact path="/" component={WelcomePage}/>
             <Route path="/members" component={MemberPage}/>
             <Route path="/events" component={EventPage}/>
             <Route path="/profile" component={ProfilePage}/>
             <Route path="/about" component={AboutPage}/>
 			<Route path="/managemembers" component={ManageMembersPage}/>
-            <Route path="/manageexecutives" component={ManageExecutivesPage}/>
-            <Route path="/administratorchange" component={AdministratorChangePage}/>
+			<Route path="/manageexecutives" component={ManageExecutivesPage}/>
+			<Route path="/manageadministration" component={AdministratorChangePage}/>
           </div>
         </div>
       </Router>
