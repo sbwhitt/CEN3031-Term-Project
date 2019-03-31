@@ -8,22 +8,41 @@ import AboutPage from './pages/AboutPage.js';
 import UFLogo from "./UF_white.png";
 import './App.css';
 
-class HeaderBar extends Component {
-  render() {
-    return (
-      <div className="header-bar">
-        <div style={{display: "flex", flexDirection: "row"}}>
-          <Logo/>
-          <HLink name="Home" link="/"/>
-          <HLink name="Members" link="/members"/>
-          <HLink name="Events" link="/events"/>
-          <HLink name="Profile" link="/profile"/>
-          <HLink name="About" link="/about"/>
+const LoginWindow = (props) => {
+  return (
+    <div style={props.isVisible ? {display: "flex"} : {display: "none"}} className="login-container">
+      <div className="login-window">
+        <div style={{display: "flex", justifyContent: "flex-end"}}>
+          <button onClick={props.onClose} style={{background: "#00000000", border: "none", fontSize: "28px"}}>x</button>
         </div>
-        <button className="login-button">Log In</button>
+        <h2>Login</h2>
+        <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-start", marginBottom: "1em"}}>
+          <p style={{margin: "0"}}>Email</p>
+          <div style={{display: "flex", justifyContent: "center"}}><input style={{width: "25%", height: "1em", paddingLeft: "1em"}} type="text"/></div>
+        </div>
+        <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-start", marginBottom: "1em"}}>
+          <p style={{margin: "0"}}>Password</p>
+          <div style={{display: "flex", justifyContent: "center"}}><input style={{width: "25%", height: "1em", paddingLeft: "1em"}} type="text"/></div>
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
+
+const HeaderBar = (props) => {
+  return (
+    <div className="header-bar">
+      <div style={{display: "flex", flexDirection: "row"}}>
+        <Logo/>
+        <HLink name="Home" link="/"/>
+        <HLink name="Members" link="/members"/>
+        <HLink name="Events" link="/events"/>
+        <HLink name="Profile" link="/profile"/>
+        <HLink name="About" link="/about"/>
+      </div>
+      <button className="login-button" onClick={props.loginClick}>Log In</button>
+    </div>
+  );
 }
 
 const HLink = (props) => {
@@ -43,11 +62,19 @@ const Logo = () => {
 }
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+		  loginVisible: false
+	  }
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
-          <HeaderBar/>
+          <LoginWindow isVisible={this.state.loginVisible} onClose={(e) => this.setState({loginVisible: !this.state.loginVisible})}/>
+          <HeaderBar loginClick={(e) => this.setState({loginVisible: !this.state.loginVisible})}/>
           <div style={{marginTop: "2em"}}>
             <Route exact path="/" component={WelcomePage}/>
             <Route path="/members" component={MemberPage}/>
