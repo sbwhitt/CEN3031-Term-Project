@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const profile = mongoose.model('profile', new mongoose.Schema({
     firstName: { type: String },
     lastName: { type: String },
+    firstLast: { type: String },
     isActive: { type: Boolean },
     phoneNumber: { type: Number },
     email: { type: String },
