@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
 import '../App.css';
+import FacebookIcon from "./facebook_icon.png";
+import InstagramIcon from "./instagram_icon.png";
+import EmailIcon from "./email_icon.png";
 
 const ContactLink = (props) => {
   return (
-    <a className="contact-link" href={props.link}>
+    <div className="contact-link">
       <div>
-        <h2>{props.title}</h2>
-        <a href={props.link}>{props.linkTitle}</a>
+       <a href={props.link}><img src={props.icon} href={props.link}/></a> 
       </div>
-    </a>
+      <div>
+      <a href={props.link}>{props.linkTitle}</a>
+      </div>
+    </div>
   );
 }
 
 const ContactBlock = () => {
   return (
     <div className="contact-block">
-      <ContactLink title="Email" link="mailto:ufsapa+web@gmail.com" linkTitle="ufsapa@gmail.com"/>
-      <ContactLink title="Facebook" link="https://facebook.com/ufsapa" linkTitle="@ufsapa"/>
-      <ContactLink title="Instagram" link="https://www.instagram.com/ufsapa/" linkTitle="@ufsapa"/>
+      <ContactLink icon={EmailIcon} link="mailto:ufsapa+web@gmail.com" linkTitle="ufsapa@gmail.com"/>
+      <ContactLink icon={FacebookIcon} link="https://facebook.com/ufsapa" linkTitle="@ufsapa"/>
+      <ContactLink icon={InstagramIcon} link="https://www.instagram.com/ufsapa/" linkTitle="@ufsapa"/>
     </div>
   );
 }
