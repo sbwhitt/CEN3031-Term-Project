@@ -8,10 +8,10 @@ const ContactLink = (props) => {
   return (
     <div className="contact-link">
       <div>
-       <a href={props.link}><img src={props.icon} href={props.link}/></a> 
+       <a target="_blank" href={props.link}><img src={props.icon} href={props.link}/></a> 
       </div>
       <div>
-      <a href={props.link}>{props.linkTitle}</a>
+      <a target="_blank" href={props.link}>{props.linkTitle}</a>
       </div>
     </div>
   );
