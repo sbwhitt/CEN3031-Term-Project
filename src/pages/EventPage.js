@@ -3,8 +3,24 @@ import React, { Component } from 'react';
 class EventPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      events: []
+    }
   }
+
+  componentDidMount() {
+    this.getEvents();
+  }
+
+getEvents = () => {
+  fetch("http://localhost:8080/api/event/getEvents")
+    .then(function(res) {
+      return res.json();
+    })
+    .then((res) => {
+      this.setState({ events: res.data }, () => console.log(this.state.events));
+    });
+};
 
   render() {
     return (

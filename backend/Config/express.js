@@ -25,7 +25,8 @@ module.exports.start = function() {
 
     app.use(express.static(__dirname));
     app.use(express.static(path.join(__dirname, 'build')));
-    app.use("/api", memberRouter);
+    app.use("/api/member", memberRouter);
+    app.use("/api/event", eventRouter);
 
     app.get('/*', function (req, res) {
         res.sendFile(path.join(__dirname, 'build', 'index.html'));

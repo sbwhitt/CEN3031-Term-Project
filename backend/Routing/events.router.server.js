@@ -3,3 +3,8 @@ const express = require("express");
 
 const router = express.Router();
 
+router.route("/getEvents")
+  .get(eventController.list);
+
+
+module.exports = router;
