@@ -54,7 +54,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <HeaderBar/>
-          <div style={{marginTop: "5em"}}>
+          <div style={{marginTop: "2em"}}>
             <Route exact path="/" component={WelcomePage}/>
             <Route path="/members" component={MemberPage}/>
             <Route path="/events" component={EventPage}/>

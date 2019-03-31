@@ -21,7 +21,7 @@ h2 {
 
 .header-bar {
   z-index: 1;
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   background-color: #bc581a;
@@ -185,6 +185,7 @@ e
   padding-bottom: 1em;
   margin-right: 2em;
 }
+<<<<<<< HEAD
 .welcome-img {
   height: 100%;
   width: 100%;
@@ -200,3 +201,22 @@ e
 .event-modal {
 
 }
+=======
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 1em;
+}
+
+.search-bar {
+  width: 100%;
+  font-size: 18px;
+  border-width: 0px;
+  height: 36px;
+  box-shadow: 0 1px 2px 0 #00000045;
+  padding-left: 0.5em;
+}
+>>>>>>> a48ead46cc2a9bcee8c0d774d48deb727792d567
