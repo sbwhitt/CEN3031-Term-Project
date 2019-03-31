@@ -105,6 +105,16 @@ h2 {
   margin-left: 5%;
   width: 90%;
 }
+.page-text-about {
+  margin-left: 5%;
+  width: 90%;
+  font-weight: 600;
+}
+.page-text-title {
+  margin-left: 5%;
+  width: 90%;
+  font-weight: 600;
+}
 
 .page-divider {
   width: 90%;
@@ -124,11 +134,13 @@ h2 {
   margin-bottom: 5%;
 }
 .contact-link {
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
   padding: 1em;
   color: black;
 }
-.contact-link:hover{
+.contact-link:hover {
   -webkit-transform: scale(1.05);
   -ms-transform: scale(1.05);
   transform: scale(1.05);
