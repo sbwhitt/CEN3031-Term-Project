@@ -47,7 +47,7 @@ class MemberPage extends Component {
   }
 
   getMembers = () => {
-    fetch("http://localhost:8080/api/getMembers")
+    fetch("http://localhost:8080/api/member/getMembers")
       .then(function(res) {
         return res.json();
       })
