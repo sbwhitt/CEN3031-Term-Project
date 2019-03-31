@@ -14,7 +14,9 @@ const MemberItem = (props) => {
           <img className="member-img" src={props.item.image} alt="member profile"/>
           <div className="member-text">
             <h2>{props.item.firstName} {props.item.lastName}</h2>
-            <p>{props.item.quote}</p>
+            <p><b>Programs: </b>{props.item.programs}</p>
+            <p><b>Majors: </b>{props.item.majors}</p>
+            <p style={{zIndex: "2"}}><b>Email: </b><a href={"mailto:" + props.item.email}>{props.item.email}</a></p>
           </div>
         </div>
     </div>

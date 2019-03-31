@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const path = require('path'); 
-const profile = require("./backend/Model/schema.js");
+const ProfileSchema = require("./backend/Model/ProfileSchema.js");
 const config = require('./backend/Config/config.js');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -29,7 +29,7 @@ app.get('/*', function (req, res) {
 });
 
 router.get("/getMembers", (req, res) => {
-  profile.find((err, data) => {
+  ProfileSchema.find((err, data) => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true, data: data });
   });
