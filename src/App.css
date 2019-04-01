@@ -31,6 +31,16 @@ h2 {
   justify-content: space-between;
   box-shadow: 0 2px 5px 0 #00000045;
 }
+.header-button {
+  cursor: pointer;
+  margin-right: 0;
+  padding: 0 1em 0;
+  border: 0;
+  height: 64px;
+  background-color: #bc581a;
+  font-size: 20px;
+  color: #efefef;
+}
 
 .logo-container {
   display: flex;
@@ -138,6 +148,12 @@ h2 {
   font-weight: 600;
 }
 
+.page-centertext {
+  margin-left: 5%;
+  width: 90%;
+  text-align: center;
+}
+
 .page-divider {
   width: 90%;
   height: 1px;
@@ -177,7 +193,7 @@ h2 {
   margin-top: 1em;
   box-shadow: 0 1px 3px 0 #00000045;
 }
-
+e
 .member-container:hover {
   -webkit-transform: scale(1.05);
   -ms-transform: scale(1.05);
@@ -228,4 +244,12 @@ h2 {
   padding: 0em;
   padding-right: 0;
   padding-bottom: 0em;
+}
+.event-button {
+  position: relative;
+  left: 800px;
+  bottom: 0px;
+}
+.event-modal {
+
 }

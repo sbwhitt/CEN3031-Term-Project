@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
 import WelcomePic from "./WelcomePicture.jpeg";
-
 class WelcomePage extends Component {
   constructor(props) {
     super(props);

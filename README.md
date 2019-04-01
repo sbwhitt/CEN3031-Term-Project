@@ -47,8 +47,11 @@ Samuel Whittenberger
 
 Ethan Lin
 
+<<<<<<< HEAD
+=======
 Matthew Sabin
 
 Nicholas Alvarez
 
 --Development Branch Creation
+>>>>>>> 598ee1ff656ca390d53cc62c3d5844cc5b8095bc
