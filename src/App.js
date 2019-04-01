@@ -13,8 +13,8 @@ class HeaderBar extends Component {
   render() {
     return (
       <div className="header-bar">
-        <Logo/>
-        <div style={{display: "flex", flexDirection: "row", marginRight: "50%"}}>
+        <div style={{display: "flex", flexDirection: "row"}}>
+          <Logo/>
           <HLink name="Home" link="/"/>
           <HLink name="Members" link="/members"/>
           <HLink name="Events" link="/events"/>
