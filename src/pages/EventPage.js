@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Modal from './Modal.js';
 
 var testArr = [
   {eventName: "meet and greet", eventType: "social " + "event", points: 1, date: "2019-04-01", timestart: "16:00", timeend: "16:45", location: "Marston", description: "meet peeps"},
@@ -42,8 +41,6 @@ class EventPage extends Component {
       <div className="page-wrapper">
         <div className="page-content">
           <h1 className="page-text">Events</h1>
-		  <button onClick = {(e) => this.setState({isOpen: true})} className="event-button"> "create a new event" </button>
-		  <Modal isOpen = {this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}/>
           
 		  <hr className="page-divider"/>
 		  <h1 className="page-text" className = "page-centertext"> Upcoming Events</h1>

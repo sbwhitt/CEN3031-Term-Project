@@ -5,9 +5,7 @@ import MemberPage from './pages/MemberPage.js';
 import EventPage from './pages/EventPage.js';
 import ProfilePage from './pages/ProfilePage.js';
 import AboutPage from './pages/AboutPage.js';
-import ManageMembersPage from './pages/ManageMembersPage.js';
-import ManageExecutivesPage from './pages/ManageExecutivesPage.js';
-import AdministratorChangePage from './pages/AdministratorChangePage.js';
+import ManagementPage from './pages/ManagementPage.js';
 import UFLogo from "./UF_white.png";
 import './App.css';
 
@@ -22,7 +20,7 @@ class HeaderBar extends Component {
           <HLink name="Events" link="/events"/>
           <HLink name="Profile" link="/profile"/>
           <HLink name="About" link="/about"/>
-          <HLink name="Management" link="/managemembers"/>
+          <HLink name="Management" link="/management"/>
         </div>
         <button className="login-button">Log In</button>
       </div>
@@ -58,9 +56,7 @@ class App extends Component {
             <Route path="/events" component={EventPage}/>
             <Route path="/profile" component={ProfilePage}/>
             <Route path="/about" component={AboutPage}/>
-			<Route path="/managemembers" component={ManageMembersPage}/>
-			<Route path="/manageexecutives" component={ManageExecutivesPage}/>
-			<Route path="/manageadministration" component={AdministratorChangePage}/>
+			<Route path="/management" component={ManagementPage}/>
           </div>
         </div>
       </Router>
