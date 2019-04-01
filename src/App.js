@@ -5,6 +5,7 @@ import MemberPage from './pages/MemberPage.js';
 import EventPage from './pages/EventPage.js';
 import ProfilePage from './pages/ProfilePage.js';
 import AboutPage from './pages/AboutPage.js';
+import ManagementPage from './pages/ManagementPage.js';
 import UFLogo from "./UF_white.png";
 import './App.css';
 
@@ -39,6 +40,7 @@ const HeaderBar = (props) => {
         <HLink name="Events" link="/events"/>
         <HLink name="Profile" link="/profile"/>
         <HLink name="About" link="/about"/>
+        <HLink name="Management" link="/management"/>
       </div>
       <button className="login-button" onClick={props.loginClick}>Log In</button>
     </div>
@@ -81,6 +83,7 @@ class App extends Component {
             <Route path="/events" component={EventPage}/>
             <Route path="/profile" component={ProfilePage}/>
             <Route path="/about" component={AboutPage}/>
+            <Route path="/management" component={ManagementPage}/>
           </div>
         </div>
       </Router>
