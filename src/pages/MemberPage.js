@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import ProfilePic from "./pfp_placeholder.jpg";
+
+const port = process.env.PORT;
 
 const MemberItem = (props) => {
   var url = "/profile/" + props.item.firstLast;
@@ -47,7 +48,7 @@ class MemberPage extends Component {
   }
 
   getMembers = () => {
-    fetch("http://localhost:8080/api/member/getMembers")
+    fetch("/api/member/getMembers")
       .then(function(res) {
         return res.json();
       })
