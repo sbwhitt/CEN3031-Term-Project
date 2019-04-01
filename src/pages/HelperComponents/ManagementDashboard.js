@@ -17,7 +17,7 @@ class ManagementDashboard extends Component {
 	}
 	render() {
 		return(
-			<div>
+			<div style={{marginLeft: "5%"}}>
 				<button onClick = {(e) => this.setState({isEventsOpen:true, isMembersOpen:false, isExecutivesOpen:false, isAdministrationOpen:false})}> Manage Events </button>
 				<br/>
 				<button onClick = {(e) => this.setState({isMembersOpen:true, isEventsOpen:false, isExecutivesOpen:false, isAdministrationOpen:false})}> Manage Members </button>
