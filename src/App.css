@@ -1,3 +1,4 @@
+    
 .App {
   text-align: center;
 }
@@ -115,6 +116,16 @@ h2 {
   margin-left: 5%;
   width: 90%;
 }
+.page-text-about {
+  margin-left: 5%;
+  width: 90%;
+  font-weight: 600;
+}
+.page-text-title {
+  margin-left: 5%;
+  width: 90%;
+  font-weight: 600;
+}
 
 .page-centertext {
   margin-left: 5%;
@@ -139,14 +150,17 @@ h2 {
   margin-left: 5%;
   margin-bottom: 5%;
 }
-
 .contact-link {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
   padding: 1em;
   color: black;
 }
-
 .contact-link:hover {
-  background-color: #dedede;
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .member-container {
@@ -185,23 +199,6 @@ e
   padding-bottom: 1em;
   margin-right: 2em;
 }
-<<<<<<< HEAD
-.welcome-img {
-  height: 100%;
-  width: 100%;
-  padding: 0em;
-  padding-right: 0;
-  padding-bottom: 0em;
-}
-.event-button {
-  position: relative;
-  left: 800px;
-  bottom: 0px;
-}
-.event-modal {
-
-}
-=======
 
 .search-container {
   display: flex;
@@ -219,4 +216,19 @@ e
   box-shadow: 0 1px 2px 0 #00000045;
   padding-left: 0.5em;
 }
->>>>>>> a48ead46cc2a9bcee8c0d774d48deb727792d567
+
+.welcome-img {
+  height: 100%;
+  width: 100%;
+  padding: 0em;
+  padding-right: 0;
+  padding-bottom: 0em;
+}
+.event-button {
+  position: relative;
+  left: 800px;
+  bottom: 0px;
+}
+.event-modal {
+
+}

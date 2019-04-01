@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 
 class Modal extends Component {
-	
 	constructor(props) {
 		super(props);
-		this.state = {}
+		this.state = {
+			isOpen:false
+		}
 	}
-	
-	render() {
-		
+	render() {	
 		let modal = (
 			<div className="event-modal">
 				<button onClick={this.props.onClose}> x </button>
