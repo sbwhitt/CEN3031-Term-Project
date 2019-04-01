@@ -11,7 +11,7 @@ class ManagementPage extends Component{
 		return (
 			<div className="page-wrapper">
 				<div className="page-content">
-					<h1 className="page-text">Management:</h1>
+					<h1 className="page-text">Management</h1>
 					<hr className="page-divider"/>
 					<ManagementDashboard/>
 				</div>

@@ -246,10 +246,27 @@ h2 {
   padding-bottom: 0em;
 }
 .event-button {
-  position: relative;
-  left: 800px;
-  bottom: 0px;
+  
 }
-.event-modal {
 
+.button-container {
+  width: 90%;
+  margin-top: 1.5em;
+  margin-left: 5%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.manage-btn {
+  cursor: pointer;
+  padding: 0.5em;
+  border-color: black;
+  border-width: 1px;
+  background-color: #ffffff;
+}
+
+.manage-btn:hover {
+  background-color: #dedede;
 }

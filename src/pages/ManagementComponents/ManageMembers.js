@@ -11,6 +11,7 @@ class ManageMembers extends Component {
 		let ManageMembers = (
 			<div>
 				<h1 className="page-text">Members</h1>
+				<hr className="page-divider"/>
 				<p className="page-text">Member Management</p>
 			</div> 
 		)

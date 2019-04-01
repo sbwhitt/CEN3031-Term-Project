@@ -24,23 +24,25 @@ class ManageExecutives extends Component {
 		let ManageExecutives = (
 			<div>
 				<h1 className="page-text">Executives</h1>
-				
+				<hr className="page-divider"/>
 				<h2 className="page-text">Current Executives</h2>
-				<select name="Executives" > 
-					<option value="" selected disabled hidden>Executives</option>
-					{this.makeTable(executiveNames)}
-				</select>
-				<br/>
-				<input type="submit" value="Demote Executive"/>
-
+				<div style={{marginLeft: "5%"}}>
+					<select name="Executives" > 
+						<option value="" selected disabled hidden>Executives</option>
+						{this.makeTable(executiveNames)}
+					</select>
+					<br/>
+					<input type="submit" value="Demote Executive"/>
+				</div>
 				<h2 className="page-text">Current Members</h2>
-				<select name="Members">
-					<option value="" selected disabled hidden>Members</option>
-					{this.makeTable(memberNames)}
-				</select>
-				<br/>
-				<input type="submit" value="Promote to Executive"/>
-				
+				<div style={{marginLeft: "5%"}}>
+					<select name="Members">
+						<option value="" selected disabled hidden>Members</option>
+						{this.makeTable(memberNames)}
+					</select>
+					<br/>
+					<input type="submit" value="Promote to Executive"/>
+				</div>
 			</div>
 	  	)
 		

@@ -17,16 +17,13 @@ class ManagementDashboard extends Component {
 	}
 	render() {
 		return(
-			<div style={{marginLeft: "5%"}}>
-				<button onClick = {(e) => this.setState({isEventsOpen:true, isMembersOpen:false, isExecutivesOpen:false, isAdministrationOpen:false})}> Manage Events </button>
-				<br/>
-				<button onClick = {(e) => this.setState({isMembersOpen:true, isEventsOpen:false, isExecutivesOpen:false, isAdministrationOpen:false})}> Manage Members </button>
-				<br/>
-				<button onClick = {(e) => this.setState({isExecutivesOpen:true, isEventsOpen:false, isMembersOpen:false, isAdministrationOpen:false})}> Manage Executives </button>
-				<br/>
-				<button onClick = {(e) => this.setState({isAdministrationOpen:true, isEventsOpen:false, isMembersOpen:false, isExecutivesOpen:false})}> Manage Administration </button>
-				<br/>
-
+			<div>
+				<div className="button-container">
+					<button className="manage-btn" onClick = {(e) => this.setState({isEventsOpen:true, isMembersOpen:false, isExecutivesOpen:false, isAdministrationOpen:false})}> Manage Events </button>
+					<button className="manage-btn" onClick = {(e) => this.setState({isMembersOpen:true, isEventsOpen:false, isExecutivesOpen:false, isAdministrationOpen:false})}> Manage Members </button>
+					<button className="manage-btn" onClick = {(e) => this.setState({isExecutivesOpen:true, isEventsOpen:false, isMembersOpen:false, isAdministrationOpen:false})}> Manage Executives </button>
+					<button className="manage-btn" onClick = {(e) => this.setState({isAdministrationOpen:true, isEventsOpen:false, isMembersOpen:false, isExecutivesOpen:false})}> Manage Administration </button>
+				</div>
 				<ManageEvents isEventsOpen = {this.state.isEventsOpen}/>
 				<ManageMembers isMembersOpen = {this.state.isMembersOpen}/>
 				<ManageExecutives isExecutivesOpen = {this.state.isExecutivesOpen}/>

@@ -20,16 +20,17 @@ class ManageAdministration extends Component {
 		let ManageAdministration = (
 			<div>
 				<h1 className="page-text">Administration</h1>
-				
+				<hr className="page-divider"/>
 				<h2 className="page-text">Current Executives</h2>
-				<select name="Executives" > 
-					<option value="" selected disabled hidden>Executives</option>
-					{this.makeTable(executiveNames)}
-				</select>
-				<br/>
-				<input type="submit" value="Promote Executive"/>
-				<button> Demote Account to Executive Level</button>
-				
+				<div style={{marginLeft: "5%"}}>
+					<select name="Executives" > 
+						<option value="" selected disabled hidden>Executives</option>
+						{this.makeTable(executiveNames)}
+					</select>
+					<br/>
+					<input type="submit" value="Promote Executive"/>
+					<button> Demote Account to Executive Level</button>
+				</div>
 			</div>
 		)
 		

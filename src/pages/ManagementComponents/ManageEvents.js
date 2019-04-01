@@ -12,8 +12,11 @@ class ManageEvents extends Component {
 		let ManageEvents = (
 			<div>
 				<h1 className="page-text">Events</h1>
-				<button onClick = {(e) => this.setState({isOpen: true})} className="event-button"> create a new event </button>
-				<Modal isOpen = {this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}/>
+				<hr className="page-divider"/>
+				<div style={{marginLeft: "5%"}}>
+					<button onClick = {(e) => this.setState({isOpen: true})} className="event-button"> create a new event </button>
+					<Modal isOpen = {this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}/>
+				</div>
 				<p className="page-text">Event Management</p>
 			</div>
 		)
