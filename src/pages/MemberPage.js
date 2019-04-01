@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 const port = process.env.PORT;
 
 const MemberItem = (props) => {
-  var url = "/profile/" + props.item.firstLast;
+  const url = "/profile/" + props.item.firstLast;
+  const majors = props.item.majors.join(", ");
+  const minors = props.item.minors.join(", ");
   return (
     <Link to={{
       pathname: url,
@@ -16,7 +18,8 @@ const MemberItem = (props) => {
           <div className="member-text">
             <h2>{props.item.firstName} {props.item.lastName}</h2>
             <p><b>Programs: </b>{props.item.programs}</p>
-            <p><b>Majors: </b>{props.item.majors}</p>
+            <p><b>Major(s): </b>{majors}</p>
+            { minors !== '' ? <p><b>Minor(s): </b>{minors}</p> : null}
             <p style={{zIndex: "2"}}><b>Email: </b>{props.item.email}</p>
           </div>
         </div>

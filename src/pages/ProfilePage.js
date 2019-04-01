@@ -26,10 +26,11 @@ class ProfilePage extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.location.pathname.split("/")[2]);
     var currMember = this.props.location.member;
     this.setState({currentMember: currMember}, () => {
       try { 
-        console.log(this.state.currentMember.image);
+        //console.log(this.state.currentMember.image);
       }
       catch (e) {
         console.log(e);
