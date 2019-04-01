@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ProfilePic from "./pfp_placeholder.jpg";
 
 const MemberItem = (props) => {
-  var url = "/profile/" + props.item.firstName + props.item.lastName;
+  var url = "/profile/" + props.item.firstLast;
   return (
     <Link to={{
       pathname: url,
@@ -52,12 +52,12 @@ class MemberPage extends Component {
         return res.json();
       })
       .then((res) => {
-        this.setState({ members: res.data }, () => console.log(this.state.members));
+        this.setState({ members: res.data });
       });
   };
 
   _onSearchChange = (e) => {
-    this.setState({currentQuery: e.target.value}, () => console.log(this.state.currentQuery));
+    this.setState({currentQuery: e.target.value});
   }
 
   _renderItems = (arr, filter) => {
