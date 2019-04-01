@@ -38,7 +38,6 @@ const HeaderBar = (props) => {
         <HLink name="Home" link="/"/>
         <HLink name="Members" link="/members"/>
         <HLink name="Events" link="/events"/>
-        <HLink name="Profile" link="/profile"/>
         <HLink name="About" link="/about"/>
         <HLink name="Management" link="/management"/>
       </div>
