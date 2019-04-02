@@ -4,13 +4,11 @@ const path = require('path');
 const config = require('./backend/Config/config.js');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+const memberRouter = require("./backend/Routing/members.router.server.js");
+const eventRouter  = require("./backend/Routing/events.router.server.js");
 
 const port = config.port;
 const app = express();
-
-const memberRouter = require("../Routing/members.router.server.js");
-const eventRouter  = require("../Routing/events.router.server.js");
 
 mongoose.connect(config.db.uri);
 let db = mongoose.connection;
