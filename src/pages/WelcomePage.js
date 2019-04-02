@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import WelcomePageFinal from "./welcomepagefinal.jpg";
+import WelcomePageFinal from "./welcomepagefinal1.jpg";
 
 class WelcomePage extends Component {
   constructor(props) {
