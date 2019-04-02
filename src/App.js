@@ -30,25 +30,38 @@ const LoginWindow = (props) => {
   );
 }
 
-const HeaderBar = (props) => {
-  return (
-    <div className="header-bar">
-      <div style={{display: "flex", flexDirection: "row"}}>
-        <Logo/>
-        <HLink name="Home" link="/"/>
-        <HLink name="Members" link="/members"/>
-        <HLink name="Events" link="/events"/>
-        <HLink name="About" link="/about"/>
-        <HLink name="Management" link="/management"/>
+class HeaderBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+		  selected: ""
+	  }
+  }
+
+  selectHLink = name => {
+    this.setState({selected: name});
+  }
+
+  render() {
+    return (
+      <div className="header-bar">
+        <div style={{display: "flex", flexDirection: "row"}}>
+          <Logo/>
+          <HLink selected={this.state.selected} name="Home" link="/"/>
+          <HLink selected={this.state.selected} name="Members" link="/members"/>
+          <HLink selected={this.state.selected} name="Events" link="/events"/>
+          <HLink selected={this.state.selected} name="About" link="/about"/>
+          <HLink selected={this.state.selected} name="Management" link="/management"/>
+        </div>
+        <button className="login-button" onClick={this.props.loginClick}>Log In</button>
       </div>
-      <button className="login-button" onClick={props.loginClick}>Log In</button>
-    </div>
-  );
+    );
+  }
 }
 
 const HLink = (props) => {
   return (
-    <Link className="hlink" to={props.link}>
+    <Link className="hlink" style={props.selected === props.name ? {backgroundColor: "#cf6b3d"} : {}} to={props.link}>
       <p style={{margin: "18px 0 0 0"}}>{props.name}</p>
     </Link>
   );
