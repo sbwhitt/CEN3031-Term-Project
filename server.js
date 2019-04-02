@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const path = require('path'); 
-const config = require('.backend/Config/config.js');
+const config = require('./backend/Config/config.js');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
