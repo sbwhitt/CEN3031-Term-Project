@@ -5,7 +5,7 @@ class ManageEvents extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isEventsOpen:false
+			isEventsOpen: false
 		}
 	}
 	render() {
@@ -13,9 +13,12 @@ class ManageEvents extends Component {
 			<div>
 				<h1 className="page-text">Events</h1>
 				<hr className="page-divider"/>
-				<div style={{marginLeft: "5%"}}>
-					<button onClick = {(e) => this.setState({isOpen: true})} className="event-button"> create a new event </button>
-					<Modal isOpen = {this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}/>
+				<div style={{marginLeft: "5%", marginTop: "2em"}}>
+					<button
+						onClick={(e) => this.setState({isOpen: true})}
+						className="manage-btn">
+					Create a New Event</button>
+					<Modal isOpen={this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}/>
 				</div>
 				<p className="page-text">Event Management</p>
 			</div>
