@@ -30,6 +30,12 @@ const LoginWindow = (props) => {
   );
 }
 
+/*
+######
+TODO: HEADER BAR UNDERLINING DOESNT WORK IF YOU GO TO URL DIRECTLY INSTEAD OF CLICKING THE BUTTONS
+######
+*/
+
 class HeaderBar extends Component {
   constructor(props) {
     super(props);
