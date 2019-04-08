@@ -21,7 +21,7 @@ router.route("/:idMember/promote")
   .put(memberController.promoteExecutive);
 
 router.route("/createMember")
-  .put(memberController.create);
+  .post(memberController.create);
 
 
 router.param('idMember', memberController.memberByFirstLast);
