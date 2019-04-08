@@ -14,11 +14,21 @@ const EventItem = (props) => {
     </div>
 	);
 }
+
+const EventSearch = (props) => {
+  return (
+    <div className="search-container">
+      <input className="search-bar" onChange={props.onChange} placeholder="Search for events here..."/>
+    </div>
+  );
+}
+
 class EventPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-		  events: []
+      events: [],
+      currentQuery: ""
 	  }
   }
 
@@ -36,12 +46,22 @@ class EventPage extends Component {
       });
   };
 
+  _onSearchChange = (e) => {
+    this.setState({currentQuery: e.target.value});
+  }
+
   _renderItems = (props) => {
     return (
       <div>
-        {props.map((item, index) => (
+        {/*props.map((item, index) => (
           <EventItem item={item} index={index}/>
-        ))}
+        ))*/}
+        {this.state.events.filter((item) => this.state.currentQuery === "" || 
+          (item.name).toLowerCase().includes(this.state.currentQuery.toLowerCase()))
+          .map((item, index) => (
+            <EventItem item={item} key={index} index={index}/>
+          )
+        )}
       </div>
     );
   }
@@ -51,7 +71,8 @@ class EventPage extends Component {
         <div className="page-content">
           <h1 className="page-text">Events</h1>
           <hr className="page-divider"/>
-          {this._renderItems(this.state.events)}
+          <EventSearch onChange={(e) => this._onSearchChange(e)}/>
+          {this._renderItems(this.state.members, this.state.currentQuery)}
         </div>
       </div>
     );
