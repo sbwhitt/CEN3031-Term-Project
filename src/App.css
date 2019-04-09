@@ -24,7 +24,7 @@ h2 {
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: #bc581a;
+  background-color: #FA4616;
   height: 52px;
   display: flex;
   flex-direction: row;
@@ -38,7 +38,7 @@ h2 {
   padding: 0 1em 0;
   border: 0;
   height: 64px;
-  background-color: #bc581a;
+  background-color: #FA4616;
   font-size: 20px;
   color: #efefef;
 }
@@ -55,7 +55,7 @@ h2 {
 
 .logo-img {
   height: 52px;
-  background-color: #00529b;
+  background-color: #0021A5;
   color: #efefef;
   font-family: Georgia;
 }
@@ -94,7 +94,7 @@ h2 {
   padding: 0 1em 0;
   border: 0;
   height: 52px;
-  background-color: #bc581a;
+  background-color: #FA4616;
   font-size: 18px;
   color: #efefef;
   font-weight: 600;
