@@ -7,13 +7,13 @@ exports.create = function (req, res) {
   /* Instantiate a Member */
   var newMember = new Member(req.body);
 
-  console.log(req.body);
   /* Then save the member */
   newMember.save(function (err) {
     if (err) {
       console.log(err);
       res.status(400).send(err);
     } else {
+      console.log("Member successfully created and saved");
       res.json(newMember);
     }
   });
@@ -62,39 +62,6 @@ exports.update = function (req, res) {
     }
     console.log("Member updated");
   }))
-
-  // Member.updateOne({
-  //     _id: member._id
-  //   }, req.body)
-  //   .then(function (success) {
-  //     res.json();
-  //   })
-  //   .catch(function (error) {
-  //     res.status(404).send(err);
-  //   });
-
-  // var member = req.member;
-
-  //   member.firstName           = req.body.firstName;
-  //   member.lastName            = req.body.lastName;
-  //   member.isActive            = req.body.isActive;
-  //   member.phoneNumber         = req.body.phoneNumber;
-  //   member.email               = req.body.email;
-  //   member.programs            = req.body.programs;
-  //   member.country             = req.body.country;
-  //   member.graduationSemester  = req.body.graduationSemester;
-  //   member.yearsLeft           = req.body.yearsLeft;
-  //   member.inducted            = req.body.inducted;
-  //   member.birthday            = req.body.birthday;
-  //   member.majors              = req.body.majors;
-  //   member.minors              = req.body.minors;
-  //   member.questions           = req.body.questions;
-  //   member.image               = req.body.image;
-  //   member.officeHours         = req.body.officeHours;
-  //   member.isAdmin             = req.body.isAdmin;
-  //   member.isExecutive         = req.body.isExecutive;
-  //   member.eventAttendedbyId   = req.body.eventAttendedbyId;
-  //   member.points              = req.body.points;
 
   member.save(function (err) {
     if (err) {
@@ -156,8 +123,6 @@ exports.list = function (req, res) {
 exports.promoteExecutive = function (req, res) {
   console.log("Entered the promote executive");
   let member = req.member;
-
-  //console.log(member);
 
   Member.findOneAndUpdate({
     _id: member._id
