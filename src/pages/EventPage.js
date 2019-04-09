@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 const EventItem = (props) => {
+  var date = new Date(props.item.date);
 	return (
     <div className="member-container">
       <div className="member-card">
@@ -8,6 +11,7 @@ const EventItem = (props) => {
           <h2>{props.item.name}</h2>
           <h4>{props.item.location}</h4>
           <h4>{props.item.date}</h4>
+          <h4>{months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</h4>
           <p>{props.item.description}</p>
         </div>
       </div>
