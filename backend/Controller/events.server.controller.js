@@ -104,7 +104,7 @@ exports.delete = function (req, res) {
     })
   };
 
-exports.eventName = function (req, res, next, _id) {
+exports.eventByID = function (req, res, next, _id) {
     // console.log(name);
     Event.findOne({
         _id: _id

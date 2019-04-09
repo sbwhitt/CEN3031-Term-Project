@@ -17,6 +17,6 @@ router.route("/:idEvent")
   .delete(eventController.delete)
   .put(eventController.update);
 
-router.param('idEvent', eventController.eventName);
+router.param('idEvent', eventController.eventByID);
 
 module.exports = router;
