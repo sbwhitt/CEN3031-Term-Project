@@ -24,6 +24,6 @@ router.route("/createMember")
   .post(memberController.create);
 
 
-router.param('idMember', memberController.memberByFirstLast);
+router.param('idMember', memberController.memberByID);
 
 module.exports = router;
