@@ -6,5 +6,12 @@ const router = express.Router();
 router.route("/getEvents")
   .get(eventController.list);
 
+router.route("/getEvents/sorted")
+  .get(eventController.listSorted);
+
+router.route("/:idEvent")
+  .get(eventController.read);
+
+router.param('idEvent', eventController.eventName);
 
 module.exports = router;
