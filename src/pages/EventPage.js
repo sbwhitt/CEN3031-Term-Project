@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import axios from "axios";
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 const EventItem = (props) => {
   var date = new Date(props.item.date);
 	return (
-    <div className="member-container">
-      <div className="member-card">
-        <div className="member-text">
+    <div className="event-container" style={{display: "grid"}}>
+      <div className="event-card">
+        <div className="event-text">
           <h2>{props.item.name}</h2>
           <h4>{props.item.location}</h4>
           <h4>{props.item.date}</h4>
@@ -46,7 +47,7 @@ class EventPage extends Component {
         return res.json();
       })
       .then((res) => {
-        this.setState({ events: res.data }, () => console.log(this.state.events));
+        this.setState({ events: res.data });
       });
   };
 
@@ -54,9 +55,9 @@ class EventPage extends Component {
     this.setState({currentQuery: e.target.value});
   }
 
-  _renderItems = (props) => {
+  _renderEvents = (props) => {
     return (
-      <div>
+      <div className="grid-container">
         {/*props.map((item, index) => (
           <EventItem item={item} index={index}/>
         ))*/}
@@ -64,19 +65,27 @@ class EventPage extends Component {
           (item.name).toLowerCase().includes(this.state.currentQuery.toLowerCase()))
           .map((item, index) => (
             <EventItem item={item} key={index} index={index}/>
-          )
-        )}
+        ))}
       </div>
     );
   }
+
+  postTest() {
+    axios.post("/api/createMember", {
+      firstName: "one",
+      lastName: "two"
+    });
+  }
+
   render() {
     return (
       <div className="page-wrapper">
         <div className="page-content">
+          <button onClick={() => this.postTest()}>post</button>
           <h1 className="page-text">Events</h1>
           <hr className="page-divider"/>
           <EventSearch onChange={(e) => this._onSearchChange(e)}/>
-          {this._renderItems(this.state.members, this.state.currentQuery)}
+          {this._renderEvents(this.state.members, this.state.currentQuery)}
         </div>
       </div>
     );
