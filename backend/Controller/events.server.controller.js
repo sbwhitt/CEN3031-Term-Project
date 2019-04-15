@@ -15,17 +15,17 @@ exports.list = function (req, res) {
 }
 
 exports.create = function (req, res) {
-    var newEvent = new Event(req.body);
-    newEvent.save(function (err) {
-      if (err) {
-        console.log(err);
-        res.status(400).send(err);
-      } else {
-        console.log("Event successfully created and saved");
-        res.json(newEvent);
-      }
-    });
-  };
+  var newEvent = new Event(req.body);
+  newEvent.save(function (err) {
+    if (err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      console.log("Event successfully created and saved");
+      res.json(newEvent);
+    }
+  });
+};
 
 /* Retrieve all the events, sorted alphabetically by firstName */
 exports.listSorted = function (req, res) {

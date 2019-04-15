@@ -41,7 +41,7 @@ class EventPage extends Component {
   }
 
   getEvents = () => {
-    fetch("http://localhost:8080/api/event/getEvents")
+    fetch("/api/event/getEvents")
       .then(function(res) {
         return res.json();
       })
