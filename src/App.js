@@ -33,6 +33,7 @@ const LoginWindow = (props) => {
 /*
 ######
 TODO: HEADER BAR UNDERLINING DOESNT WORK IF YOU GO TO URL DIRECTLY INSTEAD OF CLICKING THE BUTTONS
+also broken when refreshing page
 ######
 */
 
@@ -40,7 +41,7 @@ class HeaderBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-		  selected: "Home"
+      selected: "Home",
 	  }
   }
 

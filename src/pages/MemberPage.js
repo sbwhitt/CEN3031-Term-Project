@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const MemberItem = (props) => {
   const url = "/profile/" + props.item.firstLast;
@@ -74,6 +75,14 @@ class MemberPage extends Component {
       </div>
     );
   }
+
+  //working post method
+  /*postTest() {
+    axios.post("/api/member/createMember", {
+      firstName: "one",
+      lastName: "two"
+    });
+  }*/
 
   render() {
     return (

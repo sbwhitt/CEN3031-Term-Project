@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import axios from "axios";
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 const EventItem = (props) => {
   var date = new Date(props.item.date);
 	return (
-    <div className="event-container" style={{display: "grid"}}>
+    <div className="event-container">
       <div className="event-card">
         <div className="event-text">
           <h2>{props.item.name}</h2>
@@ -70,18 +69,10 @@ class EventPage extends Component {
     );
   }
 
-  postTest() {
-    axios.post("/api/createMember", {
-      firstName: "one",
-      lastName: "two"
-    });
-  }
-
   render() {
     return (
       <div className="page-wrapper">
         <div className="page-content">
-          <button onClick={() => this.postTest()}>post</button>
           <h1 className="page-text">Events</h1>
           <hr className="page-divider"/>
           <EventSearch onChange={(e) => this._onSearchChange(e)}/>

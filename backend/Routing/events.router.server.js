@@ -14,4 +14,7 @@ router.route("/:idEvent")
 
 router.param('idEvent', eventController.eventName);
 
+router.route("/createEvent")
+  .post(eventController.create);
+
 module.exports = router;
