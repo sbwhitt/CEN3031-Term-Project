@@ -72,10 +72,10 @@ class EventPage extends Component {
     return (
       <div className="page-wrapper">
         <div className="page-content">
-          <div style={{display: "flex", flexDirection: "row"}}>
+          <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
             <h1 className="page-text">Events</h1>
-            <button className="manage-btn" style={{height: "4em", marginTop: "1em", marginRight: "5%"}}
-              onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Create New Event</button>
+            <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginRight: "5%"}}
+              onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Create Event</button>
           </div>
           <div style={this.state.isFormOpen ? {} : {display: "none"}}>
             <hr className="page-divider"/>

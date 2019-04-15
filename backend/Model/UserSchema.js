@@ -5,6 +5,7 @@ const user = mongoose.model('user', new mongoose.Schema({
     password: {type: String, required: true},
     isAdmin: {type: Boolean, required: true, default: false},
     isExecutive: {type: Boolean, required: true, default: false},
+    date: {type: Date, default: Date.now},
 })
 );
 
