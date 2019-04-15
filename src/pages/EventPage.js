@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EventForm from './HelperComponents/EventForm.js';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -32,7 +33,8 @@ class EventPage extends Component {
     super(props);
     this.state = {
       events: [],
-      currentQuery: ""
+      currentQuery: "",
+      isFormOpen: false,
 	  }
   }
 
@@ -57,9 +59,6 @@ class EventPage extends Component {
   _renderEvents = (props) => {
     return (
       <div className="grid-container">
-        {/*props.map((item, index) => (
-          <EventItem item={item} index={index}/>
-        ))*/}
         {this.state.events.filter((item) => this.state.currentQuery === "" || 
           (item.name).toLowerCase().includes(this.state.currentQuery.toLowerCase()))
           .map((item, index) => (
@@ -73,7 +72,17 @@ class EventPage extends Component {
     return (
       <div className="page-wrapper">
         <div className="page-content">
-          <h1 className="page-text">Events</h1>
+          <div style={{display: "flex", flexDirection: "row"}}>
+            <h1 className="page-text">Events</h1>
+            <button className="manage-btn" style={{height: "4em", marginTop: "1em", marginRight: "5%"}}
+              onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Create New Event</button>
+          </div>
+          <div style={this.state.isFormOpen ? {} : {display: "none"}}>
+            <hr className="page-divider"/>
+            <div style={{marginLeft: "5%"}}>
+              <EventForm isFormOpen={this.state.isFormOpen}/>
+            </div>
+          </div> 
           <hr className="page-divider"/>
           <EventSearch onChange={(e) => this._onSearchChange(e)}/>
           {this._renderEvents(this.state.members, this.state.currentQuery)}

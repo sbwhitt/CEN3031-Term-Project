@@ -33,7 +33,7 @@ class EventForm extends Component {
 		return (
 			<div style={this.props.isFormOpen ? {} : {display: "none"}} className="event-modal">
 				<form>
-          <label for="categories">Select Category: </label>
+          <label htmlFor="categories">Select Category: </label>
 					<select name="categories" defaultValue="Social"
             onChange={(e) => this.setState({category: e.target.value})}>
 						<option value="Social">Social</option>
@@ -45,30 +45,30 @@ class EventForm extends Component {
 					</select>
           <br/>
 
-					<label for="points">Points: </label>
+					<label htmlFor="points">Points: </label>
 					<input type="number" id="points" required onChange={(e) => this.setState({points: e.target.value})}/>
           <br/>
 					
-					<label for="eventName"> Event Name: </label >
+					<label htmlFor="eventName"> Event Name: </label >
 					<input type="text" id="eventName" required onChange={(e) => this.setState({name: e.target.value})}/>
 					<br/>
 					
-					<label for="date">Date: </label>
+					<label htmlFor="date">Date: </label>
 					<input type="date" id="date" required onChange={(e) => this.setState({date: e.target.value})}/>
 					<br/>
 					
-					<label for="timeStart">Start Time: </label>
+					<label htmlFor="timeStart">Start Time: </label>
 					<input type="time" id="timeStart" required onChange={(e) => this.setState({start: e.target.value})}/>
           <br/>
-					<label for="timeEnd">Duration (Hours): </label>
+					<label htmlFor="timeEnd">Duration (Hours): </label>
 					<input type="number" id="duration" required onChange={(e) => this.setState({duration: e.target.value})}/>
 					<br/>
 					
-					<label for="location">Location: </label>
+					<label htmlFor="location">Location: </label>
 					<input type="text" id="location" required onChange={(e) => this.setState({location: e.target.value})}/>
 					<br/>
 					
-					<label for="description">Description(optional):</label>
+					<label htmlFor="description">Description(optional):</label>
 					<br/>
 					<textarea name="Description" id="description" rows="8" cols="40"
             onChange={(e) => this.setState({description: e.target.value})}>
