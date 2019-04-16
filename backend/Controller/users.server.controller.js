@@ -14,7 +14,7 @@ exports.register = function (req, res) {
   });
 };
 
-exports.login = function(req, res) {
+exports.findUser = function(req, res) {
   User.findOne(req.query, function(err, user) {
     if (err) {
       console.log("error finding user by id");

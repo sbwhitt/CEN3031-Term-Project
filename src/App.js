@@ -27,7 +27,7 @@ class LoginWindow extends Component {
   }
 
   _findUser = () => {
-    axios.get("/api/auth/login", {
+    axios.get("/api/auth/user", {
       params: {
         email: this.state.emailInput,
       }
