@@ -52,28 +52,25 @@ class LoginWindow extends Component {
       <div style={this.props.isVisible ? {display: "flex"} : {display: "none"}} className="login-container">
         <div className="login-window">
           <div style={{display: "flex", justifyContent: "flex-end"}}>
-            <button onClick={() => {this.props.onClose(); this._clearInput()}} 
-              style={{background: "#00000000", border: "none", fontSize: "28px"}}>x</button>
+            <button className="login-close" onClick={() => {this.props.onClose(); this._clearInput()}}>x</button>
           </div>
           <h2>Login</h2>
           <p style={this.state.badLogin ? {color: "red"} : {display: "none"}}>Incorrect Email or Password</p>
-          <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-start", marginBottom: "1em"}}>
-            <p style={{margin: "0"}}>Email</p>
-            <div style={{display: "flex", justifyContent: "center"}}>
-              <input style={{width: "25%", height: "1em"}} type="text" value={this.state.emailInput}
+          <div className="input-container">
+            <label style={{margin: "0"}}>Email</label>
+            <div style={{justifyContent: "center"}}>
+              <input className="login-input" type="text" value={this.state.emailInput}
                 onChange={(e) => this.setState({emailInput: e.target.value})}/>
             </div>
-          </div>
-          <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-start", marginBottom: "1em"}}>
-            <p style={{margin: "0"}}>Password</p>
-            <div style={{display: "flex", justifyContent: "center"}}>
-              <input style={{width: "25%", height: "1em"}} type="password" value={this.state.passwordInput}
+            <label style={{margin: "0"}}>Password</label>
+            <div style={{justifyContent: "center"}}>
+              <input className="login-input" type="password" value={this.state.passwordInput}
                 onChange={(e) => this.setState({passwordInput: e.target.value})}/>
             </div>
-          </div>
-          <div style={{display: "flex", justifyContent: "center"}}>
-            <button className="manage-btn" style={{marginTop: "1em", width: "15%"}}
-              onClick={() => this._findUser()}>Login</button>
+            <div style={{justifyContent: "center"}}>
+              <button className="manage-btn" style={{marginTop: "1em", width: "15%"}}
+                onClick={() => this._findUser()}>Login</button>
+            </div>
           </div>
         </div>
       </div>

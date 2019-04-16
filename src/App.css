@@ -88,6 +88,25 @@ h2 {
   box-shadow: 0 2px 5px 0 #00000045;
 }
 
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.login-input {
+  width: 25%;
+  height: 1em;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.login-close {
+  background: #00000000;
+  border: none;
+  font-size: 28px;
+}
+
 .login-button {
   cursor: pointer;
   margin-right: 0;
