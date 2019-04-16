@@ -19,11 +19,15 @@ const LoginWindow = (props) => {
         <h2>Login</h2>
         <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-start", marginBottom: "1em"}}>
           <p style={{margin: "0"}}>Email</p>
-          <div style={{display: "flex", justifyContent: "center"}}><input style={{width: "25%", height: "1em", paddingLeft: "1em"}} type="text"/></div>
+          <div style={{display: "flex", justifyContent: "center"}}>
+            <input style={{width: "25%", height: "1em"}} type="text"/>
+          </div>
         </div>
         <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-start", marginBottom: "1em"}}>
           <p style={{margin: "0"}}>Password</p>
-          <div style={{display: "flex", justifyContent: "center"}}><input style={{width: "25%", height: "1em", paddingLeft: "1em"}} type="text"/></div>
+          <div style={{display: "flex", justifyContent: "center"}}>
+            <input style={{width: "25%", height: "1em"}} type="password"/>
+          </div>
         </div>
       </div>
     </div>
