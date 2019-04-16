@@ -22,6 +22,10 @@ class LoginWindow extends Component {
     }
   }
 
+  _clearInput = () => {
+    this.setState({emailInput: "", passwordInput: "", badLogin: false});
+  }
+
   _findUser = () => {
     axios.get("/api/auth/login", {
       params: {
@@ -33,7 +37,7 @@ class LoginWindow extends Component {
           bcrypt.compare(this.state.passwordInput, this.state.currentUser.password).then(match => {
             if (match) {
               console.log("you a real one");
-              this.setState({badLogin: false});
+              this._clearInput();
             }
             else this.setState({badLogin: true});
           });
@@ -48,7 +52,7 @@ class LoginWindow extends Component {
       <div style={this.props.isVisible ? {display: "flex"} : {display: "none"}} className="login-container">
         <div className="login-window">
           <div style={{display: "flex", justifyContent: "flex-end"}}>
-            <button onClick={() => {this.props.onClose(); this.setState({emailInput: "", passwordInput: "", badLogin: false})}} 
+            <button onClick={() => {this.props.onClose(); this._clearInput()}} 
               style={{background: "#00000000", border: "none", fontSize: "28px"}}>x</button>
           </div>
           <h2>Login</h2>
