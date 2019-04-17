@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EventForm from './HelperComponents/EventForm.js';
+import EventForm from '../components/EventForm.js';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 

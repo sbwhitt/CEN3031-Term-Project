@@ -43,7 +43,7 @@ class ProfilePage extends Component {
       <div className="page-wrapper">
         <div className="page-content">
           <div style={{display: "flex", flexDirection: "row"}}>
-            <img className="profile-img" src={this.state.currentMember.image}/>
+            <img className="profile-img" src={this.state.currentMember.image} alt="profile"/>
             <div style={{display: "flex", flexDirection: "column", marginLeft: "5%", width: "600px"}}>
               <h1>{this.state.currentMember.firstName} {this.state.currentMember.lastName}</h1>
               <InfoItem data="Programs: " item={this.state.currentMember.programs}/>

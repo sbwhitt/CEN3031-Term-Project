@@ -7,8 +7,9 @@ import EmailIcon from "./icons/email_icon.png";
 const ContactLink = (props) => {
   return (
     <div className="contact-link">
-      <a style = {{display: "flex", justifyContent: "center"}} target="_blank" href={props.link}><img src={props.icon} href={props.link}/></a> 
-      <a target="_blank" href={props.link}>{props.linkTitle}</a>
+      <a style={{display: "flex", justifyContent: "center"}} target="_blank" rel="noopener noreferrer"
+        href={props.link}><img src={props.icon} href={props.link} alt="social media icon"/></a> 
+      <a target="_blank" rel="noopener noreferrer" href={props.link}>{props.linkTitle}</a>
     </div>
   );
 }
