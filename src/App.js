@@ -5,34 +5,15 @@ import MemberPage from './pages/MemberPage.js';
 import EventPage from './pages/EventPage.js';
 import ProfilePage from './pages/ProfilePage.js';
 import AboutPage from './pages/AboutPage.js';
+import LoginWindow from './components/LoginWindow.js';
 import ManagementPage from './pages/ManagementPage.js';
-import UFLogo from "./UF_white.png";
+import UFLogo from "./images/UF_white.png";
 import './App.css';
-
-const LoginWindow = (props) => {
-  return (
-    <div style={props.isVisible ? {display: "flex"} : {display: "none"}} className="login-container">
-      <div className="login-window">
-        <div style={{display: "flex", justifyContent: "flex-end"}}>
-          <button onClick={props.onClose} style={{background: "#00000000", border: "none", fontSize: "28px"}}>x</button>
-        </div>
-        <h2>Login</h2>
-        <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-start", marginBottom: "1em"}}>
-          <p style={{margin: "0"}}>Email</p>
-          <div style={{display: "flex", justifyContent: "center"}}><input style={{width: "25%", height: "1em", paddingLeft: "1em"}} type="text"/></div>
-        </div>
-        <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-start", marginBottom: "1em"}}>
-          <p style={{margin: "0"}}>Password</p>
-          <div style={{display: "flex", justifyContent: "center"}}><input style={{width: "25%", height: "1em", paddingLeft: "1em"}} type="text"/></div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 /*
 ######
 TODO: HEADER BAR UNDERLINING DOESNT WORK IF YOU GO TO URL DIRECTLY INSTEAD OF CLICKING THE BUTTONS
+also broken when refreshing page
 ######
 */
 
@@ -40,7 +21,7 @@ class HeaderBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-		  selected: "Home"
+      selected: "Home",
 	  }
   }
 
