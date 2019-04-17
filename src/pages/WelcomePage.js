@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import WelcomePageFinal from "../images/SAPA logo welcome page.png";
+import WelcomePageFinal from "../images/SAPA_welcome.png";
 
 class WelcomePage extends Component {
   constructor(props) {
