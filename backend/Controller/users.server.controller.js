@@ -1,4 +1,6 @@
 var User = require('../Model/UserSchema.js');
+const jwt = require('jsonwebtoken');
+const config = require('../Config/config.js');
 
 exports.register = function (req, res) {
   var newUser = new User(req.body);
@@ -22,4 +24,16 @@ exports.findUser = function(req, res) {
     }
     res.json(user);
   });
+}
+
+exports.login = function(req, res) {
+  const payload = req.body;
+  jwt.sign(payload, config.secret, {expiresIn: 86400}, (err, token) => {
+    if (err) throw err;
+    res.json({
+      success: true,
+      token: token,
+    });
+  }
+  );
 }

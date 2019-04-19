@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
+//import jwt from 'jsonwebtoken';
 
 class LoginWindow extends Component {
   constructor(props) {
@@ -32,7 +33,18 @@ class LoginWindow extends Component {
     this.setState({ currentUser: user }, () => {
       bcrypt.compare(this.state.passwordInput, this.state.currentUser.password).then(match => {
         if (match) {
-          localStorage.setItem("auth", JSON.stringify(this.state.currentUser));
+          const payload = {
+            userId: this.state.currentUser._id,
+            email: this.state.currentUser.email,
+            isAdmin: this.state.currentUser.isAdmin,
+            isExecutive: this.state.currentUser.isExecutive,
+          };
+          axios.post("/api/auth/login", payload)
+            .then((res) => {
+              //console.log(res.data);
+              const {token} = res.data;
+              localStorage.setItem("jwt", JSON.stringify(token));
+            });
           window.location.reload();
         }
         else this.setState({ badLogin: true });

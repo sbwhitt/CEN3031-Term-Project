@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EventForm from '../components/EventForm.js';
+import passport from 'passport';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -34,15 +35,17 @@ class EventPage extends Component {
     this.state = {
       events: [],
       currentQuery: "",
+      isLoggedIn: false,
       isFormOpen: false,
 	  }
   }
 
   componentDidMount() {
-    this.getEvents();
+    this._getEvents();
+    this._checkLogInStatus();
   }
 
-  getEvents = () => {
+  _getEvents = () => {
     fetch("/api/event/getEvents")
       .then(function(res) {
         return res.json();
@@ -51,6 +54,11 @@ class EventPage extends Component {
         this.setState({ events: res.data });
       });
   };
+
+  _checkLogInStatus = () => {
+    const token = localStorage.getItem("jwt");
+    if (token) this.setState({isLoggedIn: true});
+  }
 
   _onSearchChange = (e) => {
     this.setState({currentQuery: e.target.value});
@@ -69,20 +77,26 @@ class EventPage extends Component {
   }
 
   render() {
+    const createButton = this.state.isLoggedIn ? 
+      <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginRight: "5%"}}
+        onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Create Event</button> : null;
+
+    const createForm = this.state.isFormOpen ?
+      <div>
+        <hr className="page-divider"/>
+        <div style={{marginLeft: "5%"}}>
+          <EventForm isFormOpen={this.state.isFormOpen}/>
+        </div>
+      </div> : null;
+
     return (
       <div className="page-wrapper">
         <div className="page-content">
           <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
             <h1 className="page-text">Events</h1>
-            <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginRight: "5%"}}
-              onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Create Event</button>
+            {createButton}
           </div>
-          <div style={this.state.isFormOpen ? {} : {display: "none"}}>
-            <hr className="page-divider"/>
-            <div style={{marginLeft: "5%"}}>
-              <EventForm isFormOpen={this.state.isFormOpen}/>
-            </div>
-          </div> 
+          {createForm}
           <hr className="page-divider"/>
           <EventSearch onChange={(e) => this._onSearchChange(e)}/>
           {this._renderEvents(this.state.members, this.state.currentQuery)}
