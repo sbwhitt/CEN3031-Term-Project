@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
-//import jwt from 'jsonwebtoken';
 
 class LoginWindow extends Component {
   constructor(props) {
@@ -39,17 +38,21 @@ class LoginWindow extends Component {
             isAdmin: this.state.currentUser.isAdmin,
             isExecutive: this.state.currentUser.isExecutive,
           };
-          axios.post("/api/auth/login", payload)
-            .then((res) => {
-              //console.log(res.data);
-              const {token} = res.data;
-              localStorage.setItem("jwt", JSON.stringify(token));
-            });
-          window.location.reload();
+          this._loginUser(payload);
         }
         else this.setState({ badLogin: true });
       });
     });
+  }
+
+  _loginUser = (payload) => {
+    axios.post("/api/auth/login", payload)
+      .then((res) => {
+        const {token} = res.data;
+        localStorage.removeItem("jwt");
+        localStorage.setItem("jwt", token);
+      });
+    window.location.reload();
   }
 
   render() {

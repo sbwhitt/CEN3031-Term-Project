@@ -12,4 +12,7 @@ router.route("/user")
 router.route("/login")
   .post(userController.login);
 
+router.route("/decode")
+  .post(userController.decode);
+
 module.exports = router;

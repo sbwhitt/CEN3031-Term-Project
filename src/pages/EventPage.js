@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EventForm from '../components/EventForm.js';
-import passport from 'passport';
+import jwt from 'jsonwebtoken';
+import axios from 'axios';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -35,7 +36,7 @@ class EventPage extends Component {
     this.state = {
       events: [],
       currentQuery: "",
-      isLoggedIn: false,
+      currentUser: {},
       isFormOpen: false,
 	  }
   }
@@ -57,7 +58,10 @@ class EventPage extends Component {
 
   _checkLogInStatus = () => {
     const token = localStorage.getItem("jwt");
-    if (token) this.setState({isLoggedIn: true});
+    axios.post("/api/auth/decode", {token: token})
+      .then((res) => {
+        if (res.data) this.setState({currentUser: res.data.data});
+      });
   }
 
   _onSearchChange = (e) => {
@@ -77,12 +81,12 @@ class EventPage extends Component {
   }
 
   render() {
-    const createButton = this.state.isLoggedIn ? 
+    const createButton = this.state.currentUser.isAdmin ? 
       <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginRight: "5%"}}
         onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Create Event</button> : null;
 
-    const createForm = this.state.isFormOpen ?
-      <div>
+    const createForm = this.state.currentUser.isAdmin ?
+      <div style={this.state.isFormOpen ? {} : {display: "none"}}>
         <hr className="page-divider"/>
         <div style={{marginLeft: "5%"}}>
           <EventForm isFormOpen={this.state.isFormOpen}/>

@@ -7,7 +7,8 @@ import ProfilePage from './pages/ProfilePage.js';
 import AboutPage from './pages/AboutPage.js';
 import LoginWindow from './components/LoginWindow.js';
 import ManagementPage from './pages/ManagementPage.js';
-import UFLogo from "./images/UF_white.png";
+import UFLogo from './images/UF_white.png';
+import axios from 'axios';
 import './App.css';
 
 /*
@@ -16,6 +17,17 @@ TODO: HEADER BAR UNDERLINING DOESNT WORK IF YOU GO TO URL DIRECTLY INSTEAD OF CL
 also broken when refreshing page
 ######
 */
+
+if (localStorage.jwt) {
+  const token = localStorage.getItem('jwt');
+  const now = Date.now() / 1000;
+  axios.post("/api/auth/decode", {token: token})
+    .then((res) => {
+      if (res.data.data.exp < now) {
+        localStorage.removeItem('jwt');
+      }
+    });
+}
 
 class HeaderBar extends Component {
   constructor(props) {

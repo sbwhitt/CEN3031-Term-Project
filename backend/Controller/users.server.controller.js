@@ -28,12 +28,24 @@ exports.findUser = function(req, res) {
 
 exports.login = function(req, res) {
   const payload = req.body;
-  jwt.sign(payload, config.secret, {expiresIn: 86400}, (err, token) => {
-    if (err) throw err;
-    res.json({
-      success: true,
-      token: token,
+  var token = jwt.sign(payload, config.secret, {expiresIn: 86400});
+  res.json({
+    success: true,
+    token: token
+  });
+}
+
+exports.decode = function(req, res) {
+  if (req.body.token) {
+    const token = req.body.token;
+    jwt.verify(token, config.secret, {ignoreExpiration: true}, function(err, decoded) {
+      if (err) throw err;
+      else {
+        res.json({
+          success: true,
+          data: decoded,
+        });
+      }
     });
   }
-  );
 }
