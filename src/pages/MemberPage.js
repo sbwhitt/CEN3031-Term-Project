@@ -43,6 +43,8 @@ class MemberPage extends Component {
     }
   }
 
+  //called when member page initially loads
+  //grabs list of all members from db
   componentDidMount() {
     this.getMembers();
   }
@@ -57,10 +59,12 @@ class MemberPage extends Component {
       });
   };
 
+  //called when searchbar input changes
   _onSearchChange = (e) => {
     this.setState({currentQuery: e.target.value});
   }
 
+  //first filters the member list based on the search query, then maps them to a list of MemberItem components
   _renderItems = (arr, filter) => {
     return (
       <div>

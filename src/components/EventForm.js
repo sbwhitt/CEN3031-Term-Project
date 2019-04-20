@@ -16,6 +16,7 @@ class EventForm extends Component {
     }
   }
 
+	//sends form data to db to create new event
   _createEvent = () => {
     var date = this.state.date + 'T' + this.state.start;
     axios.post("/api/event/createEvent", {

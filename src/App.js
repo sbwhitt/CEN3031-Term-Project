@@ -18,6 +18,7 @@ also broken when refreshing page
 ######
 */
 
+//checking if a jwt exists, then deleting it if it is expired
 if (localStorage.jwt) {
   const token = localStorage.getItem('jwt');
   const now = Date.now() / 1000;
@@ -37,6 +38,8 @@ class HeaderBar extends Component {
 	  }
   }
 
+  //changes which hlink is underlined
+  //kinda broken, need to switch based on url instead
   selectHLink = name => {
     this.setState({selected: name});
   }
@@ -58,6 +61,7 @@ class HeaderBar extends Component {
   }
 }
 
+//headerbar link (home, members, etc.)
 const HLink = (props) => {
   return (
     <Link onClick={() => props.onClick(props.name)} className="hlink" style={props.selected === props.name ? {textDecoration: "underline"} : {}} to={props.link}>
@@ -66,6 +70,7 @@ const HLink = (props) => {
   );
 }
 
+//uf logo on headerbar
 const Logo = (props) => {
   return (
     <Link onClick={() => props.onClick("Home")} className="logo-container" to="/">
@@ -74,6 +79,7 @@ const Logo = (props) => {
   );
 }
 
+//main react component, entry point for app
 class App extends Component {
   constructor(props) {
     super(props);

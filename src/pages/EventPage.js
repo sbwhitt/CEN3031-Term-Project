@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import EventForm from '../components/EventForm.js';
-import jwt from 'jsonwebtoken';
 import axios from 'axios';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -41,11 +40,14 @@ class EventPage extends Component {
 	  }
   }
 
+  //called when event page initially loaded
+  //grabs all events from db and checks the current login status through jwt
   componentDidMount() {
     this._getEvents();
     this._checkLogInStatus();
   }
 
+  //returns list of all events from db
   _getEvents = () => {
     fetch("/api/event/getEvents")
       .then(function(res) {
@@ -56,14 +58,19 @@ class EventPage extends Component {
       });
   };
 
+  //checks if a jwt is present
+  //if jwt exists, loads token and sends it to backend for decodeing
+  //on successful decode, takes payload and puts it into this.state.currentUser
   _checkLogInStatus = () => {
-    const token = localStorage.getItem("jwt");
-    axios.post("/api/auth/decode", {token: token})
-      .then((res) => {
+    if (localStorage.jwt) {
+      const token = localStorage.getItem("jwt");
+      axios.post("/api/auth/decode", {token: token}).then((res) => {
         if (res.data) this.setState({currentUser: res.data.data});
       });
+    }
   }
 
+  //called if searchbar input changes
   _onSearchChange = (e) => {
     this.setState({currentQuery: e.target.value});
   }
@@ -81,6 +88,7 @@ class EventPage extends Component {
   }
 
   render() {
+    //createButton and createForm rendered based on admin status of current logged in user
     const createButton = this.state.currentUser.isAdmin ? 
       <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginRight: "5%"}}
         onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Create Event</button> : null;

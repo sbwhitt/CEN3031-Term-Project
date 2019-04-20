@@ -13,10 +13,14 @@ class LoginWindow extends Component {
     }
   }
 
+  //clearing login form input, called on loginwindow close
   _clearInput = () => {
     this.setState({ emailInput: "", passwordInput: "", badLogin: false });
   }
 
+  //finds a user based on the email entered in the login form
+  //notifies user that they have incorrect login info on bad input
+  //on correct email, passes the returned user to _validateUser
   _findUser = () => {
     axios.get("/api/auth/user", {
       params: {
@@ -28,10 +32,12 @@ class LoginWindow extends Component {
     });
   }
 
+  //uses bcrypt to compare hashed password from passed in user object with the password entered into the login form
   _validateUser = (user) => {
     this.setState({ currentUser: user }, () => {
       bcrypt.compare(this.state.passwordInput, this.state.currentUser.password).then(match => {
         if (match) {
+          //password is correct, jwt payload created and sent to _loginUser
           const payload = {
             userId: this.state.currentUser._id,
             email: this.state.currentUser.email,
@@ -40,18 +46,22 @@ class LoginWindow extends Component {
           };
           this._loginUser(payload);
         }
+        //sets badlogin if the password is incorrect
         else this.setState({ badLogin: true });
       });
     });
   }
 
+  //takes the payload created from a successful login attempt and sends it to backend to create jwt
   _loginUser = (payload) => {
     axios.post("/api/auth/login", payload)
       .then((res) => {
+        //on successful token creation, removes current token then adds the new one
         const {token} = res.data;
         localStorage.removeItem("jwt");
         localStorage.setItem("jwt", token);
       });
+    //reload window now that user is fully logged in
     window.location.reload();
   }
 

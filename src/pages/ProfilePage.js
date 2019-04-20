@@ -26,6 +26,8 @@ class ProfilePage extends Component {
     }
   }
 
+  //called when profile page initially loaded
+  //grabs member name from url and sends it to the backend to fetch the profile data
   componentDidMount() {
     const target = this.props.location.pathname.split("/")[2];
     axios.get("/api/member/profile/", {
