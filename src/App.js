@@ -35,7 +35,24 @@ class HeaderBar extends Component {
     super(props);
     this.state = {
       selected: "Home",
+      currentUser: {},
+      profile: this.props.profile,
 	  }
+  }
+
+  componentDidMount() {
+    this._checkLogInStatus();
+  }
+  
+  _checkLogInStatus = () => {
+    if (localStorage.jwt) {
+      const token = localStorage.getItem("jwt");
+      axios.post("/api/auth/decode", {token: token}).then((res) => {
+        if (res.data) {
+          this.setState({currentUser: res.data.data});
+        }
+      });
+    }
   }
 
   //changes which hlink is underlined
@@ -45,6 +62,10 @@ class HeaderBar extends Component {
   }
 
   render() {
+    const headerRight = this.state.currentUser.email ?
+      <ProfileCircle image={this.props.profile.image} link={'/profile/' + this.props.profile.firstLast}/> :
+      <button className="login-button" onClick={this.props.loginClick}>Log In</button>;
+    
     return (
       <div className="header-bar">
         <div style={{display: "flex", flexDirection: "row"}}>
@@ -55,10 +76,18 @@ class HeaderBar extends Component {
           <HLink onClick={this.selectHLink} selected={this.state.selected} name="About" link="/about"/>
           <HLink onClick={this.selectHLink} selected={this.state.selected} name="Management" link="/management"/>
         </div>
-        <button className="login-button" onClick={this.props.loginClick}>Log In</button>
+        {headerRight}
       </div>
     );
   }
+}
+
+const ProfileCircle = (props) => {
+  return (
+    <Link to={props.link}>
+      <img className="circle-img" src={props.image}/>
+    </Link>
+  );
 }
 
 //headerbar link (home, members, etc.)
@@ -84,8 +113,36 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-		  loginVisible: false
+      loginVisible: false,
+      currentUser: {},
+      profile: {},
 	  }
+  }
+
+  componentDidMount() {
+    this._checkLogInStatus();
+  }
+  
+  _checkLogInStatus = () => {
+    if (localStorage.jwt) {
+      const token = localStorage.getItem("jwt");
+      axios.post("/api/auth/decode", {token: token}).then((res) => {
+        if (res.data) {
+          this.setState({currentUser: res.data.data});
+          this._getProfile(res.data.data.email);
+        }
+      });
+    }
+  }
+
+  _getProfile = (email) => {
+    axios.get("/api/member/profile", {
+      params: {
+        email: email
+      }
+    }).then((res) => {
+      this.setState({profile: res.data}, () => console.log(this.state.profile));
+    });
   }
 
   render() {
@@ -93,7 +150,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <LoginWindow isVisible={this.state.loginVisible} onClose={(e) => this.setState({loginVisible: !this.state.loginVisible})}/>
-          <HeaderBar loginClick={(e) => this.setState({loginVisible: !this.state.loginVisible})}/>
+          <HeaderBar profile={this.state.profile} loginClick={(e) => this.setState({loginVisible: !this.state.loginVisible})}/>
           <div style={{marginTop: "1.5em"}}>
             <Route exact path="/" component={WelcomePage}/>
             <Route path="/members" component={MemberPage}/>

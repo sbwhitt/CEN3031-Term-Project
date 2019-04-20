@@ -43,6 +43,17 @@ h2 {
   color: #efefef;
 }
 
+.circle-img {
+  width: 40px;
+  height: 40px;
+  margin-top: 4px;
+  margin-right: 4px;
+  border-style: solid;
+  border-color: #00529b;
+  border-width: 2px;
+  border-radius: 50%;
+}
+
 .logo-container {
   display: flex;
   flex-direction: row;

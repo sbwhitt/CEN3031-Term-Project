@@ -10,7 +10,7 @@ router.route("/getMembers/sorted")
   .get(memberController.listSorted);
 
 router.route("/profile")
-  .get(memberController.memberByFirstLast);
+  .get(memberController.getMember);
 
 router.route("/:idMember")
   .get(memberController.read)

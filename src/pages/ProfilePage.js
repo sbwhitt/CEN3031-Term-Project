@@ -30,6 +30,11 @@ class ProfilePage extends Component {
   //grabs member name from url and sends it to the backend to fetch the profile data
   componentDidMount() {
     const target = this.props.location.pathname.split("/")[2];
+    this._getProfile(target);
+  }
+
+  //fetches profile object data based on target from db
+  _getProfile = (target) => {
     axios.get("/api/member/profile/", {
       params: {
         firstLast: target,
