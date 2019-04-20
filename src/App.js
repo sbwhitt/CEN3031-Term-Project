@@ -74,7 +74,7 @@ class HeaderBar extends Component {
           <HLink onClick={this.selectHLink} selected={this.state.selected} name="Members" link="/members"/>
           <HLink onClick={this.selectHLink} selected={this.state.selected} name="Events" link="/events"/>
           <HLink onClick={this.selectHLink} selected={this.state.selected} name="About" link="/about"/>
-          <HLink onClick={this.selectHLink} selected={this.state.selected} name="Management" link="/management"/>
+          {/*<HLink onClick={this.selectHLink} selected={this.state.selected} name="Management" link="/management"/>*/}
         </div>
         {headerRight}
       </div>
@@ -82,12 +82,42 @@ class HeaderBar extends Component {
   }
 }
 
-const ProfileCircle = (props) => {
-  return (
-    <Link to={props.link}>
-      <img className="circle-img" src={props.image}/>
-    </Link>
-  );
+class ProfileCircle extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+	  }
+  }
+
+  _logOut = () => {
+    localStorage.removeItem('jwt');
+    window.location.reload();
+  }
+
+  _toggleMenu = () => {
+    this.setState({isOpen: !this.state.isOpen});
+  }
+
+  render () {
+    return (
+      <div>
+        <div><img onClick={this._toggleMenu} className="circle-img" src={this.props.image}/></div>
+        <ProfileMenu onClick={this._toggleMenu} onLogout={this._logOut} isOpen={this.state.isOpen} link={this.props.link}/>
+      </div>
+    );
+  }
+}
+
+const ProfileMenu = (props) => {
+  return props.isOpen ? (
+    <div className="profile-menu">
+      <Link onClick={props.onClick} className="profile-menu-opt" to={props.link}>
+        <span>View Profile</span>
+      </Link>
+      <span onClick={() => {props.onClick(); props.onLogout()}} className="profile-menu-opt">Log Out</span>
+    </div>
+  ) : null;
 }
 
 //headerbar link (home, members, etc.)

@@ -46,12 +46,34 @@ h2 {
 .circle-img {
   width: 40px;
   height: 40px;
+  cursor: pointer;
   margin-top: 4px;
   margin-right: 4px;
   border-style: solid;
   border-color: #00529b;
   border-width: 2px;
   border-radius: 50%;
+}
+
+.profile-menu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-top: 4px;
+  right: 4px;
+  background: #efefef;
+  box-shadow: 0 2px 5px 0 #00000045;
+}
+
+.profile-menu-opt {
+  cursor: pointer;
+  padding: 0.5em;
+  color: #000000;
+}
+
+.profile-menu-opt:hover {
+  background: #dedede;
 }
 
 .logo-container {
