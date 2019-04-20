@@ -8,7 +8,6 @@ const MemberItem = (props) => {
   return (
     <Link to={{
       pathname: url,
-      member: props.item
     }} style={{color: "black"}}>
     <div className="member-container">
         <div className="member-card">

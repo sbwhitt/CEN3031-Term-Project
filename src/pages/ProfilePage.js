@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 const QuestionItem = (props) => {
   return (
@@ -26,15 +27,13 @@ class ProfilePage extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.location.pathname.split("/")[2]);
-    var currMember = this.props.location.member;
-    this.setState({currentMember: currMember}, () => {
-      try { 
-        //console.log(this.state.currentMember.image);
+    const target = this.props.location.pathname.split("/")[2];
+    axios.get("/api/member/profile/", {
+      params: {
+        firstLast: target,
       }
-      catch (e) {
-        console.log(e);
-      }
+    }).then((res) => {
+      if (res.data) this.setState({currentMember: res.data});
     });
   }
 

@@ -187,3 +187,12 @@ exports.memberByID = function (req, res, next, _id) {
     }
   });
 };
+
+exports.memberByFirstLast = function(req, res) {
+  Member.findOne(req.query, function(err, member) {
+    if (err) {
+      res.status(400).send(err);
+    }
+    else res.json(member);
+  });
+}
