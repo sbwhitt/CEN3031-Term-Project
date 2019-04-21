@@ -8,6 +8,7 @@ html {
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 h1 {
@@ -280,6 +281,7 @@ h2 {
   width: 90%;
   margin-left: 5%;
   margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .search-bar {
@@ -348,11 +350,11 @@ h2 {
 
 .event-container {
   cursor: pointer;
-  width: 90%;
-  margin-left: 5%;
+  width: 25%;
+  margin: 0em;
   background-color: white;
-  margin-bottom: 1em;
-  margin-top: 1em;
+  /*margin-bottom: 0.5em;
+  margin-top: 0.5em;*/
   box-shadow: 0 1px 3px 0 #00000045;
 }
 
@@ -376,5 +378,9 @@ h2 {
 }
 
 .grid-container {
-  display: grid;
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

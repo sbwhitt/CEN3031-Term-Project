@@ -4,10 +4,12 @@ import WelcomePage from './pages/WelcomePage.js';
 import MemberPage from './pages/MemberPage.js';
 import EventPage from './pages/EventPage.js';
 import ProfilePage from './pages/ProfilePage.js';
+import EventInfoPage from './pages/EventInfoPage.js';
 import AboutPage from './pages/AboutPage.js';
 import LoginWindow from './components/LoginWindow.js';
 import ManagementPage from './pages/ManagementPage.js';
-import UFLogo from './images/UF_white.png';
+import AlumniPage from './pages/AlumniPage.js';
+import UFLogo from './images/earth_sapa.gif';
 import axios from 'axios';
 import './App.css';
 
@@ -18,6 +20,7 @@ also broken when refreshing page
 ######
 */
 
+console.log("app loaded");
 //checking if a jwt exists, then deleting it if it is expired
 if (localStorage.jwt) {
   const token = localStorage.getItem('jwt');
@@ -112,7 +115,7 @@ class ProfileCircle extends Component {
 const ProfileMenu = (props) => {
   return props.isOpen ? (
     <div className="profile-menu">
-      <Link onClick={props.onClick} className="profile-menu-opt" to={props.link}>
+      <Link onClick={() => {props.onClick(); window.location.assign(props.link)}} className="profile-menu-opt" to={props.link}>
         <span>View Profile</span>
       </Link>
       <span onClick={() => {props.onClick(); props.onLogout()}} className="profile-menu-opt">Log Out</span>
@@ -123,7 +126,8 @@ const ProfileMenu = (props) => {
 //headerbar link (home, members, etc.)
 const HLink = (props) => {
   return (
-    <Link onClick={() => props.onClick(props.name)} className="hlink" style={props.selected === props.name ? {textDecoration: "underline"} : {}} to={props.link}>
+    <Link onClick={() => props.onClick(props.name)} className="hlink" 
+      style={props.selected === props.name ? {textDecoration: "underline"} : {}} to={props.link}>
       <p style={{margin: "14px 0 0 0"}}>{props.name}</p>
     </Link>
   );
@@ -186,8 +190,10 @@ class App extends Component {
             <Route path="/members" component={MemberPage}/>
             <Route path="/events" component={EventPage}/>
             <Route path="/profile" component={ProfilePage}/>
+            <Route path="/event" component={EventInfoPage}/>
             <Route path="/about" component={AboutPage}/>
             <Route path="/management" component={ManagementPage}/>
+            <Route path="/alumni" component={AlumniPage}/>
           </div>
         </div>
       </Router>

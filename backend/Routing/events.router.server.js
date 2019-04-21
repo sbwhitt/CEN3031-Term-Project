@@ -9,6 +9,9 @@ router.route("/createEvent")
 router.route("/getEvents")
   .get(eventController.list);
 
+router.route("/getEvent")
+  .get(eventController.eventByID);
+
 router.route("/getEvents/sorted")
   .get(eventController.listSorted);
 
