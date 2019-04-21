@@ -9,6 +9,9 @@ router.route("/getMembers")
 router.route("/getMembers/sorted")
   .get(memberController.listSorted);
 
+router.route("/profile")
+  .get(memberController.getMember);
+
 router.route("/:idMember")
   .get(memberController.read)
   .delete(memberController.delete)
@@ -22,7 +25,6 @@ router.route("/:idMember/promote")
 
 router.route("/createMember")
   .post(memberController.create);
-
 
 router.param('idMember', memberController.memberByID);
 
