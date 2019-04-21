@@ -5,6 +5,7 @@ import axios from 'axios';
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 class EventInfoPage extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -26,10 +27,14 @@ class EventInfoPage extends Component {
       params: {
         _id: target,
       }
+
     }).then((res) => {
       if (res.data) this.setState({ currentEvent: res.data });
     });
   }
+
+
+
 
   render() {
     var date = new Date(this.state.currentEvent.date);
@@ -44,6 +49,9 @@ class EventInfoPage extends Component {
         <div style={{marginLeft: "5%"}}><EditEventForm isFormOpen={this.state.isFormOpen} currentEvent={this.state.currentEvent}/></div>
       </div> : null;
     
+    const signupButton = this.state.currentEvent.attended?
+    (this.state.currentEvent.attended.includes(this.props.currentUser.email) ? <div style = {{textAlign: "right", marginRight: "5%"}}>"You already signed up"</div>:<p>"you can signup"</p>) : null;
+    
     return (
       <div className="page-wrapper">
         <div className="page-content">
@@ -52,6 +60,7 @@ class EventInfoPage extends Component {
             {editButton}
           </div>
           {editForm}
+          {this.props.currentUser ? signupButton:null}
           <hr className="page-divider"/>
           <div style={{marginLeft: "5%"}}>
             {this.state.currentEvent.location !== "" ? <p><b>Location: </b>{this.state.currentEvent.location}</p> : null}
