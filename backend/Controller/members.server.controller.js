@@ -174,10 +174,10 @@ exports.demoteExecutive = function (req, res) {
   });
 };
 
-exports.memberByFirstLast = function (req, res, next, firstLast) {
-  console.log(firstLast);
+exports.memberByID = function (req, res, next, _id) {
+  // console.log(firstLast);
   Member.findOne({
-    firstLast: firstLast
+    _id: _id
   }).exec(function (err, member) {
     if (err) {
       res.status(400).send(err);
@@ -187,3 +187,12 @@ exports.memberByFirstLast = function (req, res, next, firstLast) {
     }
   });
 };
+
+exports.getMember = function(req, res) {
+  Member.findOne(req.query, function(err, member) {
+    if (err) {
+      res.status(400).send(err);
+    }
+    else res.json(member);
+  });
+}

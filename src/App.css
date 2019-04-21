@@ -43,6 +43,39 @@ h2 {
   color: #efefef;
 }
 
+.circle-img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  margin-top: 4px;
+  margin-right: 4px;
+  border-style: solid;
+  border-color: #00529b;
+  border-width: 2px;
+  border-radius: 50%;
+}
+
+.profile-menu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-top: 4px;
+  right: 4px;
+  background: #efefef;
+  box-shadow: 0 2px 5px 0 #00000045;
+}
+
+.profile-menu-opt {
+  cursor: pointer;
+  padding: 0.5em;
+  color: #000000;
+}
+
+.profile-menu-opt:hover {
+  background: #dedede;
+}
+
 .logo-container {
   display: flex;
   flex-direction: row;
@@ -73,7 +106,7 @@ h2 {
   z-index: 100;
   width: 100%;
   height: 100%;
-  background-color: #dededecc;
+  background-color: #dededeab;
 }
 
 .login-window {
@@ -82,10 +115,28 @@ h2 {
   justify-content: space-between;
   width: 50%;
   margin-left: 25%;
-  margin-bottom: 10%;
   padding-bottom: 3em;
   background-color: #dedede;
   box-shadow: 0 2px 5px 0 #00000045;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.login-input {
+  width: 25%;
+  height: 1em;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.login-close {
+  background: #00000000;
+  border: none;
+  font-size: 28px;
 }
 
 .login-button {
@@ -293,4 +344,37 @@ h2 {
   height: 25%;
   margin-top: 1.5em;
   margin-left: 5%;
+}
+
+.event-container {
+  cursor: pointer;
+  width: 90%;
+  margin-left: 5%;
+  background-color: white;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  box-shadow: 0 1px 3px 0 #00000045;
+}
+
+.event-container:hover {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+  box-shadow: 1px 2px 6px 1px #00000045;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+}
+
+.event-text {
+  padding-left: 1em;
+  padding-bottom: 1em;
+  margin-right: 2em;
+}
+
+.grid-container {
+  display: grid;
 }

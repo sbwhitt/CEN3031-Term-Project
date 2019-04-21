@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 const QuestionItem = (props) => {
   return (
@@ -25,16 +26,21 @@ class ProfilePage extends Component {
     }
   }
 
+  //called when profile page initially loaded
+  //grabs member name from url and sends it to the backend to fetch the profile data
   componentDidMount() {
-    console.log(this.props.location.pathname.split("/")[2]);
-    var currMember = this.props.location.member;
-    this.setState({currentMember: currMember}, () => {
-      try { 
-        //console.log(this.state.currentMember.image);
+    const target = this.props.location.pathname.split("/")[2];
+    this._getProfile(target);
+  }
+
+  //fetches profile object data based on target from db
+  _getProfile = (target) => {
+    axios.get("/api/member/profile/", {
+      params: {
+        firstLast: target,
       }
-      catch (e) {
-        console.log(e);
-      }
+    }).then((res) => {
+      if (res.data) this.setState({currentMember: res.data});
     });
   }
 
@@ -43,7 +49,7 @@ class ProfilePage extends Component {
       <div className="page-wrapper">
         <div className="page-content">
           <div style={{display: "flex", flexDirection: "row"}}>
-            <img className="profile-img" src={this.state.currentMember.image}/>
+            <img className="profile-img" src={this.state.currentMember.image} alt="profile"/>
             <div style={{display: "flex", flexDirection: "column", marginLeft: "5%", width: "600px"}}>
               <h1>{this.state.currentMember.firstName} {this.state.currentMember.lastName}</h1>
               <InfoItem data="Programs: " item={this.state.currentMember.programs}/>
