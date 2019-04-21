@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import NewMemberForm from '../components/NewMemberForm.js';
+import axios from 'axios';
+
+const port = process.env.PORT;
 
 const MemberItem = (props) => {
   const url = "/profile/" + props.item.firstLast;
@@ -8,6 +12,7 @@ const MemberItem = (props) => {
   return (
     <Link to={{
       pathname: url,
+      member: props.item
     }} style={{color: "black"}}>
     <div className="member-container">
         <div className="member-card">
@@ -24,7 +29,7 @@ const MemberItem = (props) => {
     </Link>
   );
 }
-
+// change state variables pass in state 
 const MemberSearch = (props) => {
   return (
     <div className="search-container">
@@ -39,16 +44,24 @@ class MemberPage extends Component {
     this.state = {
       members: [],
       interval: false,
-      currentQuery: ""
+      currentUser: {},
+      currentQuery: "",
+      isFormOpen: false,
     }
   }
 
-  //called when member page initially loads
-  //grabs list of all members from db
   componentDidMount() {
     this.getMembers();
+    this._checkLogInStatus();
   }
-
+  _checkLogInStatus = () => {
+    if (localStorage.jwt) {
+      const token = localStorage.getItem("jwt");
+      axios.post("/api/auth/decode", {token: token}).then((res) => {
+        if (res.data) this.setState({currentUser: res.data.data});
+      });
+    }
+  }
   getMembers = () => {
     fetch("/api/member/getMembers")
       .then(function(res) {
@@ -59,12 +72,10 @@ class MemberPage extends Component {
       });
   };
 
-  //called when searchbar input changes
   _onSearchChange = (e) => {
     this.setState({currentQuery: e.target.value});
   }
 
-  //first filters the member list based on the search query, then maps them to a list of MemberItem components
   _renderItems = (arr, filter) => {
     return (
       <div>
@@ -79,10 +90,26 @@ class MemberPage extends Component {
   }
 
   render() {
+    const createButton = this.state.currentUser.isAdmin ? 
+    <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginRight: "5%"}}
+      onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Create New Member</button> : null;
+
+    const createForm = this.state.currentUser.isAdmin ?
+    <div style={this.state.isFormOpen ? {} : {display: "none"}}>
+      <hr className="page-divider"/>
+      <div style={{marginLeft: "5%"}}>
+        <NewMemberForm isFormOpen={this.state.isFormOpen}/>
+      </div>
+    </div> : null;
+
     return (
       <div className="page-wrapper">
         <div className="page-content">
-          <h1 className="page-text">Members</h1>
+        <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+            <h1 className="page-text">Members</h1>
+            {createButton}
+          </div>
+          {createForm}
           <hr className="page-divider"/>
           <MemberSearch onChange={(e) => this._onSearchChange(e)}/>
           {this._renderItems(this.state.members, this.state.currentQuery)}
