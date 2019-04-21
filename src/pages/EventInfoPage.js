@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 class EventInfoPage extends Component {
   constructor(props) {
     super(props);
@@ -28,6 +30,7 @@ class EventInfoPage extends Component {
   }
 
   render() {
+    var date = new Date(this.state.currentEvent.date);
     return (
       <div className="page-wrapper">
         <div className="page-content">
@@ -37,6 +40,11 @@ class EventInfoPage extends Component {
             </div>
           </div>
           <hr className="page-divider"/>
+          <div style={{marginLeft: "5%"}}>
+            {this.state.currentEvent.location !== "" ? <p><b>Location: </b>{this.state.currentEvent.location}</p> : null}
+            {date.getDate() ? <p><b>Date: </b>{months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</p> : null}
+            {date.getDate() ? <p><b>Time: </b>{date.getUTCHours()}:{date.getMinutes() === 0 ? '00' : date.getMinutes()}</p> : null}
+          </div>
         </div>
       </div>
     );
