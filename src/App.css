@@ -25,7 +25,7 @@ h2 {
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: #FA4616;
+  background-color: #bc581a;
   height: 52px;
   display: flex;
   flex-direction: row;
@@ -39,7 +39,7 @@ h2 {
   padding: 0 1em 0;
   border: 0;
   height: 64px;
-  background-color: #FA4616;
+  background-color: #bc581a;
   font-size: 20px;
   color: #efefef;
 }
@@ -89,7 +89,7 @@ h2 {
 
 .logo-img {
   height: 52px;
-  background-color: #0021A5;
+  background-color: #00529b;
   color: #efefef;
   font-family: Georgia;
 }
@@ -146,14 +146,14 @@ h2 {
   padding: 0 1em 0;
   border: 0;
   height: 52px;
-  background-color: #FA4616;
+  background-color: #bc581a;
   font-size: 18px;
   color: #efefef;
   font-weight: 600;
 }
 
 .login-button:hover {
-  background-color: #ff815e;
+  background-color: #cf6b3d;
 }
 
 .hlink {
@@ -167,7 +167,7 @@ h2 {
 }
 
 .hlink:hover {
-  background-color: #ff815e;
+  background-color: #cf6b3d;
 }
 
 .page-wrapper {
@@ -211,9 +211,9 @@ h2 {
 .page-divider {
   width: 90%;
   height: 1px;
-  border: 1px solid #0021A5;
+  border: 1px solid #00529b;
   border-radius: 4px;
-  background-color: #0021A5;
+  background-color: #00529b;
 }
 
 .contact-block {
