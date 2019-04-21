@@ -10,11 +10,8 @@ const EventItem = (props) => {
     <div className="event-container">
       <div className="event-card">
         <div className="event-text">
-          <h2>{props.item.name}</h2>
-          <h4>{props.item.location}</h4>
-          <h4>{props.item.date}</h4>
-          <h4>{months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</h4>
-          <p>{props.item.description}</p>
+          <h3>{props.item.name}</h3>
+          {date.getDate() ? <p>{months[date.getMonth()]} {date.getDate()}, {date.getFullYear()} at {date.getUTCHours()}:{date.getMinutes() === 0 ? '00' : date.getMinutes()}</p> : null}
         </div>
       </div>
     </div>
