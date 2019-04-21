@@ -68,38 +68,10 @@ exports.read = function (req, res) {
 
 /* Update an event */
 exports.update = function (req, res) {
-    var event = req.event;
-  
-    Event.findOneAndUpdate({
-      _id: event._id
-    }, {
-      "name": req.body.name,
-      "category": req.body.category,
-      "points": req.body.points,
-      "date": req.body.date,
-      "duration": req.body.duration,
-      "location": req.body.location,
-      "description": req.body.description,
-      "attended": req.body.attended
-    }, (function (err, res) {
-      if (err) {
-        console.log("error incoming!");
-        res.stats(404).send(err);
-        throw err;
-      }
-      console.log("Event updated");
-    }))
-  
-    event.save(function (err) {
-      if (err) {
-        console.log(err);
-        res.status(400).send(err);
-      } else {
-        res.json(event);
-      }
-    });
-  
-  };
+  Event.findOneAndUpdate({_id: req.body.id}, req.body.update, function(err) {
+    if (err) throw err;
+  });
+};
 
 // Delete an event
 exports.delete = function (req, res) {
