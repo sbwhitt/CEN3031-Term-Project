@@ -118,7 +118,6 @@ exports.delete = function (req, res) {
   };
 
 exports.eventByID = function (req, res) {
-    console.log(req.query);
     Event.findOne(req.query, function (err, event) {
       if (err) {
         res.status(400).send(err);
