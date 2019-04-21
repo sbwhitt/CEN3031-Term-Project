@@ -19,7 +19,6 @@ also broken when refreshing page
 ######
 */
 
-console.log("app loaded");
 //checking if a jwt exists, then deleting it if it is expired
 if (localStorage.jwt) {
   const token = localStorage.getItem('jwt');
@@ -46,6 +45,9 @@ class HeaderBar extends Component {
     this._checkLogInStatus();
   }
   
+  //checks if a jwt is present
+  //if jwt exists, loads token and sends it to backend for decodeing
+  //on successful decode, takes payload and puts it into this.state.currentUser
   _checkLogInStatus = () => {
     if (localStorage.jwt) {
       const token = localStorage.getItem("jwt");
@@ -185,13 +187,13 @@ class App extends Component {
           <LoginWindow isVisible={this.state.loginVisible} onClose={(e) => this.setState({loginVisible: !this.state.loginVisible})}/>
           <HeaderBar profile={this.state.profile} loginClick={(e) => this.setState({loginVisible: !this.state.loginVisible})}/>
           <div style={{marginTop: "1.5em"}}>
-            <Route exact path="/" component={WelcomePage}/>
-            <Route path="/members" component={MemberPage}/>
-            <Route path="/events" component={EventPage}/>
-            <Route path="/profile" component={ProfilePage}/>
-            <Route path="/event" component={EventInfoPage}/>
-            <Route path="/about" component={AboutPage}/>
-            <Route path="/management" component={ManagementPage}/>
+            <Route exact path="/" render={(props) => <WelcomePage {...props} currentUser={this.state.currentUser}/>}/>
+            <Route path="/members" render={(props) => <MemberPage {...props} currentUser={this.state.currentUser}/>}/>
+            <Route path="/events" render={(props) => <EventPage {...props} currentUser={this.state.currentUser}/>}/>
+            <Route path="/profile" render={(props) => <ProfilePage {...props} currentUser={this.state.currentUser}/>}/>
+            <Route path="/event" render={(props) => <EventInfoPage {...props} currentUser={this.state.currentUser}/>}/>
+            <Route path="/about" render={(props) => <AboutPage {...props} currentUser={this.state.currentUser}/>}/>
+            {/*<Route path="/management" component={ManagementPage}/>*/}
           </div>
         </div>
       </Router>
