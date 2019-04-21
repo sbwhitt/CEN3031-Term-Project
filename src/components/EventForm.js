@@ -75,7 +75,7 @@ class EventForm extends Component {
             onChange={(e) => this.setState({description: e.target.value})}>
           </textarea>
 					<br/>
-          <button onClick={this._createEvent} className="manage-btn">Create Event</button>
+          <button onSubmit={this._createEvent} className="manage-btn">Create Event</button>
 				</form>
 			</div>
 		);
