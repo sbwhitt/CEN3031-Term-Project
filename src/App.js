@@ -4,6 +4,7 @@ import WelcomePage from './pages/WelcomePage.js';
 import MemberPage from './pages/MemberPage.js';
 import EventPage from './pages/EventPage.js';
 import ProfilePage from './pages/ProfilePage.js';
+import EventInfoPage from './pages/EventInfoPage.js';
 import AboutPage from './pages/AboutPage.js';
 import LoginWindow from './components/LoginWindow.js';
 import ManagementPage from './pages/ManagementPage.js';
@@ -188,6 +189,7 @@ class App extends Component {
             <Route path="/members" component={MemberPage}/>
             <Route path="/events" component={EventPage}/>
             <Route path="/profile" component={ProfilePage}/>
+            <Route path="/event" component={EventInfoPage}/>
             <Route path="/about" component={AboutPage}/>
             <Route path="/management" component={ManagementPage}/>
           </div>
