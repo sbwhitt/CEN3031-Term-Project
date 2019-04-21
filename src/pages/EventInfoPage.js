@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EditEventForm from '../components/EditEventForm.js';
 import axios from 'axios';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -8,6 +9,7 @@ class EventInfoPage extends Component {
     super(props);
     this.state = {
       currentEvent: {},
+      isFormOpen: false,
     }
   }
 
@@ -31,14 +33,25 @@ class EventInfoPage extends Component {
 
   render() {
     var date = new Date(this.state.currentEvent.date);
+
+    const editButton = this.props.currentUser.isAdmin ? 
+      <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginRight: "5%"}}
+        onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Edit Event</button> : null;
+
+    const editForm = this.props.currentUser.isAdmin ?
+      <div style={this.state.isFormOpen ? {} : {display: "none"}}>
+        <hr className="page-divider"/>
+        <div style={{marginLeft: "5%"}}><EditEventForm isFormOpen={this.state.isFormOpen} currentEvent={this.state.currentEvent}/></div>
+      </div> : null;
+    
     return (
       <div className="page-wrapper">
         <div className="page-content">
-          <div style={{ display: "flex", flexDirection: "row" }}>
-            <div style={{ display: "flex", flexDirection: "column", marginLeft: "5%", width: "600px" }}>
-              <h1>{this.state.currentEvent.name}</h1>
-            </div>
+          <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", marginLeft: "5%"}}>
+            <h1>{this.state.currentEvent.name}</h1>
+            {editButton}
           </div>
+          {editForm}
           <hr className="page-divider"/>
           <div style={{marginLeft: "5%"}}>
             {this.state.currentEvent.location !== "" ? <p><b>Location: </b>{this.state.currentEvent.location}</p> : null}

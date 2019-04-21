@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EventForm from '../components/EventForm.js';
+import CreateEventForm from '../components/CreateEventForm.js';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
@@ -83,7 +83,7 @@ class EventPage extends Component {
       <div style={this.state.isFormOpen ? {} : {display: "none"}}>
         <hr className="page-divider"/>
         <div style={{marginLeft: "5%"}}>
-          <EventForm isFormOpen={this.state.isFormOpen}/>
+          <CreateEventForm isFormOpen={this.state.isFormOpen}/>
         </div>
       </div> : null;
 

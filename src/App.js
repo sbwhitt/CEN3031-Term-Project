@@ -176,7 +176,7 @@ class App extends Component {
         email: email
       }
     }).then((res) => {
-      this.setState({profile: res.data}, () => console.log(this.state.profile));
+      this.setState({profile: res.data});
     });
   }
 
