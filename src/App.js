@@ -8,6 +8,7 @@ import EventInfoPage from './pages/EventInfoPage.js';
 import AboutPage from './pages/AboutPage.js';
 import LoginWindow from './components/LoginWindow.js';
 import ManagementPage from './pages/ManagementPage.js';
+import AlumniPage from './pages/AlumniPage.js';
 import UFLogo from './images/earth_sapa.gif';
 import axios from 'axios';
 import './App.css';
@@ -187,6 +188,7 @@ class App extends Component {
           <LoginWindow isVisible={this.state.loginVisible} onClose={(e) => this.setState({loginVisible: !this.state.loginVisible})}/>
           <HeaderBar profile={this.state.profile} loginClick={(e) => this.setState({loginVisible: !this.state.loginVisible})}/>
           <div style={{marginTop: "1.5em"}}>
+<<<<<<< HEAD
             <Route exact path="/" render={(props) => <WelcomePage {...props} currentUser={this.state.currentUser}/>}/>
             <Route path="/members" render={(props) => <MemberPage {...props} currentUser={this.state.currentUser}/>}/>
             <Route path="/events" render={(props) => <EventPage {...props} currentUser={this.state.currentUser}/>}/>
@@ -194,6 +196,16 @@ class App extends Component {
             <Route path="/event" render={(props) => <EventInfoPage {...props} currentUser={this.state.currentUser}/>}/>
             <Route path="/about" render={(props) => <AboutPage {...props} currentUser={this.state.currentUser}/>}/>
             {/*<Route path="/management" component={ManagementPage}/>*/}
+=======
+            <Route exact path="/" component={WelcomePage}/>
+            <Route path="/members" component={MemberPage}/>
+            <Route path="/events" component={EventPage}/>
+            <Route path="/profile" component={ProfilePage}/>
+            <Route path="/event" component={EventInfoPage}/>
+            <Route path="/about" component={AboutPage}/>
+            <Route path="/management" component={ManagementPage}/>
+            <Route path="/alumni" component={AlumniPage}/>
+>>>>>>> a087db17276bde5994e22ae54c5dd6799ab83f2d
           </div>
         </div>
       </Router>
