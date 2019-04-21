@@ -18,6 +18,7 @@ also broken when refreshing page
 ######
 */
 
+console.log("app loaded");
 //checking if a jwt exists, then deleting it if it is expired
 if (localStorage.jwt) {
   const token = localStorage.getItem('jwt');
@@ -112,7 +113,7 @@ class ProfileCircle extends Component {
 const ProfileMenu = (props) => {
   return props.isOpen ? (
     <div className="profile-menu">
-      <Link onClick={props.onClick} className="profile-menu-opt" to={props.link}>
+      <Link onClick={() => {props.onClick(); window.location.assign(props.link)}} className="profile-menu-opt" to={props.link}>
         <span>View Profile</span>
       </Link>
       <span onClick={() => {props.onClick(); props.onLogout()}} className="profile-menu-opt">Log Out</span>
@@ -123,7 +124,8 @@ const ProfileMenu = (props) => {
 //headerbar link (home, members, etc.)
 const HLink = (props) => {
   return (
-    <Link onClick={() => props.onClick(props.name)} className="hlink" style={props.selected === props.name ? {textDecoration: "underline"} : {}} to={props.link}>
+    <Link onClick={() => props.onClick(props.name)} className="hlink" 
+      style={props.selected === props.name ? {textDecoration: "underline"} : {}} to={props.link}>
       <p style={{margin: "14px 0 0 0"}}>{props.name}</p>
     </Link>
   );
