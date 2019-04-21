@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import WelcomePageFinal from "../images/SAPA_welcome.png";
 
 class WelcomePage extends Component {
   constructor(props) {
@@ -9,12 +10,8 @@ class WelcomePage extends Component {
 
   render() {
     return (
-      <div className="page-wrapper">
-        <div className="page-content">
-          <h1 className="page-text">UF SAPA</h1>
-          <hr className="page-divider"/>
-          <p className="page-text">Welcome to the UF SAPA website.</p>
-        </div>
+      <div className="page-wrapper" style={{marginTop: "-2em"}}>
+        <img className="welcome-img" src={WelcomePageFinal} alt="welcome to ufsapa"/>
       </div>
     );
   }

@@ -8,6 +8,7 @@ html {
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 h1 {
@@ -25,11 +26,55 @@ h2 {
   top: 0;
   width: 100%;
   background-color: #bc581a;
-  height: 64px;
+  height: 52px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   box-shadow: 0 2px 5px 0 #00000045;
+}
+
+.header-button {
+  cursor: pointer;
+  margin-right: 0;
+  padding: 0 1em 0;
+  border: 0;
+  height: 64px;
+  background-color: #bc581a;
+  font-size: 20px;
+  color: #efefef;
+}
+
+.circle-img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  margin-top: 4px;
+  margin-right: 4px;
+  border-style: solid;
+  border-color: #00529b;
+  border-width: 2px;
+  border-radius: 50%;
+}
+
+.profile-menu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-top: 4px;
+  right: 4px;
+  background: #efefef;
+  box-shadow: 0 2px 5px 0 #00000045;
+}
+
+.profile-menu-opt {
+  cursor: pointer;
+  padding: 0.5em;
+  color: #000000;
+}
+
+.profile-menu-opt:hover {
+  background: #dedede;
 }
 
 .logo-container {
@@ -43,7 +88,7 @@ h2 {
 }
 
 .logo-img {
-  height: 64px;
+  height: 52px;
   background-color: #00529b;
   color: #efefef;
   font-family: Georgia;
@@ -54,14 +99,55 @@ h2 {
   color: #efefef;
 }
 
+.login-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: #dededeab;
+}
+
+.login-window {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  margin-left: 25%;
+  padding-bottom: 3em;
+  background-color: #dedede;
+  box-shadow: 0 2px 5px 0 #00000045;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.login-input {
+  width: 25%;
+  height: 1em;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.login-close {
+  background: #00000000;
+  border: none;
+  font-size: 28px;
+}
+
 .login-button {
   cursor: pointer;
   margin-right: 0;
   padding: 0 1em 0;
   border: 0;
-  height: 64px;
+  height: 52px;
   background-color: #bc581a;
-  font-size: 20px;
+  font-size: 18px;
   color: #efefef;
   font-weight: 600;
 }
@@ -75,7 +161,7 @@ h2 {
   width: 100%;
   height: 100%;
   padding: 0 1em 0;
-  font-size: 20px;
+  font-size: 18px;
   color: #efefef;
   font-weight: 600;
 }
@@ -105,6 +191,22 @@ h2 {
   margin-left: 5%;
   width: 90%;
 }
+.page-text-about {
+  margin-left: 5%;
+  width: 90%;
+  font-weight: 600;
+}
+.page-text-title {
+  margin-left: 5%;
+  width: 90%;
+  font-weight: 600;
+}
+
+.page-centertext {
+  margin-left: 5%;
+  width: 90%;
+  text-align: center;
+}
 
 .page-divider {
   width: 90%;
@@ -123,14 +225,17 @@ h2 {
   margin-left: 5%;
   margin-bottom: 5%;
 }
-
 .contact-link {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
   padding: 1em;
   color: black;
 }
-
 .contact-link:hover {
-  background-color: #dedede;
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .member-container {
@@ -176,6 +281,7 @@ h2 {
   width: 90%;
   margin-left: 5%;
   margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .search-bar {
@@ -185,4 +291,96 @@ h2 {
   height: 36px;
   box-shadow: 0 1px 2px 0 #00000045;
   padding-left: 0.5em;
+}
+
+.welcome-img {
+  height: 100%;
+  width: 100%;
+  padding: 0em;
+  padding-right: 0;
+  padding-bottom: 0em;
+}
+
+.member-btn {
+  text-decoration: none;
+  color: #00529b;
+  cursor: pointer;
+  position: fixed;
+  border-style: solid;
+  border-width: 6px;
+  border-color: #bc581a;
+  background-color: #00000000;
+  width: 300px;
+  height: 15%;
+  bottom: 10%;
+}
+
+.member-btn:hover {
+  background-color: #00000035;
+}
+
+.button-container {
+  width: 90%;
+  margin-top: 1.5em;
+  margin-left: 5%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.manage-btn {
+  cursor: pointer;
+  padding: 0.5em;
+  border-width: 0px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px 0 #00000045;
+}
+
+.manage-btn:hover {
+  background-color: #dedede;
+}
+
+.profile-img {
+  width: 25%;
+  height: 25%;
+  margin-top: 1.5em;
+  margin-left: 5%;
+}
+
+.event-container {
+  cursor: pointer;
+  width: 25%;
+  margin: 0em;
+  background-color: white;
+  /*margin-bottom: 0.5em;
+  margin-top: 0.5em;*/
+  box-shadow: 0 1px 3px 0 #00000045;
+}
+
+.event-container:hover {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+  box-shadow: 1px 2px 6px 1px #00000045;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+}
+
+.event-text {
+  padding-left: 1em;
+  padding-bottom: 1em;
+  margin-right: 2em;
+}
+
+.grid-container {
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

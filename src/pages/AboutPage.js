@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
 import '../App.css';
+import FacebookIcon from "./icons/facebook_icon.png";
+import InstagramIcon from "./icons/instagram_icon.png";
+import EmailIcon from "./icons/email_icon.png";
 
 const ContactLink = (props) => {
   return (
-    <a className="contact-link" href={props.link}>
-      <div>
-        <h2>{props.title}</h2>
-        <a href={props.link}>{props.linkTitle}</a>
-      </div>
-    </a>
+    <div className="contact-link">
+      <a style={{display: "flex", justifyContent: "center"}} target="_blank" rel="noopener noreferrer"
+        href={props.link}><img src={props.icon} href={props.link} alt="social media icon"/></a> 
+      <a target="_blank" rel="noopener noreferrer" href={props.link}>{props.linkTitle}</a>
+    </div>
   );
 }
 
 const ContactBlock = () => {
   return (
     <div className="contact-block">
-      <ContactLink title="Email" link="mailto:ufsapa+web@gmail.com" linkTitle="ufsapa@gmail.com"/>
-      <ContactLink title="Facebook" link="https://facebook.com/ufsapa" linkTitle="@ufsapa"/>
-      <ContactLink title="Instagram" link="https://www.instagram.com/ufsapa/" linkTitle="@ufsapa"/>
+      <ContactLink icon={EmailIcon} link="mailto:ufsapa+web@gmail.com" linkTitle="ufsapa@gmail.com"/>
+      <ContactLink icon={FacebookIcon} link="https://facebook.com/ufsapa" linkTitle="@ufsapa"/>
+      <ContactLink icon={InstagramIcon} link="https://www.instagram.com/ufsapa/" linkTitle="@ufsapa"/>
     </div>
   );
 }
@@ -34,7 +36,7 @@ class AboutPage extends Component {
         <div className="page-content">
           <h1 className="page-text">Study Abroad Peer Advisors</h1>
           <hr className="page-divider"/>
-          <p className="page-text">
+          <p className="page-text-about">
             The Study Abroad Peer Advisor (SAPA) organization is a group of students who have previously studied 
             abroad and are now dedicated to sharing their experiences with other students. We assist students 
             interested in learning more about UF’s study abroad opportunities by matching them with students who 
@@ -45,7 +47,7 @@ class AboutPage extends Component {
             We would love to talk with you! The office hours posted are when our SAPAs can be seen in person in 
             the Study Abroad Services lobby in the International Center. 
           </p>
-          <p className="page-text">
+          <p className="page-text-title">
             2018-2019 Executive Board: Co-Presidents: Trey LaNasa, Yousef Ghabour
             <br/>
             Secretary: Luke Bickell 
