@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import EventForm from '../components/EventForm.js';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 const EventItem = (props) => {
   var date = new Date(props.item.date);
+  var url = '/event/' + props.item._id;
 	return (
-    <div className="event-container">
+    <Link className="event-container" to={{pathname: url}}>
       <div className="event-card">
         <div className="event-text">
           <h3>{props.item.name}</h3>
           {date.getDate() ? <p>{months[date.getMonth()]} {date.getDate()}, {date.getFullYear()} at {date.getUTCHours()}:{date.getMinutes() === 0 ? '00' : date.getMinutes()}</p> : null}
         </div>
       </div>
-    </div>
+    </Link>
 	);
 }
 
