@@ -8,6 +8,7 @@ import EventInfoPage from './pages/EventInfoPage.js';
 import AboutPage from './pages/AboutPage.js';
 import LoginWindow from './components/LoginWindow.js';
 import ManagementPage from './pages/ManagementPage.js';
+import AlumniPage from './pages/AlumniPage.js';
 import UFLogo from './images/earth_sapa.gif';
 import axios from 'axios';
 import './App.css';
@@ -192,6 +193,7 @@ class App extends Component {
             <Route path="/event" component={EventInfoPage}/>
             <Route path="/about" component={AboutPage}/>
             <Route path="/management" component={ManagementPage}/>
+            <Route path="/alumni" component={AlumniPage}/>
           </div>
         </div>
       </Router>
