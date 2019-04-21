@@ -7,7 +7,7 @@ import ProfilePage from './pages/ProfilePage.js';
 import AboutPage from './pages/AboutPage.js';
 import LoginWindow from './components/LoginWindow.js';
 import ManagementPage from './pages/ManagementPage.js';
-import UFLogo from './images/UF_white.png';
+import UFLogo from './images/earth_sapa.gif';
 import axios from 'axios';
 import './App.css';
 
