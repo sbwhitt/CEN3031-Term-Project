@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
-import EventForm from '../components/EventForm.js';
+import CreateEventForm from '../components/CreateEventForm.js';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 const EventItem = (props) => {
   var date = new Date(props.item.date);
+  var url = '/event/' + props.item._id;
 	return (
-    <div className="event-container">
+    <Link className="event-container" to={{pathname: url}}>
       <div className="event-card">
         <div className="event-text">
-          <h2>{props.item.name}</h2>
-          <h4>{props.item.location}</h4>
-          <h4>{props.item.date}</h4>
-          <h4>{months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</h4>
-          <p>{props.item.description}</p>
+          <h3>{props.item.name}</h3>
+          {date.getDate() ? <p>{months[date.getMonth()]} {date.getDate()}, {date.getFullYear()} at {date.getUTCHours()}:{date.getMinutes() === 0 ? '00' : date.getMinutes()}</p> : null}
         </div>
       </div>
-    </div>
+    </Link>
 	);
 }
 
@@ -44,7 +43,6 @@ class EventPage extends Component {
   //grabs all events from db and checks the current login status through jwt
   componentDidMount() {
     this._getEvents();
-    this._checkLogInStatus();
   }
 
   //returns list of all events from db
@@ -57,18 +55,6 @@ class EventPage extends Component {
         this.setState({ events: res.data });
       });
   };
-
-  //checks if a jwt is present
-  //if jwt exists, loads token and sends it to backend for decodeing
-  //on successful decode, takes payload and puts it into this.state.currentUser
-  _checkLogInStatus = () => {
-    if (localStorage.jwt) {
-      const token = localStorage.getItem("jwt");
-      axios.post("/api/auth/decode", {token: token}).then((res) => {
-        if (res.data) this.setState({currentUser: res.data.data});
-      });
-    }
-  }
 
   //called if searchbar input changes
   _onSearchChange = (e) => {
@@ -89,15 +75,15 @@ class EventPage extends Component {
 
   render() {
     //createButton and createForm rendered based on admin status of current logged in user
-    const createButton = this.state.currentUser.isAdmin ? 
+    const createButton = this.props.currentUser.isAdmin ? 
       <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginRight: "5%"}}
         onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Create Event</button> : null;
 
-    const createForm = this.state.currentUser.isAdmin ?
+    const createForm = this.props.currentUser.isAdmin ?
       <div style={this.state.isFormOpen ? {} : {display: "none"}}>
         <hr className="page-divider"/>
         <div style={{marginLeft: "5%"}}>
-          <EventForm isFormOpen={this.state.isFormOpen}/>
+          <CreateEventForm isFormOpen={this.state.isFormOpen}/>
         </div>
       </div> : null;
 

@@ -28,9 +28,21 @@ class EventForm extends Component {
       location: this.state.location,
       description: this.state.description,
     });
-  }
+	}
+	
+	_isFormFilled = () => {
+		const bool = this.state.points !== 0 &&
+		this.state.name !== "" &&
+		this.state.date !== "" &&
+		this.state.start !== "" &&
+		this.state.duration !== "" &&
+		this.state.location !== "";
+		return (
+			bool
+		);
+	}
   
-	render() {	
+	render() {
 		return (
 			<div style={this.props.isFormOpen ? {} : {display: "none"}} className="event-modal">
 				<form>
@@ -75,7 +87,7 @@ class EventForm extends Component {
             onChange={(e) => this.setState({description: e.target.value})}>
           </textarea>
 					<br/>
-          <button onClick={this._createEvent} className="manage-btn">Create Event</button>
+          <button onClick={this._isFormFilled() ? this._createEvent : null} className="manage-btn">Create Event</button>
 				</form>
 			</div>
 		);
