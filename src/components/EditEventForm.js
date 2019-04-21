@@ -56,7 +56,6 @@ class EventForm extends Component {
   render() {
     return (
       <div style={this.props.isFormOpen ? {} : { display: "none" }} className="event-modal">
-      <button onClick={this._updateEvent}>test</button>
         <form onSubmit={this._updateEvent}>
           <label htmlFor="categories">Select Category: </label>
           <select name="categories" value={this.state.category}
