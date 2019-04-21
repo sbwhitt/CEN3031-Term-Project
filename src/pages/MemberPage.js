@@ -69,7 +69,11 @@ class MemberPage extends Component {
     return (
       <div>
         {arr.filter((item) => this.state.currentQuery === "" || 
-          (item.firstName + ' ' + item.lastName).toLowerCase().includes(this.state.currentQuery.toLowerCase()))
+          (item.firstName + ' ' + item.lastName).toLowerCase().includes(this.state.currentQuery.toLowerCase()) ||
+           (item.majors + '').toLowerCase().includes(this.state.currentQuery.toLowerCase()) ||
+           (item.email + '').toLowerCase().includes(this.state.currentQuery.toLowerCase()) || 
+           (item.minors + '').toLowerCase().includes(this.state.currentQuery.toLowerCase()) || 
+           (item.programs + '').toLowerCase().includes(this.state.currentQuery.toLowerCase()))
           .map((item, index) => (
             <MemberItem item={item} key={index} index={index}/>
           )
