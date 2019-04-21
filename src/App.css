@@ -25,7 +25,7 @@ h2 {
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: #bc581a;
+  background-color: #FA4616;
   height: 52px;
   display: flex;
   flex-direction: row;
@@ -39,7 +39,7 @@ h2 {
   padding: 0 1em 0;
   border: 0;
   height: 64px;
-  background-color: #bc581a;
+  background-color: #FA4616;
   font-size: 20px;
   color: #efefef;
 }
@@ -89,7 +89,7 @@ h2 {
 
 .logo-img {
   height: 52px;
-  background-color: #00529b;
+  background-color: #0021A5;
   color: #efefef;
   font-family: Georgia;
 }
@@ -146,14 +146,14 @@ h2 {
   padding: 0 1em 0;
   border: 0;
   height: 52px;
-  background-color: #bc581a;
+  background-color: #FA4616;
   font-size: 18px;
   color: #efefef;
   font-weight: 600;
 }
 
 .login-button:hover {
-  background-color: #cf6b3d;
+  background-color: #ff815e;
 }
 
 .hlink {
@@ -167,7 +167,7 @@ h2 {
 }
 
 .hlink:hover {
-  background-color: #cf6b3d;
+  background-color: #ff815e;
 }
 
 .page-wrapper {
@@ -211,9 +211,9 @@ h2 {
 .page-divider {
   width: 90%;
   height: 1px;
-  border: 1px solid #00529b;
+  border: 1px solid #0021A5;
   border-radius: 4px;
-  background-color: #00529b;
+  background-color: #0021A5;
 }
 
 .contact-block {
@@ -335,6 +335,7 @@ h2 {
   border-width: 0px;
   background-color: #ffffff;
   box-shadow: 0 1px 3px 0 #00000045;
+  border-radius: 5px;
 }
 
 .manage-btn:hover {
@@ -383,4 +384,13 @@ h2 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.event-modal {
+  width:90%;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 #00000045;
+  border-radius: 25px 25px 25px 10px; 
+  padding: 1em;
+  border:2px solid#00529b
 }
