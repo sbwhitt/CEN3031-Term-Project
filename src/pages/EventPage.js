@@ -13,7 +13,7 @@ const EventItem = (props) => {
       <div className="event-card">
         <div className="event-text">
           <h3>{props.item.name}</h3>
-          {date.getDate() ? <p>{months[date.getMonth()]} {date.getDate()}, {date.getFullYear()} at {date.getUTCHours()}:{date.getMinutes() === 0 ? '00' : date.getMinutes()}</p> : null}
+          {date.getDate() ? <p>{months[date.getMonth()]} {date.getDate()}, {date.getFullYear()} at {date.getHours()}:{date.getMinutes() === 0 ? '00' : date.getMinutes()}</p> : null}
         </div>
       </div>
     </Link>
