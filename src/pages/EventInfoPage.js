@@ -14,13 +14,11 @@ class EventInfoPage extends Component {
   }
 
   //called when profile page initially loaded
-  //grabs member name from url and sends it to the backend to fetch the profile data
   componentDidMount() {
     const target = this.props.location.pathname.split("/")[2];
     this._getEvent(target);
   }
 
-  //fetches profile object data based on target from db
   _getEvent = (target) => {
     axios.get("/api/event/getEvent/", {
       params: {
@@ -56,7 +54,7 @@ class EventInfoPage extends Component {
           <div style={{marginLeft: "5%"}}>
             {this.state.currentEvent.location !== "" ? <p><b>Location: </b>{this.state.currentEvent.location}</p> : null}
             {date.getDate() ? <p><b>Date: </b>{months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</p> : null}
-            {date.getDate() ? <p><b>Time: </b>{date.getUTCHours()}:{date.getMinutes() === 0 ? '00' : date.getMinutes()}</p> : null}
+            {date.getDate() ? <p><b>Time: </b>{date.getHours()}:{date.getMinutes() < 10 ? '0'+date.getMinutes() : date.getMinutes()}</p> : null}
           </div>
         </div>
       </div>

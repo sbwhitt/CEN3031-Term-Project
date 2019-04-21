@@ -16,27 +16,49 @@ class EventForm extends Component {
     }
   }
 
+  componentWillReceiveProps(props, state) {
+    const date = new Date(props.currentEvent.date);
+    const dateStr = date.getFullYear().toString() + '-' + ("0" + (date.getMonth()+1)).slice(-2) + 
+      '-' + ("0" + (date.getDate())).slice(-2)
+    const timeStr = (date.getHours() < 10 ? '0'+date.getHours() : date.getHours()) + 
+      ':' + (date.getMinutes() < 10 ? '0'+date.getMinutes() : date.getMinutes());
+
+    this.setState({
+      category: props.currentEvent.category,
+      points: props.currentEvent.points,
+      name: props.currentEvent.name,
+      date: dateStr,
+      start: timeStr,
+      duration: props.currentEvent.duration,
+      location: props.currentEvent.location,
+      description: props.currentEvent.description,
+    });
+  }
+
   //sends form data to db to create new event
   _updateEvent = () => {
-    /*var date = this.state.date + 'T' + this.state.start;
-    axios.post("/api/event/createEvent", {
-      name: this.state.name,
-      category: this.state.category,
-      points: this.state.points,
-      date: date,
-      duration: this.state.duration,
-      location: this.state.location,
-      description: this.state.description,
-    });*/
+    console.log(this.props.currentEvent);
+    var date = this.state.date + 'T' + this.state.start;
+    axios.post("/api/event/updateEvent", {
+      id: this.props.currentEvent._id,
+      update: {
+        name: this.state.name,
+        category: this.state.category,
+        points: this.state.points,
+        date: date,
+        duration: this.state.duration,
+        location: this.state.location,
+        description: this.state.description,
+      }
+    });
   }
 
   render() {
-    const currentEvent = this.props.currentEvent;
     return (
       <div style={this.props.isFormOpen ? {} : { display: "none" }} className="event-modal">
-        <form>
+        <form onSubmit={this._updateEvent}>
           <label htmlFor="categories">Select Category: </label>
-          <select name="categories" value={currentEvent.category}
+          <select name="categories" value={this.state.category}
             onChange={(e) => this.setState({ category: e.target.value })}>
             <option value="Social">Social</option>
             <option value="Info Session">Info Session</option>
@@ -48,35 +70,35 @@ class EventForm extends Component {
           <br />
 
           <label htmlFor="points">Points: </label>
-          <input value={currentEvent.points} type="number" id="points" required onChange={(e) => this.setState({ points: e.target.value })} />
+          <input value={this.state.points} type="number" id="points" required onChange={(e) => this.setState({points: e.target.value})} />
           <br />
 
           <label htmlFor="eventName"> Event Name: </label >
-          <input value={currentEvent.name} type="text" id="eventName" required onChange={(e) => this.setState({ name: e.target.value })} />
+          <input value={this.state.name} type="text" id="eventName" required onChange={(e) => this.setState({ name: e.target.value })} />
           <br />
 
           <label htmlFor="date">Date: </label>
-          <input value={currentEvent.date} type="date" id="date" required onChange={(e) => this.setState({ date: e.target.value })} />
+          <input value={this.state.date} type="date" id="date" required onChange={(e) => this.setState({ date: e.target.value })} />
           <br />
 
           <label htmlFor="timeStart">Start Time: </label>
-          <input type="time" id="timeStart" required onChange={(e) => this.setState({ start: e.target.value })} />
+          <input value={this.state.start} type="time" id="timeStart" required onChange={(e) => this.setState({ start: e.target.value })} />
           <br />
           <label htmlFor="timeEnd">Duration (Hours): </label>
-          <input value={currentEvent.duration} type="number" id="duration" required onChange={(e) => this.setState({ duration: e.target.value })} />
+          <input value={this.state.duration} type="number" id="duration" required onChange={(e) => this.setState({ duration: e.target.value })} />
           <br />
 
           <label htmlFor="location">Location: </label>
-          <input value={currentEvent.location} type="text" id="location" required onChange={(e) => this.setState({ location: e.target.value })} />
+          <input value={this.state.location} type="text" id="location" required onChange={(e) => this.setState({ location: e.target.value })} />
           <br />
 
           <label htmlFor="description">Description(optional):</label>
           <br />
-          <textarea value={currentEvent.description} name="Description" id="description" rows="8" cols="40"
+          <textarea value={this.state.description} name="Description" id="description" rows="8" cols="40"
             onChange={(e) => this.setState({ description: e.target.value })}>
           </textarea>
           <br />
-          <button onSubmit={this._updateEvent} className="manage-btn">Edit Event</button>
+          <input type="submit" onClick={this._updateEvent} className="manage-btn" value="Update Event"/>
         </form>
       </div>
     );
