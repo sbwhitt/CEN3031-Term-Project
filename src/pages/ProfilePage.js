@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ProfileEditForm from '../components/ProfileEditForm.js';
 import axios from 'axios';
 
 const QuestionItem = (props) => {
@@ -22,7 +23,8 @@ class ProfilePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentMember: {}
+      currentMember: {},
+      isFormOpen:false
     }
   }
 
@@ -45,6 +47,15 @@ class ProfilePage extends Component {
   }
 
   render() {
+    const editButton = this.props.currentUser.isAdmin ? 
+    <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginRight: "5%"}}
+      onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Edit Profile</button> : null;
+
+  const editForm = this.props.currentUser.isAdmin ?
+    <div style={this.state.isFormOpen ? {} : {display: "none"}}>
+      <hr className="page-divider"/>
+      <div style={{marginLeft: "5%"}}><ProfileEditForm isFormOpen={this.state.isFormOpen} currentMember={this.state.currentMember}/></div>
+    </div> : null;
     return (
       <div className="page-wrapper">
         <div className="page-content">
@@ -56,7 +67,11 @@ class ProfilePage extends Component {
               <InfoItem data="Email: " item={this.state.currentMember.email}/>
               <InfoItem data="Office Hours: " item={this.state.currentMember.officeHours}/>
             </div>
+          </div>            
+          <div style={{display:"flex", flexDirection: "column",marginRight: "5%"}}>
+            {editButton}
           </div>
+          {editForm}
           <h1 className="page-text">Questions</h1>
           <hr className="page-divider"/>
           { this.state.currentMember.questions !== undefined ?
