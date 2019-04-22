@@ -29,6 +29,41 @@ class EventInfoPage extends Component {
     });
   }
 
+  _onSignUp = () => {
+    this.state.currentEvent.attended.push(this.props.currentUser.email);
+    this._updateAttended();
+    this._getProfile();
+  }
+
+  _updateAttended = () => {
+    axios.post("/api/event/updateEvent", {
+      id: this.state.currentEvent._id,
+      update: {
+        attended: this.state.currentEvent.attended
+      }
+    });
+  }
+
+  _getProfile = () => {
+    axios.get("/api/member/profile", {
+      params: {
+        email: this.props.currentUser.email
+      }
+    }).then((res) => {
+      this._updatePoints(res.data);
+    });
+  }
+
+  _updatePoints = (profile) => {
+    const points = profile.points + this.state.currentEvent.points;
+    axios.post("/api/member/updateMember", {
+      id: profile._id,
+      update: {
+        points: points
+      }
+    });
+  }
+
   render() {
     var date = new Date(this.state.currentEvent.date);
 
