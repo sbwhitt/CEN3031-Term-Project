@@ -174,6 +174,42 @@ class EventInfoPage extends Component {
     }).then(() => window.location.replace("/events"));
   }
 
+  _removeSignUp = () => {
+    var newToAttend = [];
+    var newAttended = this.state.currentEvent.attended;
+    for (let i = 0; i < newAttended.length; i++) {
+      if (newAttended[i] === this.props.currentUser.email) {
+        newAttended.splice(i, 1);
+        break;
+      }
+    }
+    axios.post("/api/event/updateEvent", {
+      id: this.state.currentEvent._id,
+      update: {
+        attended: newAttended
+      }
+    });
+    axios.get("/api/member/profile", {
+      params: {
+        email: this.props.currentUser.email
+      }
+    }).then((res) => {
+      newToAttend = res.data.toAttend;
+      for (let i = 0; i < newToAttend.length; i++) {
+        if (newToAttend[i].eventId === this.state.currentEvent._id) {
+          newToAttend.splice(i, 1);
+          break;
+        }
+      }
+      axios.post("/api/member/updateMember", {
+        id: res.data._id,
+        update: {
+          toAttend: newToAttend
+        }
+      });
+    }).then(() => window.location.reload());
+  }
+
   render() {
     var date = new Date(this.state.currentEvent.date);
 
@@ -192,7 +228,12 @@ class EventInfoPage extends Component {
         <button className="manage-btn" onClick={this._onSignUp}> Sign up</button>) : null;
 
     const signupMsg = this.state.currentEvent.attended ? 
-      (this.state.currentEvent.attended.includes(this.props.currentUser.email) ? <b>You are signed up to attend this event!</b> : null) : null
+      (this.state.currentEvent.attended.includes(this.props.currentUser.email) ? 
+        <div style={{display: "flex", flexDirection: "row"}}>
+          <b>You are signed up to attend this event!</b>
+          <button onClick={this._removeSignUp} style={{marginLeft: "1em"}} className="manage-btn">Cancel</button>
+        </div> : null) 
+      : null
 
     const attendeeList = this.props.currentUser.isAdmin ? 
       <div>
