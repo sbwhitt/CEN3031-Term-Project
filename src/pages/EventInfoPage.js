@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import EditEventForm from '../components/EditEventForm.js';
 import async from 'async';
 import axios from 'axios';
-import { callbackify } from 'util';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
