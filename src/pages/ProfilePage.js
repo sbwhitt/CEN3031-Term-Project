@@ -45,7 +45,16 @@ class ProfilePage extends Component {
       if (res.data) this.setState({currentMember: res.data});
     });
   }
-
+  _deleteMember = () => {
+    const confirmed = window.confirm("Are you sure you would like to permanently delete this Member?");
+    if (confirmed) {
+      axios.delete("/api/event/deleteMember", {
+        data: {
+          _id: this.state.currentEvent._id,
+        }
+      }).then(() => window.location.replace("/members"));
+    }
+  }
   render() {
     const editButton = this.props.currentUser.isAdmin ? 
       <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginLeft: "5%"}}
