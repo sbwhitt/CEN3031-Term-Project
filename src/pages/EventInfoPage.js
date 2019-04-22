@@ -31,9 +31,6 @@ class EventInfoPage extends Component {
     });
   }
 
-
-
-
   render() {
     var date = new Date(this.state.currentEvent.date);
 
