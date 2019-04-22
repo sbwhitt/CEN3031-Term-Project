@@ -12,6 +12,9 @@ router.route("/getEvents")
 router.route("/getEvent")
   .get(eventController.eventByID);
 
+router.route("/deleteEvent")
+  .delete(eventController.delete);
+
 router.route("/getEvents/sorted")
   .get(eventController.listSorted);
 

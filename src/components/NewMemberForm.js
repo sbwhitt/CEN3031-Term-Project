@@ -40,18 +40,18 @@ class NewMemberForm extends Component {
         if (this.state.officeTimeStart.substring(0,2) > 12) {
             officeEnd = this.state.officeTimeStart.substring(0,2)-12 + this.state.officeTimeStart.substring(2);
         }
-        if (this.state.officeTimeStart.substring(0,1) == 0) {
+        if (this.state.officeTimeStart.substring(0,1) === 0) {
             officeStart = this.state.officeTimeStart.substring(1);
         }
 
         if (this.state.officeTimeEnd.substring(0,2) > 12) {
             officeEnd = this.state.officeTimeEnd.substring(0,2)-12 + this.state.officeTimeEnd.substring(2);
         }
-        if (this.state.officeTimeEnd.substring(0,1) == 0) {
+        if (this.state.officeTimeEnd.substring(0,1) === 0) {
             officeEnd = this.state.officeTimeEnd.substring(1);
         }
 
-        if (this.state.officeDate == "" || this.state.officeStart == "" || this.state.officeEnd == "") {
+        if (this.state.officeDate === "" || this.state.officeStart === "" || this.state.officeEnd === "") {
             officehour = "N/A";
         }
         else {
@@ -63,7 +63,7 @@ class NewMemberForm extends Component {
         if (birthdayFormatted.substring(0,1) == 0) {
             birthdayFormatted = birthdayFormatted.substring(1);
         }
-        if (birthdayFormatted.substring(birthdayFormatted.length-2,birthdayFormatted.length-1) == 0) {
+        if (birthdayFormatted.substring(birthdayFormatted.length-2,birthdayFormatted.length-1) === 0) {
             birthdayFormatted = birthdayFormatted.substring(0,birthdayFormatted.length-2)+birthdayFormatted.substring(birthdayFormatted.length-1);
         }
         axios.post("/api/member/createMember", {

@@ -379,6 +379,13 @@ h2 {
   margin-right: 2em;
 }
 
+.event-btn-container {
+  margin: 2em 5% 0 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .grid-container {
   margin-left: 5%;
   margin-right: 5%;

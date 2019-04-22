@@ -48,14 +48,15 @@ class ProfilePage extends Component {
 
   render() {
     const editButton = this.props.currentUser.isAdmin ? 
-    <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginRight: "5%"}}
-      onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Edit Profile</button> : null;
+      <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginLeft: "5%"}}
+        onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Edit Profile</button> : null;
 
-  const editForm = this.props.currentUser.isAdmin ?
-    <div style={this.state.isFormOpen ? {} : {display: "none"}}>
-      <hr className="page-divider"/>
-      <div style={{marginLeft: "5%"}}><ProfileEditForm isFormOpen={this.state.isFormOpen} currentMember={this.state.currentMember}/></div>
-    </div> : null;
+    const editForm = this.props.currentUser.isAdmin ?
+      <div style={this.state.isFormOpen ? {} : {display: "none"}}>
+        <hr className="page-divider"/>
+        <div style={{marginLeft: "5%"}}><ProfileEditForm isFormOpen={this.state.isFormOpen} currentMember={this.state.currentMember}/></div>
+      </div> : null;
+    
     return (
       <div className="page-wrapper">
         <div className="page-content">

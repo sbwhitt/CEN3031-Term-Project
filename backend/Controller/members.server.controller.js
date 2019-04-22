@@ -29,11 +29,9 @@ exports.read = function (req, res) {
 exports.update = function (req, res) {
   Member.findOneAndUpdate({_id: req.body.id}, req.body.update, function (err, res) {
     if (err) {
-      console.log("error incoming!");
       res.stats(404).send(err);
       throw err;
     }
-    console.log("Member updated");
   });
 };
 
@@ -157,5 +155,16 @@ exports.getMember = function(req, res) {
       res.status(400).send(err);
     }
     else res.json(member);
+  });
+}
+
+exports.getMembers = function(req, res) {
+  Member.find({email: {$in: req.query.attended}}, function(err, members) {
+    if (err) {
+      res.status(400).send(err);
+    }
+    else {
+      res.json(members);
+    }
   });
 }
