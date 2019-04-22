@@ -159,3 +159,14 @@ exports.getMember = function(req, res) {
     else res.json(member);
   });
 }
+
+exports.getMembers = function(req, res) {
+  Member.find({email: {$in: req.query.attended}}, function(err, members) {
+    if (err) {
+      res.status(400).send(err);
+    }
+    else {
+      res.json(members);
+    }
+  });
+}

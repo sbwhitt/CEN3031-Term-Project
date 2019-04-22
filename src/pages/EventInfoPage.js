@@ -7,9 +7,9 @@ const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 
 const AttendeeItem = (props) => {
   return (
-    <Link to={{pathname: "/"}} className="event-container">
+    <Link to={{pathname: "/profile/" + props.first + props.last}} className="event-container">
       <div className="event-text">
-        <h3>Person</h3>
+        <h3>{props.first} {props.last}</h3>
         <p>{props.email}</p>
       </div>
     </Link>
@@ -23,6 +23,7 @@ class EventInfoPage extends Component {
     this.state = {
       currentEvent: {},
       isFormOpen: false,
+      attendees: [],
     }
   }
 
@@ -39,8 +40,18 @@ class EventInfoPage extends Component {
       }
     }).then((res) => {
       if (res.data) {
-        this.setState({ currentEvent: res.data });
+        this.setState({ currentEvent: res.data }, () => this._getProfiles());
       }
+    });
+  }
+
+  _getProfiles = () => {
+    axios.get("/api/member/profiles", {
+      params: {
+        attended: this.state.currentEvent.attended
+      }
+    }).then((res) => {
+      this.setState({attendees: res.data});
     });
   }
 
@@ -83,8 +94,8 @@ class EventInfoPage extends Component {
   _renderAttendees = (props) => {
     return (
       <div className="grid-container">
-        {this.state.currentEvent.attended ? this.state.currentEvent.attended.map((item, index) => (
-          <AttendeeItem email={item} key={index}/>
+        {this.state.attendees ? this.state.attendees.map((item, index) => (
+          <AttendeeItem first={item.firstName} last={item.lastName} email={item.email} key={index}/>
         )) : null}
       </div>
     );
