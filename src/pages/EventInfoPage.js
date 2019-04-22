@@ -101,6 +101,30 @@ class EventInfoPage extends Component {
     );
   }
 
+  _markEventCompleted = () => {
+    const confirmed = window.confirm("Are you sure you would like to mark this event as complete? (This will delete the event and add its points to all attended members)");
+    if (confirmed) {
+      console.log(true);
+    }
+    else {
+      console.log(false);
+    }
+  }
+
+  /*****
+   * TODO: THIS MUST REMOVE THE EVENT FROM THE USERS SHCEMAS WHEN IT DELETES
+  *****/
+  _deleteEvent = () => {
+    const confirmed = window.confirm("Are you sure you would like to permanently delete this event? (No points will be added to users)");
+    if (confirmed) {
+      axios.delete("/api/event/deleteEvent", {
+        data: {
+          _id: this.state.currentEvent._id,
+        }
+      }).then(() => window.location.replace("/events"));
+    }
+  }
+
   render() {
     var date = new Date(this.state.currentEvent.date);
 
@@ -128,6 +152,13 @@ class EventInfoPage extends Component {
           this._renderAttendees(this.state.currentEvent.attended) : 
             <b style={{marginLeft: "5%"}}>No one is currently signed up to attend this event.</b>}
       </div> : null;
+
+    const eventManagement = this.props.currentUser.isAdmin ? 
+      <div className="event-btn-container">
+        <button className="manage-btn" onClick={this._markEventCompleted}>Mark Completed</button>
+        <button className="manage-btn" onClick={this._deleteEvent}>
+          Delete Event</button>
+      </div> : null;
     
     return (
       <div className="page-wrapper">
@@ -148,6 +179,7 @@ class EventInfoPage extends Component {
             {signupMsg}
           </div>
           {attendeeList}
+          {eventManagement}
         </div>
       </div>
     );

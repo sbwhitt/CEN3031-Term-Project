@@ -75,19 +75,15 @@ exports.update = function (req, res) {
 
 // Delete an event
 exports.delete = function (req, res) {
-    let event = req.event;
-  
-    event.remove(function (err) {
-      if (err) {
-        console.log(err);
-        res.status(404).send(err);
-        throw err;
-      }
-  
-      console.log("Event successfully removed");
-      res.end();
-    })
-  };
+  Event.findOneAndDelete(req.body, function (err) {
+    if (err) {
+      console.log(err);
+      res.status(404).send(err);
+      throw err;
+    }
+    res.end();
+  });
+};
 
 exports.eventByID = function (req, res) {
     Event.findOne(req.query, function (err, event) {
