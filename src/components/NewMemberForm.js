@@ -24,7 +24,7 @@ class NewMemberForm extends Component {
       birthday: "",
       firstLast: "",
       questions: ["","","","",""],
-      image:"",
+      image:"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
     }
   }
 
@@ -60,8 +60,8 @@ class NewMemberForm extends Component {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             programs: this.state.programs,
-            majors: this.state.majors,
-            minors: this.state.minors,
+            majors: majorArray,
+            minors: minorArray,
             email: this.state.email,
             officeHours: this.state.officeDate+" "+officeStart+" - "+officeEnd,
             firstLast: this.state.firstName+this.state.lastName,
@@ -171,7 +171,9 @@ class NewMemberForm extends Component {
                     <label htmlFor="birthday">Birthday: </label>
 					<input type="date" id="birthday" onChange={(e) => this.setState({birthday: e.target.value})}/>
 					<br/>
-
+                    <label htmlFor="image">image link: </label>
+					<input type="text" id="image" onChange={(e) => this.setState({image: e.target.value})}/>
+					<br/>
                     <button onClick={this._isFormFilled() ? this._createMember: null} className="manage-btn">Create New Member</button>
 				</form>
 			</div>
