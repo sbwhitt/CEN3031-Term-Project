@@ -29,11 +29,9 @@ exports.read = function (req, res) {
 exports.update = function (req, res) {
   Member.findOneAndUpdate({_id: req.body.id}, req.body.update, function (err, res) {
     if (err) {
-      console.log("error incoming!");
       res.stats(404).send(err);
       throw err;
     }
-    console.log("Member updated");
   });
 };
 

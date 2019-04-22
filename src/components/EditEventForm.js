@@ -37,7 +37,6 @@ class EditEventForm extends Component {
 
   //sends form data to db to create new event
   _updateEvent = () => {
-    console.log(this.props.currentEvent);
     var date = this.state.date + 'T' + this.state.start;
     axios.post("/api/event/updateEvent", {
       id: this.props.currentEvent._id,
