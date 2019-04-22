@@ -20,7 +20,7 @@ const profile = mongoose.model('profile', new mongoose.Schema({
     officeHours: { type: String },
     isAdmin: { type: Boolean, default: false },
     isExecutive: { type: Boolean, default: false },
-    eventAttendedbyID: { type: Array },
+    toAttend: { type: Array },
     points: { type: Number }
 })
 );

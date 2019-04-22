@@ -2,7 +2,7 @@
     {
         "name": "Krishna",
         "category": "Social Events",
-        "points": 0.5,
+        "points": 1,
         "date": "2019-02-01T12:00:00",
         "duration": 4,
         "location": "Plaza of the Americas",
@@ -12,7 +12,7 @@
     {
         "name": "Study Abroad Fair",
         "category": "Outreach Events",
-        "points": 1,
+        "points": 2,
         "date": "2019-01-15T09:00:00",
         "duration": 12,
         "location": "Reitz North Lawn",
@@ -22,7 +22,7 @@
     {
         "name": "Study Social",
         "category": "Social Events",
-        "points": 0.5,
+        "points": 1,
         "date": "2019-02-06T19:00:00",
         "duration": 2,
         "location": "Reitz North Lawn",

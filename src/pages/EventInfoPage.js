@@ -59,7 +59,6 @@ class EventInfoPage extends Component {
     this.state.currentEvent.attended.push(this.props.currentUser.email);
     this._updateAttended();
     this._getProfile();
-    window.location.reload();
   }
 
   _updateAttended = () => {
@@ -77,11 +76,26 @@ class EventInfoPage extends Component {
         email: this.props.currentUser.email
       }
     }).then((res) => {
-      this._updatePoints(res.data);
+      this._updateToAttend(res.data);
+    }).then(() => window.location.reload());
+  }
+
+  _updateToAttend = (profile) => {
+    var toAttend = profile.toAttend;
+    console.log(toAttend);
+    toAttend.push({
+      eventId: this.state.currentEvent._id,
+      eventPoints: this.state.currentEvent.points,
+    });
+    axios.post("/api/member/updateMember", {
+      id: profile._id,
+      update: {
+        toAttend: toAttend
+      }
     });
   }
 
-  _updatePoints = (profile) => {
+  /*_updatePoints = (profile) => {
     const points = profile.points + this.state.currentEvent.points;
     axios.post("/api/member/updateMember", {
       id: profile._id,
@@ -89,7 +103,7 @@ class EventInfoPage extends Component {
         points: points
       }
     });
-  }
+  }*/
 
   _renderAttendees = (props) => {
     return (
@@ -139,7 +153,8 @@ class EventInfoPage extends Component {
       </div> : null;
     
     const signupButton = this.state.currentEvent.attended ?
-      (this.state.currentEvent.attended.includes(this.props.currentUser.email) ? null : <button className="manage-btn" onClick={this._onSignUp}> Sign up</button>) : null;
+      (this.state.currentEvent.attended.includes(this.props.currentUser.email) ? null : 
+        <button className="manage-btn" onClick={this._onSignUp}> Sign up</button>) : null;
 
     const signupMsg = this.state.currentEvent.attended ? 
       (this.state.currentEvent.attended.includes(this.props.currentUser.email) ? <b>You are signed up to attend this event!</b> : null) : null
