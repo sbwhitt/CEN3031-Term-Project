@@ -126,6 +126,7 @@ class ProfilePage extends Component {
               <InfoItem data="Programs: " item={this.state.currentMember.programs}/>
               <InfoItem data="Email: " item={this.state.currentMember.email}/>
               <InfoItem data="Office Hours: " item={this.state.currentMember.officeHours}/>
+              {this.props.currentUser.isAdmin ? <InfoItem data="Points: " item={this.state.currentMember.points}/> : null}
             </div>
           </div>            
           <div style={{display:"flex", flexDirection: "column",marginRight: "5%"}}>

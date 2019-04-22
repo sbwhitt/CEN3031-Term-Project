@@ -96,16 +96,6 @@ class EventInfoPage extends Component {
     });
   }
 
-  /*_updatePoints = (profile) => {
-    const points = profile.points + this.state.currentEvent.points;
-    axios.post("/api/member/updateMember", {
-      id: profile._id,
-      update: {
-        points: points
-      }
-    });
-  }*/
-
   _renderAttendees = (props) => {
     return (
       <div className="grid-container">
@@ -119,12 +109,50 @@ class EventInfoPage extends Component {
   _markEventCompleted = () => {
     const confirmed = window.confirm("Are you sure you would like to mark this event as complete? (This will delete the event and add its points to all attended members)");
     if (confirmed) {
-      console.log(true);
-    }
-    else {
-      console.log(false);
+      this._removeFromAttendedAndAddPoints(this.state.currentEvent.attended);
     }
   }
+
+  _removeFromAttendedAndAddPoints = (attended) => {
+    async.eachSeries(attended, (email, callback) => {
+      axios.get("/api/member/profile", {
+        params: {
+          email: email
+        }
+      }).then((res) => {
+        var toAttend = res.data.toAttend;
+        var index;
+        for (var i = 0; i < toAttend.length; i++) {
+          if (toAttend[i].eventId === this.state.currentEvent._id) {
+            index = i;
+            break;
+          }
+        }
+        var points = res.data.points + toAttend[index].eventPoints;
+        toAttend.splice(index, 1);
+        axios.post("/api/member/updateMember", {
+          id: res.data._id,
+          update: {
+            toAttend: toAttend,
+            points: points,
+          }
+        });
+      }).then(() => callback(null));
+    }, (err) => {
+      if (err) throw err;
+      else this._deleteEvent();
+    });
+  }
+
+  /*_updatePoints = (profile) => {
+    const points = profile.points + this.state.currentEvent.points;
+    axios.post("/api/member/updateMember", {
+      id: profile._id,
+      update: {
+        points: points
+      }
+    });
+  }*/
 
   _onDeleteEvent = () => {
     const confirmed = window.confirm("Are you sure you would like to permanently delete this event? (No points will be added to users)");
@@ -160,12 +188,8 @@ class EventInfoPage extends Component {
       if (err) throw err;
       else this._deleteEvent();
     });
-    
   }
 
-  /*****
-   * TODO: THIS MUST REMOVE THE EVENT FROM THE USERS SHCEMAS WHEN IT DELETES
-  *****/
   _deleteEvent = () => {
     axios.delete("/api/event/deleteEvent", {
       data: {
@@ -267,6 +291,7 @@ class EventInfoPage extends Component {
             {this.state.currentEvent.location !== "" ? <p><b>Location: </b>{this.state.currentEvent.location}</p> : null}
             {date.getDate() ? <p><b>Date: </b>{months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</p> : null}
             {date.getDate() ? <p><b>Time: </b>{date.getHours()}:{date.getMinutes() < 10 ? '0'+date.getMinutes() : date.getMinutes()}</p> : null}
+            {this.state.currentEvent.description !== "" ? <p><b>Description: </b>{this.state.currentEvent.description}</p> : null}
             {signupMsg}
           </div>
           {attendeeList}
