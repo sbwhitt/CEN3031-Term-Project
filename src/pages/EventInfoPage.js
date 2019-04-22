@@ -5,6 +5,7 @@ import axios from 'axios';
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 class EventInfoPage extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -24,8 +25,44 @@ class EventInfoPage extends Component {
       params: {
         _id: target,
       }
+
     }).then((res) => {
       if (res.data) this.setState({ currentEvent: res.data });
+    });
+  }
+  _onSignUp = () => {
+    this.state.currentEvent.attended.push(this.props.currentUser.email);
+    this._updateAttended();
+    this._getProfile();
+    window.location.reload();
+  }
+
+  _updateAttended = () => {
+    axios.post("/api/event/updateEvent", {
+      id: this.state.currentEvent._id,
+      update: {
+        attended: this.state.currentEvent.attended
+      }
+    });
+  }
+
+  _getProfile = () => {
+    axios.get("/api/member/profile", {
+      params: {
+        email: this.props.currentUser.email
+      }
+    }).then((res) => {
+      this._updatePoints(res.data);
+    });
+  }
+
+  _updatePoints = (profile) => {
+    const points = profile.points + this.state.currentEvent.points;
+    axios.post("/api/member/updateMember", {
+      id: profile._id,
+      update: {
+        points: points
+      }
     });
   }
 
@@ -42,12 +79,20 @@ class EventInfoPage extends Component {
         <div style={{marginLeft: "5%"}}><EditEventForm isFormOpen={this.state.isFormOpen} currentEvent={this.state.currentEvent}/></div>
       </div> : null;
     
+    const signupButton = this.state.currentEvent.attended?
+    (this.state.currentEvent.attended.includes(this.props.currentUser.email) ?
+     null:<button className="manage-btn" onClick={this._onSignUp}> Sign up</button>) 
+    : null;
+    
     return (
       <div className="page-wrapper">
         <div className="page-content">
           <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", marginLeft: "5%"}}>
             <h1>{this.state.currentEvent.name}</h1>
+            <div style={{display:"flex", flexDirection: "column",marginRight: "5%"}}>
             {editButton}
+            {this.props.currentUser.email ? signupButton:null}
+            </div>
           </div>
           {editForm}
           <hr className="page-divider"/>
@@ -55,6 +100,7 @@ class EventInfoPage extends Component {
             {this.state.currentEvent.location !== "" ? <p><b>Location: </b>{this.state.currentEvent.location}</p> : null}
             {date.getDate() ? <p><b>Date: </b>{months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</p> : null}
             {date.getDate() ? <p><b>Time: </b>{date.getHours()}:{date.getMinutes() < 10 ? '0'+date.getMinutes() : date.getMinutes()}</p> : null}
+            {this.state.currentEvent.attended?(this.state.currentEvent.attended.includes(this.props.currentUser.email) ? "You are signed up!":null):null}
           </div>
         </div>
       </div>

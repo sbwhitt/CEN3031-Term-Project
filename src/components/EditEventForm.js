@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class EventForm extends Component {
+class EditEventForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -105,4 +105,4 @@ class EventForm extends Component {
   }
 }
 
-export default EventForm;
+export default EditEventForm;

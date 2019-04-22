@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 const year = new Date().getFullYear();
 class NewMemberForm extends Component {
 	constructor(props) {
@@ -34,7 +35,8 @@ class NewMemberForm extends Component {
         var minorArray = this.state.minors.split(',');
         var officeStart = this.state.officeTimeStart;
         var officeEnd = this.state.officeTimeEnd;
-        var birthdayFormatted;
+        var officehour;
+        var birthdayFormatted = this.state.birthday;
         if (this.state.officeTimeStart.substring(0,2) > 12) {
             officeEnd = this.state.officeTimeStart.substring(0,2)-12 + this.state.officeTimeStart.substring(2);
         }
@@ -49,7 +51,15 @@ class NewMemberForm extends Component {
             officeEnd = this.state.officeTimeEnd.substring(1);
         }
 
-        birthdayFormatted = this.state.birthday.substring(5,7) + "/"+ this.state.birthday.substring(8)
+        if (this.state.officeDate == "" || this.state.officeStart == "" || this.state.officeEnd == "") {
+            officehour = "N/A";
+        }
+        else {
+        officehour = this.state.officeDate+" "+officeStart+" - "+officeEnd
+        }
+
+        if (this.state.birthday !== "")
+            birthdayFormatted = this.state.birthday.substring(5,7) + "/"+ this.state.birthday.substring(8)
         if (birthdayFormatted.substring(0,1) == 0) {
             birthdayFormatted = birthdayFormatted.substring(1);
         }
@@ -63,7 +73,7 @@ class NewMemberForm extends Component {
             majors: majorArray,
             minors: minorArray,
             email: this.state.email,
-            officeHours: this.state.officeDate+" "+officeStart+" - "+officeEnd,
+            officeHours: officehour,
             firstLast: this.state.firstName+this.state.lastName,
             isAdmin: false,
             isExecutive: false,
@@ -92,9 +102,6 @@ class NewMemberForm extends Component {
 		this.state.lastName !== "" &&
 		this.state.programs !== "" &&
 		this.state.email !== "" &&
-		this.state.officeDate !== "" &&
-        this.state.officeTimeStart !== "" &&
-        this.state.officeTimeEnd !== "" &&
         this.state.majors !== "" &&
         this.state.country !== "" &&
         this.state.inductionSeason !== "" &&
@@ -124,7 +131,7 @@ class NewMemberForm extends Component {
                     Office Hours:
                     <br/>
                     <label htmlFor="officeDate">Select Day: </label>
-                    <select name=" officeDate" required onChange={(e) => this.setState({officeDate: e.target.value})}>
+                    <select name=" officeDate" onChange={(e) => this.setState({officeDate: e.target.value})}>
                         <option value="" selected>Select Office Hour Date</option>
 						<option value="Monday">Monday</option>
 						<option value="Tuesday">Tuesday</option>
@@ -133,9 +140,9 @@ class NewMemberForm extends Component {
 						<option value="Friday">Friday</option>
 					</select>
                     <label htmlFor="officeTimeStart">Start Time: </label>
-					<input type="time" id="officeTimeStart" required onChange={(e) => this.setState({officeTimeStart: e.target.value})}/>
+					<input type="time" id="officeTimeStart" onChange={(e) => this.setState({officeTimeStart: e.target.value})}/>
                     <label htmlFor="officeTimeEnd">End Time: </label>
-					<input type="time" id="officeTimeEnd" required onChange={(e) => this.setState({officeTimeEnd: e.target.value})}/>
+					<input type="time" id="officeTimeEnd" onChange={(e) => this.setState({officeTimeEnd: e.target.value})}/>
                     <br/>
 
 					<label htmlFor="majors">Majors: </label>
