@@ -27,51 +27,14 @@ exports.read = function (req, res) {
 
 /* Update a member */
 exports.update = function (req, res) {
-  var member = req.member;
-
-  Member.findOneAndUpdate({
-    _id: member._id
-  }, {
-    "firstName": req.body.firstName,
-    "lastName": req.body.lastName,
-    "firstLast": member.firstLast,
-    "isActive": member.isActive,
-    "phoneNumber": req.body.phoneNumber,
-    "isExecutive": member.isExecutive,
-    "email": req.body.email,
-    "programs": req.body.programs,
-    "country": req.body.country,
-    "graduationSemester": req.body.graduationSemester,
-    "yearsLeft": req.body.yearsLeft,
-    "inducted": req.body.inducted,
-    "birthday": req.body.birthday,
-    "majors": req.body.majors,
-    "minors": req.body.minors,
-    "questions": req.body.questions,
-    "image": req.body.image,
-    "officeHours": req.body.officeHours,
-    "isAdmin": member.isAdmin,
-    "isExecutive": member.isExecutive,
-    "eventAttendedbyID": member.eventAttendedbyID,
-    "points": member.points
-  }, (function (err, res) {
+  Member.findOneAndUpdate({_id: req.body.id}, req.body.update, function (err, res) {
     if (err) {
       console.log("error incoming!");
       res.stats(404).send(err);
       throw err;
     }
     console.log("Member updated");
-  }))
-
-  member.save(function (err) {
-    if (err) {
-      console.log(err);
-      res.status(400).send(err);
-    } else {
-      res.json(member);
-    }
   });
-
 };
 
 // Delete a member

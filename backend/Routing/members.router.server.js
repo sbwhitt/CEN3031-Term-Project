@@ -12,6 +12,9 @@ router.route("/getMembers/sorted")
 router.route("/profile")
   .get(memberController.getMember);
 
+router.route("/updateMember")
+  .post(memberController.update);
+
 router.route("/:idMember")
   .get(memberController.read)
   .delete(memberController.delete)
