@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import ProfileEditForm from '../components/ProfileEditForm.js';
 import axios from 'axios';
 
 const QuestionItem = (props) => {
   return (
     <div>
-        <h2 className="page-text">{props.question}</h2>
-        <p className="page-text">{props.answer}</p>
+      <h2 className="page-text">{props.question}</h2>
+      <p className="page-text">{props.answer}</p>
     </div>
   );
 }
@@ -14,8 +15,19 @@ const QuestionItem = (props) => {
 const InfoItem = (props) => {
   return (
     <div>
-        <p className="data-block"><b>{props.data}</b>{props.item}</p>
+      <p className="data-block"><b>{props.data}</b>{props.item}</p>
     </div>
+  );
+}
+
+const AttendItem = (props) => {
+  return (
+    <Link to={{pathname: "/event/" + props.id}} className="event-container">
+      <div className="event-text">
+        <h3>Event</h3>
+        <p>desc</p>
+      </div>
+    </Link>
   );
 }
 
@@ -44,6 +56,16 @@ class ProfilePage extends Component {
     }).then((res) => {
       if (res.data) this.setState({currentMember: res.data});
     });
+  }
+
+  _renderAttend = (props) => {
+    return (
+      <div style={{marginTop: "2em"}} className="grid-container">
+        {this.state.currentMember.toAttend ? this.state.currentMember.toAttend.map((item, index) => (
+          <AttendItem id={item.eventId} key={index}/>
+        )) : null}
+      </div>
+    );
   }
 
   render() {
@@ -85,6 +107,9 @@ class ProfilePage extends Component {
           </div> :
           null
           }
+          <h1 className="page-text">Your Events</h1>
+          <hr className="page-divider"/>
+          {this._renderAttend(this.state.currentMember.toAttend)}
         </div>
       </div>
     );

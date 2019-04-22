@@ -7,7 +7,7 @@ const config = require('../Config/config.js');
 //connects our back end code with the database
 mongoose.connect(config.db.uri);
 
-fs.readFile('../Datastore/MemberData.json', 'utf8', function(err, data) {
+/*fs.readFile('../Datastore/MemberData.json', 'utf8', function(err, data) {
   if (err) console.log(err);
   var members = JSON.parse(data);
   for (let i = 0; i < members.length; i++) {
@@ -17,9 +17,9 @@ fs.readFile('../Datastore/MemberData.json', 'utf8', function(err, data) {
     });
   }
   console.log('finished');
-});
+});*/
 
-/*fs.readFile('../Datastore/EventData.json', 'utf8', function(err, data) {
+fs.readFile('../Datastore/EventData.json', 'utf8', function(err, data) {
   if (err) console.log(err);
   var events = JSON.parse(data);
   for (let i = 0; i < events.length; i++) {
@@ -29,4 +29,4 @@ fs.readFile('../Datastore/MemberData.json', 'utf8', function(err, data) {
     });
   }
   console.log('finished');
-});*/
+});

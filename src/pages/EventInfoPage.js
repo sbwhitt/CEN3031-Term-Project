@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import EditEventForm from '../components/EditEventForm.js';
+import async from 'async';
 import axios from 'axios';
+import { callbackify } from 'util';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -125,18 +127,52 @@ class EventInfoPage extends Component {
     }
   }
 
+  _onDeleteEvent = () => {
+    const confirmed = window.confirm("Are you sure you would like to permanently delete this event? (No points will be added to users)");
+    if (confirmed) {
+      this._removeFromAttended(this.state.currentEvent.attended);
+    }
+  }
+
+  _removeFromAttended = (attended) => {
+    async.eachSeries(attended, (email, callback) => {
+      axios.get("/api/member/profile", {
+        params: {
+          email: email
+        }
+      }).then((res) => {
+        var toAttend = res.data.toAttend;
+        var index;
+        for (var i = 0; i < toAttend.length; i++) {
+          if (toAttend[i].eventId === this.state.currentEvent._id) {
+            index = i;
+            break;
+          }
+        }
+        toAttend.splice(index, 1);
+        axios.post("/api/member/updateMember", {
+          id: res.data._id,
+          update: {
+            toAttend: toAttend
+          }
+        });
+      }).then(() => callback(null));
+    }, (err) => {
+      if (err) throw err;
+      else this._deleteEvent();
+    });
+    
+  }
+
   /*****
    * TODO: THIS MUST REMOVE THE EVENT FROM THE USERS SHCEMAS WHEN IT DELETES
   *****/
   _deleteEvent = () => {
-    const confirmed = window.confirm("Are you sure you would like to permanently delete this event? (No points will be added to users)");
-    if (confirmed) {
-      axios.delete("/api/event/deleteEvent", {
-        data: {
-          _id: this.state.currentEvent._id,
-        }
-      }).then(() => window.location.replace("/events"));
-    }
+    axios.delete("/api/event/deleteEvent", {
+      data: {
+        _id: this.state.currentEvent._id,
+      }
+    }).then(() => window.location.replace("/events"));
   }
 
   render() {
@@ -171,7 +207,7 @@ class EventInfoPage extends Component {
     const eventManagement = this.props.currentUser.isAdmin ? 
       <div className="event-btn-container">
         <button className="manage-btn" onClick={this._markEventCompleted}>Mark Completed</button>
-        <button className="manage-btn" onClick={this._deleteEvent}>
+        <button className="manage-btn" onClick={this._onDeleteEvent}>
           Delete Event</button>
       </div> : null;
     
