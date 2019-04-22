@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import ProfileEditForm from '../components/ProfileEditForm.js';
+import async from 'async';
 import axios from 'axios';
+
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 const QuestionItem = (props) => {
   return (
     <div>
-        <h2 className="page-text">{props.question}</h2>
-        <p className="page-text">{props.answer}</p>
+      <h2 className="page-text">{props.question}</h2>
+      <p className="page-text">{props.answer}</p>
     </div>
   );
 }
@@ -14,8 +18,20 @@ const QuestionItem = (props) => {
 const InfoItem = (props) => {
   return (
     <div>
-        <p className="data-block"><b>{props.data}</b>{props.item}</p>
+      <p className="data-block"><b>{props.data}</b>{props.item}</p>
     </div>
+  );
+}
+
+const AttendItem = (props) => {
+  var date = new Date(props.date);
+  return (
+    <Link to={{pathname: "/event/" + props.id}} className="event-container">
+      <div className="event-text">
+        <h3>{props.name}</h3>
+        <p>{months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</p>
+      </div>
+    </Link>
   );
 }
 
@@ -24,7 +40,8 @@ class ProfilePage extends Component {
     super(props);
     this.state = {
       currentMember: {},
-      isFormOpen:false
+      isFormOpen:false,
+      eventsToAttend: [],
     }
   }
 
@@ -42,19 +59,36 @@ class ProfilePage extends Component {
         firstLast: target,
       }
     }).then((res) => {
-      if (res.data) this.setState({currentMember: res.data});
+      if (res.data) this.setState({currentMember: res.data}, () => this._getEventsToAttend());
     });
   }
-  _deleteMember = () => {
-    const confirmed = window.confirm("Are you sure you would like to permanently delete this Member?");
-    if (confirmed) {
-      axios.delete("/api/event/deleteMember", {
-        data: {
-          _id: this.state.currentEvent._id,
+
+  _getEventsToAttend = () => {
+    var eventsToAttend = [];
+    async.eachSeries(this.state.currentMember.toAttend, (event, callback) => {
+      axios.get("/api/event/getEvent/", {
+        params: {
+          _id: event.eventId,
         }
-      }).then(() => window.location.replace("/members"));
-    }
+      }).then((res) => {
+        eventsToAttend.push(res.data)
+      }).then(() => callback(null));
+    }, (err) => {
+      if (err) throw err;
+      else this.setState({eventsToAttend: eventsToAttend});
+    });
   }
+
+  _renderAttend = (props) => {
+    return (
+      <div style={{marginTop: "2em"}} className="grid-container">
+        {this.state.eventsToAttend ? this.state.eventsToAttend.map((item, index) => (
+          <AttendItem id={item._id} name={item.name} date={item.date} key={index}/>
+        )) : null}
+      </div>
+    );
+  }
+
   render() {
     const editButton = this.props.currentUser.isAdmin ? 
       <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginLeft: "5%"}}
@@ -65,6 +99,22 @@ class ProfilePage extends Component {
         <hr className="page-divider"/>
         <div style={{marginLeft: "5%"}}><ProfileEditForm isFormOpen={this.state.isFormOpen} currentMember={this.state.currentMember}/></div>
       </div> : null;
+
+    const eventsToAttend = this.props.currentUser.isAdmin ? 
+      <div>
+        <h1 className="page-text">Events To Attend</h1>
+        <hr className="page-divider"/>
+        {this.state.currentMember.toAttend && this.state.currentMember.toAttend.length !== 0 
+          ? this._renderAttend(this.state.currentMember.toAttend) : <b style={{marginLeft: "5%"}}>No events to attend.</b>}
+      </div> : null;
+
+    const yourEvents = this.props.currentUser.email === this.state.currentMember.email ?
+      <div>
+        <h1 className="page-text">Your Events</h1>
+        <hr className="page-divider"/>
+        {this.state.currentMember.toAttend && this.state.currentMember.toAttend.length !== 0 
+          ? this._renderAttend(this.state.currentMember.toAttend) : <b style={{marginLeft: "5%"}}>No events to attend.</b>}
+      </div> : eventsToAttend;
     
     return (
       <div className="page-wrapper">
@@ -94,6 +144,7 @@ class ProfilePage extends Component {
           </div> :
           null
           }
+          {yourEvents}
         </div>
       </div>
     );
