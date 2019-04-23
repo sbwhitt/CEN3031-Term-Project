@@ -37,18 +37,14 @@ exports.update = function (req, res) {
 
 // Delete a member
 exports.delete = function (req, res) {
-  let member = req.member;
-
-  member.remove(function (err) {
+  Member.findOneAndDelete(req.body, function (err) {
     if (err) {
       console.log(err);
       res.status(404).send(err);
       throw err;
     }
-
-    console.log("Member successfully removed");
     res.end();
-  })
+  });
 };
 
 /* Retrieve all the members, sorted alphabetically by firstName */

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import ProfileEditForm from '../components/ProfileEditForm.js';
+import QuestionForm from '../components/QuestionForm.js';
 import async from 'async';
 import axios from 'axios';
 
@@ -40,7 +41,8 @@ class ProfilePage extends Component {
     super(props);
     this.state = {
       currentMember: {},
-      isFormOpen:false,
+      isEditFormOpen:false,
+      isQuestionFormOpen:false,
       eventsToAttend: [],
     }
   }
@@ -88,17 +90,37 @@ class ProfilePage extends Component {
       </div>
     );
   }
+  _deleteMember = () => {
+    const confirmed = window.confirm("Are you sure you would like to permanently delete this member?");
+    if (confirmed) {
+      axios.delete("/api/event/deleteMember", {
+        data: {
+          _id: this.state.currentMember._id,
+        }
+      }).then(() => window.location.replace("/members"));
+    }
+  }
 
   render() {
     const editButton = this.props.currentUser.isAdmin ? 
       <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginLeft: "5%"}}
-        onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Edit Profile</button> : null;
+        onClick={() => this.setState({isEditFormOpen: !this.state.isEditFormOpen})}>Edit Profile</button> : null;
 
     const editForm = this.props.currentUser.isAdmin ?
-      <div style={this.state.isFormOpen ? {} : {display: "none"}}>
+      <div style={this.state.isEditFormOpen ? {} : {display: "none"}}>
         <hr className="page-divider"/>
-        <div style={{marginLeft: "5%"}}><ProfileEditForm isFormOpen={this.state.isFormOpen} currentMember={this.state.currentMember}/></div>
+        <div style={{marginLeft: "5%"}}><ProfileEditForm isFormOpen={this.state.isEditFormOpen} currentMember={this.state.currentMember}/></div>
       </div> : null;
+
+    const questionButton = this.props.currentUser.isAdmin ? 
+    <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginLeft: "5%"}}
+      onClick={() => this.setState({isQuestionFormOpen: !this.state.isQuestionFormOpen})}>Edit Answers</button> : null;
+
+    const questionForm = this.props.currentUser.isAdmin ?
+    <div style={this.state.isQuestionFormOpen ? {} : {display: "none"}}>
+      <hr className="page-divider"/>
+      <div style={{marginLeft: "5%"}}><QuestionForm isFormOpen={this.state.isQuestionFormOpen} currentMember={this.state.currentMember}/></div>
+    </div> : null;
 
     const eventsToAttend = this.props.currentUser.isAdmin ? 
       <div>
@@ -115,6 +137,13 @@ class ProfilePage extends Component {
         {this.state.currentMember.toAttend && this.state.currentMember.toAttend.length !== 0 
           ? this._renderAttend(this.state.currentMember.toAttend) : <b style={{marginLeft: "5%"}}>No events to attend.</b>}
       </div> : eventsToAttend;
+
+    const deleteMember = this.props.currentUser.isAdmin ? 
+      <div className="event-btn-container">
+        <button className="manage-btn" onClick={this._deleteMember}>
+          Delete Member
+        </button>
+        </div> : null;
     
     return (
       <div className="page-wrapper">
@@ -131,7 +160,7 @@ class ProfilePage extends Component {
           <div style={{display:"flex", flexDirection: "column",marginRight: "5%"}}>
             {editButton}
           </div>
-          {editForm}
+            {editForm}
           <h1 className="page-text">Questions</h1>
           <hr className="page-divider"/>
           { this.state.currentMember.questions !== undefined ?
@@ -144,7 +173,12 @@ class ProfilePage extends Component {
           </div> :
           null
           }
+          <div style={{display:"flex", flexDirection: "column",marginRight: "5%"}}>
+            {questionButton}
+          </div>
+            {questionForm}
           {yourEvents}
+          {deleteMember}
         </div>
       </div>
     );
