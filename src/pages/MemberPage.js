@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import NewMemberForm from '../components/NewMemberForm.js';
 import axios from 'axios';
 
-const port = process.env.PORT;
-
 const MemberItem = (props) => {
   const url = "/profile/" + props.item.firstLast;
   const majors = props.item.majors.join(", ");
@@ -96,24 +94,28 @@ class MemberPage extends Component {
   }
 
   render() {
-    const createButton = this.state.currentUser.isAdmin ? 
-    <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginRight: "5%"}}
-      onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Create New Member</button> : null;
+    const manageButtons = this.state.currentUser.isAdmin ? 
+      <div style={{display: "flex", flexDirection: "column", marginRight: "5%"}}>
+        <button className="manage-btn" style={{height: "3em", marginTop: "1.25em"}}
+          onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Create New Member</button>
+        <button className="manage-btn" style={{height: "2.5em", marginTop: "0.5em"}}
+          onClick={() => window.location.replace("/alumni")}>View Alumni</button>
+      </div> : null;
 
     const createForm = this.state.currentUser.isAdmin ?
-    <div style={this.state.isFormOpen ? {} : {display: "none"}}>
-      <hr className="page-divider"/>
-      <div style={{marginLeft: "5%"}}>
-        <NewMemberForm isFormOpen={this.state.isFormOpen}/>
-      </div>
-    </div> : null;
+      <div style={this.state.isFormOpen ? {} : {display: "none"}}>
+        <hr className="page-divider"/>
+        <div style={{marginLeft: "5%"}}>
+          <NewMemberForm isFormOpen={this.state.isFormOpen}/>
+        </div>
+      </div> : null;
 
     return (
       <div className="page-wrapper">
         <div className="page-content">
         <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
             <h1 className="page-text">Members</h1>
-            {createButton}
+            {manageButtons}
           </div>
           {createForm}
           <hr className="page-divider"/>

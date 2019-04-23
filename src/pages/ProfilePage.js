@@ -136,7 +136,11 @@ class ProfilePage extends Component {
       data: {
         email: email
       }
-    }).then(() => {
+    })
+    .then(() => {
+      axios.post("/api/alumni/createAlumni", this.state.currentMember);
+    })
+    .then(() => {
       axios.delete("/api/auth/deleteUser", {
         data: {
           email: email

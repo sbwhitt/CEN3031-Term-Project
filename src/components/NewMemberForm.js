@@ -34,7 +34,7 @@ class NewMemberForm extends Component {
   }
 
   _checkEmail = () => {
-    axios.get("/api/auth/user", {
+    axios.get("/api/member/profile", {
       params: {
         email: this.state.email,
       }
@@ -102,7 +102,7 @@ class NewMemberForm extends Component {
       questions: this.state.questions,
       country: this.state.country,
       image: this.state.image,
-    }).then(() => this._createUser()).then(() => window.location.reload());
+    }).then(() => this._createUser());
   }
 
   _createUser = () => {
@@ -115,7 +115,7 @@ class NewMemberForm extends Component {
           password: hash,
           isAdmin: this.state.isAdmin,
           isExecutive: this.state.isExecutive,
-        });
+        }).then(() => window.location.reload());
       });
     });
   }
