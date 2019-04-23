@@ -62,9 +62,9 @@ class HeaderBar extends Component {
 
   //changes which hlink is underlined
   //kinda broken, need to switch based on url instead
-  selectHLink = name => {
+  /*selectHLink = name => {
     this.setState({selected: name});
-  }
+  }*/
 
   render() {
     const headerRight = this.state.currentUser.email ?
@@ -75,11 +75,11 @@ class HeaderBar extends Component {
       <div className="header-bar">
         <div style={{display: "flex", flexDirection: "row"}}>
           <Logo onClick={this.selectHLink}/>
-          <HLink onClick={this.selectHLink} selected={this.state.selected} name="Home" link="/"/>
-          <HLink onClick={this.selectHLink} selected={this.state.selected} name="Members" link="/members"/>
-          <HLink onClick={this.selectHLink} selected={this.state.selected} name="Events" link="/events"/>
-          <HLink onClick={this.selectHLink} selected={this.state.selected} name="About" link="/about"/>
-          {/*<HLink onClick={this.selectHLink} selected={this.state.selected} name="Management" link="/management"/>*/}
+          <HLink onClick={this.selectHLink} name="Home" link="/"/>
+          <HLink onClick={this.selectHLink} name="Members" link="/members"/>
+          <HLink onClick={this.selectHLink} name="Events" link="/events"/>
+          <HLink onClick={this.selectHLink} name="About" link="/about"/>
+          {/*<HLink onClick={this.selectHLink}  name="Management" link="/management"/>*/}
         </div>
         {headerRight}
       </div>
