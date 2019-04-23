@@ -35,6 +35,7 @@ class LoginWindow extends Component {
   //uses bcrypt to compare hashed password from passed in user object with the password entered into the login form
   _validateUser = (user) => {
     this.setState({ currentUser: user }, () => {
+      console.log(this.state.currentUser);
       bcrypt.compare(this.state.passwordInput, this.state.currentUser.password).then(match => {
         if (match) {
           //password is correct, jwt payload created and sent to _loginUser
