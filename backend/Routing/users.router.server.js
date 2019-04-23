@@ -3,9 +3,6 @@ const express = require("express");
 
 const router = express.Router();
 
-router.route("/register")
-  .post(userController.register);
-
 router.route("/user")
   .get(userController.findUser);
 
@@ -14,5 +11,11 @@ router.route("/login")
 
 router.route("/decode")
   .post(userController.decode);
+
+router.route("/createUser")
+  .post(userController.create);
+
+router.route("/deleteUser")
+  .delete(userController.delete);
 
 module.exports = router;

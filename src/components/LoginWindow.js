@@ -58,7 +58,7 @@ class LoginWindow extends Component {
       .then((res) => {
         //on successful token creation, removes current token then adds the new one
         const {token} = res.data;
-        localStorage.removeItem("jwt");
+        if (localStorage.jwt) localStorage.removeItem("jwt");
         localStorage.setItem("jwt", token);
       });
     //reload window now that user is fully logged in

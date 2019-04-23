@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import bcrypt from 'bcryptjs';
 import axios from 'axios';
 
 const year = new Date().getFullYear();
@@ -26,6 +27,9 @@ class NewMemberForm extends Component {
       firstLast: "",
       questions: ["", "", "", "", ""],
       image: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+      password: "",
+      isAdmin: false,
+      isExecutive: false,
     }
   }
 
@@ -77,7 +81,7 @@ class NewMemberForm extends Component {
       firstLast: this.state.firstName + this.state.lastName,
       isAdmin: false,
       isExecutive: false,
-      eventAttendedbyID: [],
+      toAttend: [],
       isActive: true,
       points: 0,
       inducted: this.state.inductionSeason + this.state.inductionYear.substring(2),
@@ -87,8 +91,24 @@ class NewMemberForm extends Component {
       questions: this.state.questions,
       country: this.state.country,
       image: this.state.image,
+    }).then(() => this._createUser()).then(() => window.location.reload());
+  }
+
+  _createUser = () => {
+    bcrypt.genSalt(10, (err, salt) => {
+      if (err) throw err;
+      bcrypt.hash(this.state.password, salt, (err, hash) => {
+        if (err) throw err;
+        axios.post("/api/auth/createUser", {
+          email: this.state.email,
+          password: hash,
+          isAdmin: this.state.isAdmin,
+          isExecutive: this.state.isExecutive,
+        });
+      });
     });
   }
+
   yearDropdown = () => {
     return (
       Array.from(new Array(5), (v, i) =>
@@ -112,6 +132,7 @@ class NewMemberForm extends Component {
       bool
     );
   }
+
   render() {
     return (
       <div style={this.props.isFormOpen ? {} : { display: "none" }} className="event-modal">
@@ -120,16 +141,30 @@ class NewMemberForm extends Component {
           <input type="text" id="firstName" required onChange={(e) => this.setState({ firstName: e.target.value })} />
           <label htmlFor="lastName"> Last Name: </label >
           <input type="text" id="lastName" required onChange={(e) => this.setState({ lastName: e.target.value })} />
-          <br />
-
-          <label htmlFor="programs">Programs: </label>
-          <input type="text" id="programs" required onChange={(e) => this.setState({ programs: e.target.value })} />
+          <br/>
           <label htmlFor="email">Email: </label>
           <input type="text" id="email" required onChange={(e) => this.setState({ email: e.target.value })} />
+          <label htmlFor="password">Password: </label>
+          <input value={this.state.password} type="text" id="password" required onChange={(e) => this.setState({ password: e.target.value })} />
           <br />
 
+          <label htmlFor="admin">Admin Status: </label>
+          <select name="admin" onChange={(e) => this.setState({isAdmin: e.target.value}, () => console.log(this.state))}>
+            <option value="" selected>Select User Admin Status</option>
+            <option value={true}>True</option>
+            <option value={false}>False</option>
+          </select>
+          <br/>
+          <label htmlFor="executive">Executive Status: </label>
+          <select name="executive" onChange={(e) => this.setState({isExecutive: e.target.value})}>
+            <option value="" selected>Select User Executive Status</option>
+            <option value={true}>True</option>
+            <option value={false}>False</option>
+          </select>
+          <br/>
+
           Office Hours:
-                    <br />
+          <br />
           <label htmlFor="officeDate">Select Day: </label>
           <select name=" officeDate" onChange={(e) => this.setState({ officeDate: e.target.value })}>
             <option value="" selected>Select Office Hour Date</option>
@@ -151,6 +186,8 @@ class NewMemberForm extends Component {
           <input type="text" id="minors" placeholder="separate minors with ," onChange={(e) => this.setState({ minors: e.target.value })} />
           <br />
 
+          <label htmlFor="programs">Programs: </label>
+          <input type="text" id="programs" required onChange={(e) => this.setState({ programs: e.target.value })} />
           <label htmlFor="country">Countries: </label>
           <input type="text" id="country" required onChange={(e) => this.setState({ country: e.target.value })} />
           <br />
@@ -178,11 +215,11 @@ class NewMemberForm extends Component {
           <label htmlFor="birthday">Birthday: </label>
           <input type="date" id="birthday" onChange={(e) => this.setState({ birthday: e.target.value })} />
           <br />
-          <label htmlFor="image">image link: </label>
+          <label htmlFor="image">Image Link: </label>
           <input type="text" id="image" onChange={(e) => this.setState({ image: e.target.value })} />
           <br />
-          <button onClick={this._isFormFilled() ? this._createMember : null} className="manage-btn">Create New Member</button>
         </form>
+        <button onClick={this._isFormFilled() ? () => {this._createMember()} : null} className="manage-btn">Create New Member</button>
       </div>
     );
   }

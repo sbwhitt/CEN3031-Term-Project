@@ -21,6 +21,9 @@ router.route("/updateMember")
 router.route("/createMember")
   .post(memberController.create);
 
+router.route("/deleteMember")
+  .delete(memberController.delete);
+
 /*router.route("/:idMember")
   .get(memberController.read)
   .delete(memberController.delete)

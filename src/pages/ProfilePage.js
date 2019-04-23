@@ -89,6 +89,54 @@ class ProfilePage extends Component {
     );
   }
 
+  _onDeleteProfile = () => {
+    const confirm = window.confirm("Are you sure you would like to permanently delete this profile?");
+    if (confirm) {
+      this._removeFromEvents(this.state.eventsToAttend, this.state.currentMember.email);
+    }
+  }
+
+  _removeFromEvents = (events, email) => {
+    async.eachSeries(events, (event, callback) => {
+      var attended = event.attended
+      for (let i = 0; i < attended.length; i++) {
+        if (attended[i] === email) {
+          attended.splice(i, 1);
+          break;
+        }
+      }
+      axios.post("/api/event/updateEvent", {
+        id: event._id,
+        update: {
+          attended: attended,
+        }
+      });
+      callback(null);
+    }, (err) => {
+      if (err) throw err;
+      this._deleteProfileAndUser(email);
+    });
+  }
+
+  _deleteProfileAndUser = email => {
+    axios.delete("/api/member/deleteMember", {
+      data: {
+        email: email
+      }
+    }).then(() => {
+      axios.delete("/api/auth/deleteUser", {
+        data: {
+          email: email
+        }
+      }).then(() => {
+        if (this.props.currentUser.email === this.state.currentMember.email) {
+          localStorage.removeItem('jwt');
+        }
+        window.location.replace("/members");
+      });
+    });
+  }
+
   render() {
     const editButton = this.props.currentUser.isAdmin ? 
       <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginLeft: "5%"}}
@@ -115,6 +163,11 @@ class ProfilePage extends Component {
         {this.state.currentMember.toAttend && this.state.currentMember.toAttend.length !== 0 
           ? this._renderAttend(this.state.currentMember.toAttend) : <b style={{marginLeft: "5%"}}>No events to attend.</b>}
       </div> : eventsToAttend;
+
+    const manageButtons = this.props.currentUser.isAdmin ? 
+          <div style={{marginTop: "2em", marginLeft: "5%"}}>
+            <button className="manage-btn" onClick={this._onDeleteProfile}>Delete Profile</button>
+          </div> : null;
     
     return (
       <div className="page-wrapper">
@@ -146,6 +199,7 @@ class ProfilePage extends Component {
           null
           }
           {yourEvents}
+          {manageButtons}
         </div>
       </div>
     );

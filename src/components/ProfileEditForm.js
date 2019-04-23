@@ -10,7 +10,6 @@ class ProfileEditForm extends Component {
       firstName: "",
       lastName: "",
       programs: "",
-      email: "",
       officeDate: "",
       officeTimeStart: "",
       officeTimeEnd: "",
@@ -24,6 +23,7 @@ class ProfileEditForm extends Component {
       birthday: "",
       firstLast: "",
       image: "",
+      password: "",
     }
   }
 
@@ -56,7 +56,6 @@ class ProfileEditForm extends Component {
         firstName: props.currentMember.firstName,
         lastName: props.currentMember.lastName,
         programs: props.currentMember.programs,
-        email: props.currentMember.email,
         officeDate: odate,
         officeTimeStart: ostart,
         officeTimeEnd: oend,
@@ -117,7 +116,6 @@ class ProfileEditForm extends Component {
         programs: this.state.programs,
         majors: majorArray,
         minors: minorArray,
-        email: this.state.email,
         officeHours: officehour,
         firstLast: this.state.firstName + this.state.lastName,
         inducted: this.state.inductionSeason + this.state.inductionYear.substring(2),
@@ -152,8 +150,6 @@ class ProfileEditForm extends Component {
 
           <label htmlFor="programs">Programs: </label>
           <input value={this.state.programs} type="text" id="programs" required onChange={(e) => this.setState({ programs: e.target.value })} />
-          <label htmlFor="email">Email: </label>
-          <input value={this.state.email} type="text" id="email" required onChange={(e) => this.setState({ email: e.target.value })} />
           <br />
 
           Office Hours:

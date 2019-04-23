@@ -2,15 +2,13 @@ var User = require('../Model/UserSchema.js');
 const jwt = require('jsonwebtoken');
 const config = require('../Config/config.js');
 
-exports.register = function (req, res) {
+exports.create = function (req, res) {
   var newUser = new User(req.body);
-
   newUser.save(function (err) {
     if (err) {
       console.log(err);
       res.status(400).send(err);
     } else {
-      console.log("User successfully created and saved");
       return res.json(newUser);
     }
   });
@@ -49,3 +47,14 @@ exports.decode = function(req, res) {
     });
   }
 }
+
+exports.delete = function (req, res) {
+  User.findOneAndDelete(req.body, function (err) {
+    if (err) {
+      console.log(err);
+      res.status(404).send(err);
+      throw err;
+    }
+    res.end();
+  });
+};
