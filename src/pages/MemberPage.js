@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import NewMemberForm from '../components/NewMemberForm.js';
 import axios from 'axios';
 
-const port = process.env.PORT;
-
 const MemberItem = (props) => {
   const url = "/profile/" + props.item.firstLast;
   const majors = props.item.majors.join(", ");

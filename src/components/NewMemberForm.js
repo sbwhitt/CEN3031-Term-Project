@@ -34,7 +34,7 @@ class NewMemberForm extends Component {
   }
 
   _checkEmail = () => {
-    axios.get("/api/auth/user", {
+    axios.get("/api/member/profile", {
       params: {
         email: this.state.email,
       }

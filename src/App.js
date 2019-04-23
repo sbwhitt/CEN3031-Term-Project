@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import WelcomePage from './pages/WelcomePage.js';
 import MemberPage from './pages/MemberPage.js';
+import AlumniPage from './pages/AlumniPage.js';
 import EventPage from './pages/EventPage.js';
 import ProfilePage from './pages/ProfilePage.js';
 import EventInfoPage from './pages/EventInfoPage.js';
@@ -189,6 +190,7 @@ class App extends Component {
           <div style={{marginTop: "1.5em"}}>
             <Route exact path="/" render={(props) => <WelcomePage {...props} currentUser={this.state.currentUser}/>}/>
             <Route path="/members" render={(props) => <MemberPage {...props} currentUser={this.state.currentUser}/>}/>
+            <Route path="/alumni" render={(props) => <AlumniPage {...props} currentUser={this.state.currentUser}/>}/>
             <Route path="/events" render={(props) => <EventPage {...props} currentUser={this.state.currentUser}/>}/>
             <Route path="/profile" render={(props) => <ProfilePage {...props} currentUser={this.state.currentUser}/>}/>
             <Route path="/event" render={(props) => <EventInfoPage {...props} currentUser={this.state.currentUser}/>}/>
