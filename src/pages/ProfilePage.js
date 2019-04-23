@@ -281,6 +281,7 @@ class ProfilePage extends Component {
     const permissionLevel = this.props.currentUser.isExecutive ?
       <div>
         {this._renderPermission()}
+        <p><b>Access Level</b></p>
         {this.state.permission}
         {this._permissionButton()}
       </div> : null;
@@ -296,7 +297,6 @@ class ProfilePage extends Component {
               <InfoItem data="Email: " item={this.state.currentMember.email}/>
               <InfoItem data="Office Hours: " item={this.state.currentMember.officeHours}/>
               {this.props.currentUser.isExecutive ? <InfoItem data="Points: " item={this.state.currentMember.points}/> : null}
-              <InfoItem data="Access level:" item={permissionLevel}/>
             </div>
           </div>            
           <div style={{display:"flex", flexDirection: "column",marginRight: "5%"}}>
