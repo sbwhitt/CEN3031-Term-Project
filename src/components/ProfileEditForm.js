@@ -140,13 +140,16 @@ class ProfileEditForm extends Component {
   render() {
     return (
       <div style={this.props.isFormOpen ? {} : { display: "none" }} className="event-modal">
-      <button onClick={this._updateProfile}>test</button>
         <form>
           <label htmlFor="firstName">First Name: </label>
           <input value={this.state.firstName} type="text" id="firstName" required onChange={(e) => this.setState({ firstName: e.target.value })} />
           <label htmlFor="lastName"> Last Name: </label >
           <input value={this.state.lastName} type="text" id="lastName" required onChange={(e) => this.setState({ lastName: e.target.value })} />
           <br />
+
+          {/*<label htmlFor="password">Password: </label>
+          <input value={this.state.password} type="text" id="password" required onChange={(e) => this.setState({ password: e.target.value })} />
+          <br />*/}
 
           <label htmlFor="programs">Programs: </label>
           <input value={this.state.programs} type="text" id="programs" required onChange={(e) => this.setState({ programs: e.target.value })} />
