@@ -28,51 +28,52 @@ class ProfileEditForm extends Component {
   }
 
   componentWillReceiveProps(props, state) {
-    var odate = props.currentMember.officeHours.substring(0, props.currentMember.officeHours.indexOf("y") + 1)
-    var ostart = props.currentMember.officeHours.substring(props.currentMember.officeHours.indexOf("y") + 2, props.currentMember.officeHours.indexOf("-") - 1);
-    var oend = props.currentMember.officeHours.substring(props.currentMember.officeHours.indexOf("-") + 2);
-    var month = props.currentMember.birthday.substring(0, props.currentMember.birthday.indexOf("/"));
-    var day = props.currentMember.birthday.substring(props.currentMember.birthday.indexOf("/") + 1);
+    if (props.currentMember) {
+      var odate = props.currentMember.officeHours.substring(0, props.currentMember.officeHours.indexOf("y") + 1)
+      var ostart = props.currentMember.officeHours.substring(props.currentMember.officeHours.indexOf("y") + 2, props.currentMember.officeHours.indexOf("-") - 1);
+      var oend = props.currentMember.officeHours.substring(props.currentMember.officeHours.indexOf("-") + 2);
+      var month = props.currentMember.birthday.substring(0, props.currentMember.birthday.indexOf("/"));
+      var day = props.currentMember.birthday.substring(props.currentMember.birthday.indexOf("/") + 1);
 
-    if (ostart.substring(0, ostart.indexOf(':')) < 7) {
-      var buffer = parseInt(ostart) + 12;
-      ostart = buffer + ostart.substring(1);
-    }
-    if (oend.substring(0, oend.indexOf(':')) < 7) {
-      var buffer = parseInt(oend) + 12;
-      oend = buffer + oend.substring(1);
-    }
-    if (ostart.length < 5)
-      ostart = "0" + ostart;
-    if (oend.length < 5)
-      oend = "0" + oend;
-    if (month.length == 1)
-      month = 0 + month;
-    if (day.length == 1)
-      day = 0 + day;
+      if (ostart.substring(0, ostart.indexOf(':')) < 7) {
+        var buffer = parseInt(ostart) + 12;
+        ostart = buffer + ostart.substring(1);
+      }
+      if (oend.substring(0, oend.indexOf(':')) < 7) {
+        var buffer = parseInt(oend) + 12;
+        oend = buffer + oend.substring(1);
+      }
+      if (ostart.length < 5)
+        ostart = "0" + ostart;
+      if (oend.length < 5)
+        oend = "0" + oend;
+      if (month.length == 1)
+        month = 0 + month;
+      if (day.length == 1)
+        day = 0 + day;
 
-    this.setState({
-      firstName: props.currentMember.firstName,
-      lastName: props.currentMember.lastName,
-      programs: props.currentMember.programs,
-      email: props.currentMember.email,
-      officeDate: odate,
-      officeTimeStart: ostart,
-      officeTimeEnd: oend,
-      majors: props.currentMember.majors.join(","),
-      minors: props.currentMember.minors.join(","),
-      country: props.currentMember.country,
-      inductionSeason: props.currentMember.inducted.substring(0, 2),
-      inductionYear: 20 + props.currentMember.inducted.substring(2),
-      graduationSeason: props.currentMember.graduationSemester.substring(0, 2),
-      graduationYear: 20 + props.currentMember.graduationSemester.substring(2),
-      birthday: year + "-" + month + "-" + day,
-      image: props.currentMember.image,
-    });
+      this.setState({
+        firstName: props.currentMember.firstName,
+        lastName: props.currentMember.lastName,
+        programs: props.currentMember.programs,
+        email: props.currentMember.email,
+        officeDate: odate,
+        officeTimeStart: ostart,
+        officeTimeEnd: oend,
+        majors: props.currentMember.majors.join(","),
+        minors: props.currentMember.minors.join(","),
+        country: props.currentMember.country,
+        inductionSeason: props.currentMember.inducted.substring(0, 2),
+        inductionYear: 20 + props.currentMember.inducted.substring(2),
+        graduationSeason: props.currentMember.graduationSemester.substring(0, 2),
+        graduationYear: 20 + props.currentMember.graduationSemester.substring(2),
+        birthday: year + "-" + month + "-" + day,
+        image: props.currentMember.image,
+      });
+    }
   }
 
   _updateProfile = () => {
-    console.log(this.props.currentMember);
     var majorArray = this.state.majors.split(',');
     var minorArray = this.state.minors.split(',');
     var officeStart = this.state.officeTimeStart;
@@ -127,7 +128,7 @@ class ProfileEditForm extends Component {
         country: this.state.country,
         image: this.state.image,
       }
-    });
+    }).then(() => window.location.replace("/members"));
   }
 
   yearDropdown = () => {
@@ -142,7 +143,7 @@ class ProfileEditForm extends Component {
     return (
       <div style={this.props.isFormOpen ? {} : { display: "none" }} className="event-modal">
       <button onClick={this._updateProfile}>test</button>
-        <form onSubmit={this._updateProfile}>
+        <form>
           <label htmlFor="firstName">First Name: </label>
           <input value={this.state.firstName} type="text" id="firstName" required onChange={(e) => this.setState({ firstName: e.target.value })} />
           <label htmlFor="lastName"> Last Name: </label >
@@ -208,8 +209,9 @@ class ProfileEditForm extends Component {
           <label htmlFor="image">image link: </label>
           <input value={this.state.image} type="text" id="image" onChange={(e) => this.setState({ image: e.target.value })} />
           <br />
-          <input type="submit" onClick={this._updateProfile} className="manage-btn" value="Update Profile" />
         </form>
+        <button onClick={() => {this._updateProfile(); this.setState({firstLast: this.state.firstName + this.state.lastName}, 
+          () => window.location.replace("/profile/" + this.state.firstLast))}} className="manage-btn">Update Profile</button>
       </div>
     );
   }

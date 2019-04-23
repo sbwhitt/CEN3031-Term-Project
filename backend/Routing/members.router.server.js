@@ -18,6 +18,9 @@ router.route("/profiles")
 router.route("/updateMember")
   .post(memberController.update);
 
+router.route("/createMember")
+  .post(memberController.create);
+
 /*router.route("/:idMember")
   .get(memberController.read)
   .delete(memberController.delete)
@@ -28,9 +31,6 @@ router.route("/:idMember/demote")
 
 router.route("/:idMember/promote")
   .put(memberController.promoteExecutive);
-
-router.route("/createMember")
-  .post(memberController.create);
 
 router.param('idMember', memberController.memberByID);*/
 

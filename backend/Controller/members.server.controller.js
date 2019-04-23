@@ -3,11 +3,8 @@ var mongoose = require('mongoose'),
 
 /* Create a member */
 exports.create = function (req, res) {
-
-  /* Instantiate a Member */
-  var newMember = new Member(req.body);
-
-  /* Then save the member */
+  const newMember = new Member(req.body);
+  console.log(newMember);
   newMember.save(function (err) {
     if (err) {
       console.log(err);
