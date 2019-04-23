@@ -161,17 +161,28 @@ class ProfilePage extends Component {
       this.state.permission = "Executive User";
     }
   }
+
   _promoteExecutive = () => {
     const confirmed = window.confirm("Are you sure you would like to promote this member?");
     if(confirmed) {
-    axios.post("/api/member/updateMember", {
-      id: this.state.currentMember._id,
+      axios.post("/api/member/updateMember", {
+        id: this.state.currentMember._id,
+        update: {
+          isExecutive: true,
+        }
+      }).then(() => this._promoteUserExecutive());
+    }
+  }
+
+  _promoteUserExecutive = () => {
+    axios.post("/api/auth/updateUser", {
+      email: this.state.currentMember.email,
       update: {
         isExecutive: true,
       }
-    }).then(() => window.location.replace("/members"));
+    }).then(() => window.location.reload());
   }
-  }
+
   _demoteExecutive = () => {
     const confirmed = window.confirm("Are you sure you would like to demote this member?");
     if (confirmed) {
@@ -180,16 +191,33 @@ class ProfilePage extends Component {
       update: {
         isExecutive: false,
       }
-    }).then(() => window.location.replace("/members"));
+    }).then(() => {
+      axios.post("/api/auth/updateUser", {
+        email: this.state.currentMember.email,
+        update: {
+          isExecutive: false
+        }
+      }).then(() => window.location.reload());
+    })
   }
   }
   _promoteAdministrator = () => {
-    axios.post("/api/member/updateMember", {
-      id: this.state.currentMember._id,
-      update: {
-        isAdmin: true,
-      }
-    });
+    const confirm = window.confirm("Are you sure you would like to promote this member to administrator?");
+    if (confirm) {
+      axios.post("/api/member/updateMember", {
+        id: this.state.currentMember._id,
+        update: {
+          isAdmin: true,
+        }
+      }).then(() => {
+        axios.post("/api/auth/updateUser", {
+          email: this.state.currentMember.email,
+          update: {
+            isAdmin: true
+          }
+        }).then(() => window.location.reload());
+      });
+    }
   }
   _permissionButton = () => {
     if (this.state.currentMember.isExecutive && !this.state.currentMember.isAdmin) {
