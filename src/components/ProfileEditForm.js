@@ -6,7 +6,6 @@ class ProfileEditForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      testArr: ["one", "two"],
       firstName: "",
       lastName: "",
       programs: "",

@@ -76,6 +76,8 @@ class MemberPage extends Component {
     this.setState({currentQuery: e.target.value});
   }
 
+
+
   _renderItems = (arr, filter) => {
     return (
       <div>
