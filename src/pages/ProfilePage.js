@@ -297,13 +297,13 @@ class ProfilePage extends Component {
               <InfoItem data="Email: " item={this.state.currentMember.email}/>
               <InfoItem data="Office Hours: " item={this.state.currentMember.officeHours}/>
               {this.props.currentUser.isExecutive ? <InfoItem data="Points: " item={this.state.currentMember.points}/> : null}
+              {permissionLevel}
             </div>
           </div>            
           <div style={{display:"flex", flexDirection: "column",marginRight: "5%"}}>
             {editButton}
           </div>
             {editForm}
-          
           <div style={{display:"flex", flexDirection: "row",marginRight: "5%"}}>
           <h1 className="page-text">Questions</h1>
             {questionButton}
