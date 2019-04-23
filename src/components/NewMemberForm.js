@@ -33,6 +33,17 @@ class NewMemberForm extends Component {
     }
   }
 
+  _checkEmail = () => {
+    axios.get("/api/auth/user", {
+      params: {
+        email: this.state.email,
+      }
+    }).then((res) => {
+      if (res.data) window.alert("That email is already in use.");
+      else this._createMember();
+    });
+  }
+
   //sends form data to db to create new member
   _createMember = () => {
     var majorArray = this.state.majors.split(',');
@@ -219,7 +230,8 @@ class NewMemberForm extends Component {
           <input type="text" id="image" onChange={(e) => this.setState({ image: e.target.value })} />
           <br />
         </form>
-        <button onClick={this._isFormFilled() ? () => {this._createMember()} : null} className="manage-btn">Create New Member</button>
+        <button onClick={this._isFormFilled() ? () => this._checkEmail() : () => window.alert("Please fill out the entire form.")} 
+          className="manage-btn">Create New Member</button>
       </div>
     );
   }
