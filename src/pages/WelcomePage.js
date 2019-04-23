@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import WelcomePageFinal from "./welcomepagefinal1.jpg";
+import WelcomePageFinal from "../images/SAPA_welcome.png";
 
 class WelcomePage extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class WelcomePage extends Component {
   render() {
     return (
       <div className="page-wrapper" style={{marginTop: "-2em"}}>
-        <img className="welcome-img" src={WelcomePageFinal}/>
+        <img className="welcome-img" src={WelcomePageFinal} alt="welcome to ufsapa"/>
       </div>
     );
   }

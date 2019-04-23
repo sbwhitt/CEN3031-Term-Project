@@ -27,7 +27,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "AlexisMurrow"
+        "firstLast": "AlexisMurrow",
+        "toAttend": []
     },
     {
         "firstName": "Andrew",
@@ -49,14 +50,16 @@
             "History.  Florence is the birthplace of the Renaissance and my favorite historical time period. ",
             "Australia, Bahamas and Greece",
             "Traveling alone/language barrier",
-            "Take advantage of any opportunity that comes your way and to appreciate that you had the chance to study abroad, not many people get to."
+            "Take advantage of any opportunity that comes your way and to appreciate that you had the chance to study abroad, not many people get to.",
+            ""
         ],
         "image": "https://dl.dropboxusercontent.com/s/xtt6sz20finymwc/AndrewSchnake.jpg?dl=0",
         "officeHours": "Tuesday 3:00 - 3:50",
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "AndrewSchnake"
+        "firstLast": "AndrewSchnake",
+        "toAttend": []
     },
     {
         "firstName": "Ariana",
@@ -85,7 +88,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "ArianaJohnson"
+        "firstLast": "ArianaJohnson",
+        "toAttend": []
     },
     {
         "firstName": "Becca",
@@ -114,7 +118,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "BeccaCorbin"
+        "firstLast": "BeccaCorbin",
+        "toAttend": []
     },
     {
         "firstName": "Benjamin",
@@ -143,7 +148,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "BenjaminCabral"
+        "firstLast": "BenjaminCabral",
+        "toAttend": []
     },
     {
         "firstName": "Cameron",
@@ -167,14 +173,16 @@
             "I studied Spanish at the University of Nebrija in order to improve my proficiency. I also took 2 UF classes and had an internship.  ",
             "Nowhere for over 2 weeks",
             "Time management was difficult with 4 classes and an internship. However, I still found time to travel almost every weekend and experience Madrid to its full potential. I also am not fluent in Spanish, so it was a challenge getting comfortable speaking with strangers in every situation. I also lived on my own, so I had to be resourceful to get my bearings. ",
-            "1. Enjoy your home city as much as you enjoy traveling.\n2. Never forget where you are. You are in a new country across the world, so leave the house as much as you can.\n3. Pack less. Focus on the memories you are making and not the items you're carrying! Take photos all the time, and make sure you're in some of them. "
+            "1. Enjoy your home city as much as you enjoy traveling.\n2. Never forget where you are. You are in a new country across the world, so leave the house as much as you can.\n3. Pack less. Focus on the memories you are making and not the items you're carrying! Take photos all the time, and make sure you're in some of them. ",
+            ""
         ],
         "image": "https://dl.dropboxusercontent.com/s/xrvy09ut31t7hwj/CameronMockabee.jpg?dl=0",
         "officeHours": "Wednesday 1:55 - 2:45",
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "CameronMockabee"
+        "firstLast": "CameronMockabee",
+        "toAttend": []
     },
     {
         "firstName": "Carolyn",
@@ -206,7 +214,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "CarolynImes"
+        "firstLast": "CarolynImes",
+        "toAttend": []
     },
     {
         "firstName": "Catherine",
@@ -227,14 +236,16 @@
             "Music History and flute because I needed a flute credit to be on track",
             "Germany, Italy, Switzerland, France",
             "Cleaning for my host family",
-            "Do not be afraid to take risks and take advantage of all opportunities"
+            "Do not be afraid to take risks and take advantage of all opportunities",
+            ""
         ],
         "image": "https://dl.dropboxusercontent.com/s/rtpr8tilyxy663f/CatherineBush.jpg?dl=0",
         "officeHours": "Thursday 3:00 - 3:50",
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "CatherineBush"
+        "firstLast": "CatherineBush",
+        "toAttend": []
     },
     {
         "firstName": "Cy-Anne",
@@ -263,7 +274,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "Cy-AnneSmall"
+        "firstLast": "Cy-AnneSmall",
+        "toAttend": []
     },
     {
         "firstName": "Elizabeth",
@@ -294,7 +306,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "ElizabethBarbour"
+        "firstLast": "ElizabethBarbour",
+        "toAttend": []
     },
     {
         "firstName": "Elizabeth",
@@ -313,6 +326,7 @@
         "minors": [],
         "questions": [
             "I studied Spanish language and culture because I am Hispanic and wanted to get closer to my roots.",
+            "",
             "the language barrier between my host family and I",
             "Just go for it. No matter what program you decide to do, you won't regret the experience.",
             "I got attacked by monkeys at Manuel Antonio. "
@@ -322,7 +336,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "ElizabethValdes"
+        "firstLast": "ElizabethValdes",
+        "toAttend": []
     },
     {
         "firstName": "Emili",
@@ -345,14 +360,16 @@
             "I studied advanced Spanish in order to improve my fluency and complete my minor.",
             "I have also spent time in Barcelona, Spain",
             "I had a fair amount of difficulty getting to Seville; from delayed flights to lost luggage, everything that could go wrong seemed to.",
-            "Don't let anything stop you! Studying abroad is an invaluable experience that will enrich your college career. There are countless great programs to choose from that can supplement your degree and so many scholarships available to help make studying abroad affordable. "
+            "Don't let anything stop you! Studying abroad is an invaluable experience that will enrich your college career. There are countless great programs to choose from that can supplement your degree and so many scholarships available to help make studying abroad affordable. ",
+            ""
         ],
         "image": "https://dl.dropboxusercontent.com/s/k5w2ucq0bbwt43n/EmiliMellor.jpg?dl=0",
         "officeHours": "Thursday 9:35 - 10:25",
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "EmiliMellor"
+        "firstLast": "EmiliMellor",
+        "toAttend": []
     },
     {
         "firstName": "Emily",
@@ -374,15 +391,18 @@
         ],
         "questions": [
             "I studied Spanish language and culture to improve my Spanish fluency and learn more about the Spanish culture and history. It's so hard to improve fluency inside the classroom and at home so having the opportunity to live with a host family and constantly practice my Spanish helped me so much. ",
+            "",
             "I initially struggled a lot with my own confidence in speaking Spanish and interacting with locals. For some reason I was so nervous to say the wrong thing that I wasn't capitalizing on the opportunity to practice and learn. I also had a very hard time understanding my host mom the first few days but with time I grew to understand the Sevillano accent. I combated my confidence issue by asking a lot of questions about vocabulary and grammar and with time I felt more comfortable to speak whatever was on my mind and Spanish became more natural to me.  ",
-            "My number one advice is definitely to talk around and meet people who have studied abroad. Additionally, I recommend finding study abroad vlogs on YouTube because it's really important to see what a day in the life of a student is like. "
+            "My number one advice is definitely to talk around and meet people who have studied abroad. Additionally, I recommend finding study abroad vlogs on YouTube because it's really important to see what a day in the life of a student is like. ",
+            ""
         ],
         "image": "https://dl.dropboxusercontent.com/s/npyqgmq00xii2po/EmilyFennell.jpg?dl=0",
         "officeHours": "Monday 9:35 - 10:25",
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "EmilyFennell"
+        "firstLast": "EmilyFennell",
+        "toAttend": []
     },
     {
         "firstName": "Emma",
@@ -412,7 +432,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "EmmaFrierson"
+        "firstLast": "EmmaFrierson",
+        "toAttend": []
     },
     {
         "firstName": "Erin",
@@ -444,7 +465,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "ErinConnors"
+        "firstLast": "ErinConnors",
+        "toAttend": []
     },
     {
         "firstName": "Erin",
@@ -465,14 +487,16 @@
             "I studied Tropical Conservation Biology and Tropical Ecology. Not only I was I able to fulfill my biology electives requirement, but I was also able to study these sciences in one of the most biologically diverse countries in the world.",
             "I volunteered at a local clinic in Cusco, Peru.",
             "One of the biggest challenges for me was the language barrier. From the moment my study abroad program let me off their transportation bus I was thrust full-force into a Spanish-speaking country with a family that didn\u2019t speak my language. With the help of Google Translate, hand motions, and a semester's worth of Spanish, I quickly learned how to communicate with those around me, and because of that I became part of my own Costa Rican family.",
-            "Don't be afraid to branch out of your comfort zone! Studying abroad should be an exciting new challenge for you and you don't want to regret missing out on this once-in-a-lifetime experience because you were nervous."
+            "Don't be afraid to branch out of your comfort zone! Studying abroad should be an exciting new challenge for you and you don't want to regret missing out on this once-in-a-lifetime experience because you were nervous.",
+            ""
         ],
         "image": "https://dl.dropboxusercontent.com/s/25a6k116y1mwtgh/ErinFox.jpg?dl=0",
         "officeHours": "Wednesday 11:45 - 12:35",
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "ErinFox"
+        "firstLast": "ErinFox",
+        "toAttend": []
     },
     {
         "firstName": "Erin",
@@ -495,15 +519,18 @@
         ],
         "questions": [
             "Business in London for my economics and business minor and also an internship; for my Spanish minor in Spain",
+            "",
             "planning travel/ coordinating trips with other students",
-            "plan ahead and be open-minded!"
+            "plan ahead and be open-minded!",
+            ""
         ],
         "image": "https://dl.dropboxusercontent.com/s/7uff0bz1zyrstoj/ErinSnyder.jpg?dl=0",
         "officeHours": "Friday 9:35 - 10:25",
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "ErinSnyder"
+        "firstLast": "ErinSnyder",
+        "toAttend": []
     },
     {
         "firstName": "Gabriela",
@@ -527,14 +554,16 @@
             "Infectious Diseases in Latin America and Spanish for Service Learning. These classes helped me develop my interest in ",
             "Puerto Rico, Mexico",
             "Acclimating to the altitude and experiencing a stomach virus early into the trip. I had the most inviting and comforting host family so I was very lucky to not have much trouble integrating socially. Being flexible and open to unexpected experiences was a good way to go about it too.",
-            "Do everything you can to do it! Reach out and talk to students on past trips, apply for SCHOLARSHIPS, learn as much as possible about the country before you go! "
+            "Do everything you can to do it! Reach out and talk to students on past trips, apply for SCHOLARSHIPS, learn as much as possible about the country before you go! ",
+            ""
         ],
         "image": "https://dl.dropboxusercontent.com/s/581izlz0nekilbh/GabyDiaz.jpg?dl=0",
         "officeHours": "Tuesday 9:35 - 10:25",
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "GabrielaDiaz"
+        "firstLast": "GabrielaDiaz",
+        "toAttend": []
     },
     {
         "firstName": "Isabel",
@@ -564,7 +593,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "IsabelSanchez"
+        "firstLast": "IsabelSanchez",
+        "toAttend": []
     },
     {
         "firstName": "Isabella",
@@ -593,7 +623,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "IsabellaBrown"
+        "firstLast": "IsabellaBrown",
+        "toAttend": []
     },
     {
         "firstName": "Julianna",
@@ -615,6 +646,7 @@
         ],
         "questions": [
             "I studied NGOs and development because I love and plan to have a career in the nonprofit sector.",
+            "",
             "One of the biggest challenges I faced while study abroad was balancing the exploration of India and all the fun it brings with the school work that was required of me in the program. But with time management I had a fun, educational trip! ",
             "It is okay to go somewhere you never even imagined! In fact, that may bring about a more interesting, growth-inspiring trip.",
             "My most interesting experiences were always in conversations with the people of India as we shared our life experiences and answered each other\u2019s questions to better understand each other. "
@@ -624,7 +656,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "JuliannaJohnson"
+        "firstLast": "JuliannaJohnson",
+        "toAttend": []
     },
     {
         "firstName": "Justas",
@@ -645,6 +678,7 @@
         ],
         "questions": [
             "In China I chose to study Chinese language and culture. I had taken beginning level language classes and knew the best place to continue learning about China and their language was in China!",
+            "",
             "The biggest challenge I faced while abroad was forcing myself not to go to the same Sichuan-style restaurant everyday. Although the food was amazing, I know there are too many places to eat in China to stick to just one restaurant.  ",
             "My biggest advice for students looking to study abroad is to pick a destination that really interests you and never be closed minded about new cultural experiences while you're there. ",
             "I think every time a Chinese local asked to take a picture with us, or secretly tried to take pictures of us, it was an interesting experience. Nothing makes you feel like an international celebrity more than walking around China as a foreigner."
@@ -654,7 +688,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "JustasSchillinger"
+        "firstLast": "JustasSchillinger",
+        "toAttend": []
     },
     {
         "firstName": "Kathy",
@@ -686,7 +721,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "KathyXie"
+        "firstLast": "KathyXie",
+        "toAttend": []
     },
     {
         "firstName": "Katie",
@@ -717,7 +753,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "KatieSimpson"
+        "firstLast": "KatieSimpson",
+        "toAttend": []
     },
     {
         "firstName": "Keilly",
@@ -746,7 +783,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "KeillyPulgar"
+        "firstLast": "KeillyPulgar",
+        "toAttend": []
     },
     {
         "firstName": "Kendal",
@@ -776,7 +814,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "KendalFrazier"
+        "firstLast": "KendalFrazier",
+        "toAttend": []
     },
     {
         "firstName": "Kendall",
@@ -805,7 +844,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "KendallTodd"
+        "firstLast": "KendallTodd",
+        "toAttend": []
     },
     {
         "firstName": "Laura",
@@ -835,7 +875,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "LauraFroneberger"
+        "firstLast": "LauraFroneberger",
+        "toAttend": []
     },
     {
         "firstName": "Liam",
@@ -864,7 +905,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "LiamBrennan"
+        "firstLast": "LiamBrennan",
+        "toAttend": []
     },
     {
         "firstName": "Luke",
@@ -885,6 +927,7 @@
         ],
         "questions": [
             "German language - I wanted to learn it",
+            "",
             "My greatest challenge abroad was keeping a strict budget; I had set a budget for myself which allowed very little room for extraneous expenses. I wouldn't purchase water at restaurants (which bought me weird looks from the servers) to save the extra euro at meals, and I would forgo weekend train trips in order to save on the ticket and lodging costs. While I did stay successfully stay within budget, I realized afterwards that saving some cents wasn't worth missing out on great experiences!",
             "Know that wherever you may go, humans are still essentially the same. As long as you put your best foot forward, you will be able to find friends or company in any country, city, town, hostel, bar, or park. Push yourself out of your circle of comfort and try to talk or interact with new people, even if you don't speak the same language! Some may not be friendly, but it is always worth it for the chance of making a great connection.",
             "At 2am, I witnessed a stranger wipeout on their bicycle and get a huge gash in their chin. I spoke broken German to him as I helped him clean his wound and figure out his way to an ER. When I first saw him hit the ground, I really thought I'd seen someone die. "
@@ -894,7 +937,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "LukeBickell"
+        "firstLast": "LukeBickell",
+        "toAttend": []
     },
     {
         "firstName": "Meredith",
@@ -915,14 +959,16 @@
             "At the time of my study abroad trip, I was pursuing a Spanish certificate. Also, when I entered college, I knew I wanted study abroad to be a part of my undergraduate experience. ",
             "London, England",
             "One of the biggest challenges was the adjustment to another lifestyle and acknowledging that I did not need to be in control of every situation. ",
-            "Sometimes the idea of studying abroad can be daunting. One place to start is to eliminate places you do not want to go, and that can often point you in the direction of your interests. \n"
+            "Sometimes the idea of studying abroad can be daunting. One place to start is to eliminate places you do not want to go, and that can often point you in the direction of your interests.",
+            ""
         ],
         "image": "https://dl.dropboxusercontent.com/s/fioxsgzcpucogu4/MeredithRiccardi.jpg?dl=0",
         "officeHours": "Wednesday 12:50 - 1:40",
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "MeredithRiccardi"
+        "firstLast": "MeredithRiccardi",
+        "toAttend": []
     },
     {
         "firstName": "Mia",
@@ -946,7 +992,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "MiaFrisiello"
+        "firstLast": "MiaFrisiello",
+        "toAttend": []
     },
     {
         "firstName": "Minhthi",
@@ -977,7 +1024,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "MinhthiNguyen"
+        "firstLast": "MinhthiNguyen",
+        "toAttend": []
     },
     {
         "firstName": "Narrelle",
@@ -999,14 +1047,16 @@
             "In India, I studied development and NGO management. I was able to see the critical economic and social issues facing the country, such as gender inequality, pollution, and poor education, and observe the work NGOs are doing to address them. In Belgium, I will study the European Union and global terrorism, learning about critical parts of international affairs in the city where they unfold. I will also have the opportunity to visit the headquarters of several important international institutions, including the European Parliament and NATO.",
             "I will travel to Nairobi, Kenya in August for 2 weeks to do my senior thesis research on democracy.",
             "Before going to India, I was not prepared for the culture shock I experienced. Everything from social standards to clothing and food was different from what I was used to in India, and behaviors that Americans would consider rude were commonplace. In the beginning of the program, it was hard to know what was right and wrong, and I did not always know how to view or react to the cultural norms that surrounded me. After the first weeks, however, I began to see how the culture was just as beautiful as my own, and by the end of the trip, I had come to accept that what was different was in no way wrong. This experience of cultural adjustment was invaluable and retrospectively one of my favorite parts of my study abroad.",
-            "Be adventurous and follow your passions! Plan ahead so that you can get everything you want done in the time you have, and don\u2019t listen to people who tell you traveling is too expensive or difficult! Where there is a will, there is a way."
+            "Be adventurous and follow your passions! Plan ahead so that you can get everything you want done in the time you have, and don\u2019t listen to people who tell you traveling is too expensive or difficult! Where there is a will, there is a way.",
+            ""
         ],
         "image": "https://dl.dropboxusercontent.com/s/3vzwcjrtx87o1ni/NarrelleGilchrist.jpg?dl=0",
         "officeHours": "Wednesday 12:50 - 1:40",
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "NarrelleGilchrist"
+        "firstLast": "NarrelleGilchrist",
+        "toAttend": []
     },
     {
         "firstName": "Nheissa",
@@ -1037,7 +1087,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "NheissaIsidor"
+        "firstLast": "NheissaIsidor",
+        "toAttend": []
     },
     {
         "firstName": "Olivia",
@@ -1069,7 +1120,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "OliviaMeadows"
+        "firstLast": "OliviaMeadows",
+        "toAttend": []
     },
     {
         "firstName": "Rachel",
@@ -1100,7 +1152,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "RachelCathey"
+        "firstLast": "RachelCathey",
+        "toAttend": []
     },
     {
         "firstName": "Rachel",
@@ -1120,6 +1173,7 @@
         "minors": [],
         "questions": [
             "While abroad, I studied mostly political science and international business as my core academics but also took many other interesting classes in my programs. I am a Political Science major so it was fitting that I was studying my major in cities with major political international organizations like the UN, IAEA or OPEC in Vienna. I also studied German while abroad and even became B1 certified in German proficiency but continued to learn up to B2 level German because I want to become a completely fluent speaker and live back in Germany eventually. ",
+            "",
             "One of the biggest challenges I faced abroad was getting over the fear that I wouldn\u2019t connect with my city in such a short period of time. I knew I wanted to travel all around the continent but feared that I wouldn't grow close and come to love the city I was actually studying in. Needless to say, I definitely fell in love with my cities and still balanced time at \u2018home\u2019 and traveling all around! Also the cold was definitely a challenge surprisingly. Definitely get a good coat if you decide to go somewhere cold and not just use a light jacket for months too long like me!",
             "Besides the obvious, \u201cjust do it!\u201d I recommend being quite decisive when choosing what country or city you want to study abroad in. Choose a place that you will feel comfortable and could see yourself realistically living and thriving in but also one that will help you grow academically, socially, and culturally! Don\u2019t pick a place just because it seems easy or everyone else is going there; challenge yourself! The outcome is well worth it. I picked programs in which I knew no one prior and in places that weren\u2019t the norms among my friends and I am so grateful for those decisions. \n",
             "Studying abroad is a wealth of interesting experiences and my list could go on forever, but one of my favorite experiences is my random trip to Slovenia! My friends and I had realized our initial trip we had planned was too expensive, so literally the day before we left, my friend and I booked a cheap bus to Ljubljana, Slovenia instead and on the bus there made reservations for trains for excursions to the caves in southern Slovenia, Lake Bled and even a bike tour around the city! It was so spontaneous and exciting and was definitely one of my favorite experiences abroad. "
@@ -1129,7 +1183,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "RachelWagner"
+        "firstLast": "RachelWagner",
+        "toAttend": []
     },
     {
         "firstName": "Riley",
@@ -1159,7 +1214,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "RileyBailey"
+        "firstLast": "RileyBailey",
+        "toAttend": []
     },
     {
         "firstName": "Ryan",
@@ -1188,7 +1244,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "RyanGonzalez"
+        "firstLast": "RyanGonzalez",
+        "toAttend": []
     },
     {
         "firstName": "Sana",
@@ -1218,7 +1275,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "SanaNguyen"
+        "firstLast": "SanaNguyen",
+        "toAttend": []
     },
     {
         "firstName": "Sydney",
@@ -1247,7 +1305,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "SydneyShaner"
+        "firstLast": "SydneyShaner",
+        "toAttend": []
     },
     {
         "firstName": "Trey",
@@ -1276,7 +1335,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "TreyColeman"
+        "firstLast": "TreyColeman",
+        "toAttend": []
     },
     {
         "firstName": "Trey",
@@ -1305,7 +1365,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "TreyLaNasa"
+        "firstLast": "TreyLaNasa",
+        "toAttend": []
     },
     {
         "firstName": "Urmeen",
@@ -1335,7 +1396,8 @@
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "UrmeenMansoor"
+        "firstLast": "UrmeenMansoor",
+        "toAttend": []
     },
     {
         "firstName": "Yousef",
@@ -1353,12 +1415,19 @@
             "Arabic"
         ],
         "minors": [],
-        "questions": [],
+        "questions": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
         "image": "https://dl.dropboxusercontent.com/s/y2gro8yqxq1fg16/YousefGhabour.jpg?dl=0",
         "officeHours": "Wednesday 10:40 - 11:30",
         "isAdmin": false,
         "isExecutive": false,
         "points": 0,
-        "firstLast": "YousefGhabour"
+        "firstLast": "YousefGhabour",
+        "toAttend": []
     }
 ]

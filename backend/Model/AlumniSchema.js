@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const profile = mongoose.model('profile', new mongoose.Schema({
+const alumni = mongoose.model('alumni', new mongoose.Schema({
     firstName: { type: String },
     lastName: { type: String },
     firstLast: { type: String },
@@ -21,8 +21,9 @@ const profile = mongoose.model('profile', new mongoose.Schema({
     isAdmin: { type: Boolean, default: false },
     isExecutive: { type: Boolean, default: false },
     toAttend: { type: Array },
-    points: { type: Number }
+    points: { type: Number },
+    removedAt: {type: Number, default: Date.now}
 })
 );
 
-module.exports = profile;
+module.exports = alumni;
