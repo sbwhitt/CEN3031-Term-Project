@@ -74,12 +74,12 @@ class EventPage extends Component {
   }
 
   render() {
-    //createButton and createForm rendered based on admin status of current logged in user
-    const createButton = this.props.currentUser.isAdmin ? 
+    //createButton and createForm rendered based on executive status of current logged in user
+    const createButton = this.props.currentUser.isExecutive ? 
       <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginRight: "5%"}}
         onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Create Event</button> : null;
 
-    const createForm = this.props.currentUser.isAdmin ?
+    const createForm = this.props.currentUser.isExecutive ?
       <div style={this.state.isFormOpen ? {} : {display: "none"}}>
         <hr className="page-divider"/>
         <div style={{marginLeft: "5%"}}>

@@ -237,11 +237,11 @@ class EventInfoPage extends Component {
   render() {
     var date = new Date(this.state.currentEvent.date);
 
-    const editButton = this.props.currentUser.isAdmin ? 
+    const editButton = this.props.currentUser.isExecutive ? 
       <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginRight: "5%"}}
         onClick={() => this.setState({isFormOpen: !this.state.isFormOpen})}>Edit Event</button> : null;
 
-    const editForm = this.props.currentUser.isAdmin ?
+    const editForm = this.props.currentUser.isExecutive ?
       <div style={this.state.isFormOpen ? {} : {display: "none"}}>
         <hr className="page-divider"/>
         <div style={{marginLeft: "5%"}}><EditEventForm isFormOpen={this.state.isFormOpen} currentEvent={this.state.currentEvent}/></div>
@@ -259,7 +259,7 @@ class EventInfoPage extends Component {
         </div> : null) 
       : null
 
-    const attendeeList = this.props.currentUser.isAdmin ? 
+    const attendeeList = this.props.currentUser.isExecutive ? 
       <div>
         <h1 style={{marginLeft: "5%"}}>Attendees</h1>
         <hr className="page-divider"/>
@@ -268,7 +268,7 @@ class EventInfoPage extends Component {
             <b style={{marginLeft: "5%"}}>No one is currently signed up to attend this event.</b>}
       </div> : null;
 
-    const eventManagement = this.props.currentUser.isAdmin ? 
+    const eventManagement = this.props.currentUser.isExecutive ? 
       <div className="event-btn-container">
         <button className="manage-btn" onClick={this._markEventCompleted}>Mark Completed</button>
         <button className="manage-btn" onClick={this._onDeleteEvent}>
