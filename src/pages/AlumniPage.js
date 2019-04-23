@@ -41,7 +41,7 @@ class AlumniPage extends Component {
   }
 
   getAlumni = () => {
-    fetch("/api/member/getAlumni")
+    fetch("/api/alumni/getAlumni")
       .then(function (res) {
         return res.json();
       })

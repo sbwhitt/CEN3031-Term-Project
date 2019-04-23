@@ -10,6 +10,7 @@ const port = config.port;
 const app = express();
 
 const memberRouter = require("../Routing/members.router.server.js");
+const alumniRouter = require("../Routing/alumni.router.server.js");
 const eventRouter  = require("../Routing/events.router.server.js");
 const userRouter   = require("../Routing/users.router.server.js");
 
@@ -27,6 +28,7 @@ module.exports.start = function() {
     app.use(express.static(__dirname));
     app.use(express.static(path.join(__dirname, 'build')));
     app.use("/api/member", memberRouter);
+    app.use("/api/alumni", alumniRouter);
     app.use("/api/event", eventRouter);
     app.use("/api/auth", userRouter);
 
