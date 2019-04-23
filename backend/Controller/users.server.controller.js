@@ -57,3 +57,13 @@ exports.delete = function (req, res) {
     res.end();
   });
 };
+
+exports.update = function (req, res) {
+  User.findOneAndUpdate({email: req.body.email}, req.body.update, function (err, user) {
+    if (err) {
+      res.stats(404).send(err);
+      throw err;
+    }
+    res.json(user);
+  });
+};

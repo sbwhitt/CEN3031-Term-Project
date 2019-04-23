@@ -22,11 +22,12 @@ exports.read = function (req, res) {
 
 /* Update a member */
 exports.update = function (req, res) {
-  Member.findOneAndUpdate({_id: req.body.id}, req.body.update, function (err, res) {
+  Member.findOneAndUpdate({_id: req.body.id}, req.body.update, function (err, member) {
     if (err) {
       res.stats(404).send(err);
       throw err;
     }
+    res.json(member);
   });
 };
 

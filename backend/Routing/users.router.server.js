@@ -18,4 +18,7 @@ router.route("/createUser")
 router.route("/deleteUser")
   .delete(userController.delete);
 
+router.route("/updateUser")
+  .post(userController.update);
+
 module.exports = router;
