@@ -245,9 +245,11 @@ class ProfilePage extends Component {
         <div style={{marginLeft: "5%"}}><ProfileEditForm isFormOpen={this.state.isEditFormOpen} currentMember={this.state.currentMember}/></div>
       </div> : null;
 
-    const questionButton = this.props.currentUser.isExecutive || this.props.currentUser.email === this.state.currentMember.email ? 
+    const questionButton = this.props.currentUser.isExecutive || this.props.currentUser.email === this.state.currentMember.email ?
+    <div style={{marginTop: "2em", marginLeft: "5%"}}>
       <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginLeft: "5%"}}
-        onClick={() => this.setState({isQuestionFormOpen: !this.state.isQuestionFormOpen})}>Edit Answers</button> : null;
+        onClick={() => this.setState({isQuestionFormOpen: !this.state.isQuestionFormOpen})}>Edit Answers</button>
+        </div> : null;
 
     const questionForm = this.props.currentUser.isExecutive || this.props.currentUser.email === this.state.currentMember.email ?
       <div style={this.state.isQuestionFormOpen ? {} : {display: "none"}}>
@@ -294,14 +296,19 @@ class ProfilePage extends Component {
               <InfoItem data="Email: " item={this.state.currentMember.email}/>
               <InfoItem data="Office Hours: " item={this.state.currentMember.officeHours}/>
               {this.props.currentUser.isExecutive ? <InfoItem data="Points: " item={this.state.currentMember.points}/> : null}
-              {permissionLevel}
+              <InfoItem data="Access level:" item={permissionLevel}/>
             </div>
           </div>            
           <div style={{display:"flex", flexDirection: "column",marginRight: "5%"}}>
             {editButton}
           </div>
             {editForm}
+          
+          <div style={{display:"flex", flexDirection: "row",marginRight: "5%"}}>
           <h1 className="page-text">Questions</h1>
+            {questionButton}
+          </div>
+          {questionForm}
           <hr className="page-divider"/>
           { this.state.currentMember.questions !== undefined ?
           <div>
@@ -313,10 +320,6 @@ class ProfilePage extends Component {
           </div> :
           null
           }
-          <div style={{display:"flex", flexDirection: "column",marginRight: "5%"}}>
-            {questionButton}
-          </div>
-            {questionForm}
           {yourEvents}
           {manageButtons}
         </div>
