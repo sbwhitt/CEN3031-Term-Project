@@ -15,7 +15,6 @@ const MemberItem = (props) => {
       member: props.item
     }} style={{color: "black"}}>
     <div className="member-container">
-    <button> delete </button>
         <div className="member-card">
           <img className="member-img" src={props.item.image} alt="member profile"/>
           <div className="member-text">
@@ -76,6 +75,8 @@ class MemberPage extends Component {
   _onSearchChange = (e) => {
     this.setState({currentQuery: e.target.value});
   }
+
+
 
   _renderItems = (arr, filter) => {
     return (

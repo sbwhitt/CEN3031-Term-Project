@@ -6,7 +6,6 @@ class ProfileEditForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      testArr: ["one", "two"],
       firstName: "",
       lastName: "",
       programs: "",
@@ -141,7 +140,6 @@ class ProfileEditForm extends Component {
   render() {
     return (
       <div style={this.props.isFormOpen ? {} : { display: "none" }} className="event-modal">
-      <button onClick={this._updateProfile}>test</button>
         <form onSubmit={this._updateProfile}>
           <label htmlFor="firstName">First Name: </label>
           <input value={this.state.firstName} type="text" id="firstName" required onChange={(e) => this.setState({ firstName: e.target.value })} />

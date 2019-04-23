@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import EditEventForm from '../components/EditEventForm.js';
+import async from 'async';
 import axios from 'axios';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -95,16 +96,6 @@ class EventInfoPage extends Component {
     });
   }
 
-  /*_updatePoints = (profile) => {
-    const points = profile.points + this.state.currentEvent.points;
-    axios.post("/api/member/updateMember", {
-      id: profile._id,
-      update: {
-        points: points
-      }
-    });
-  }*/
-
   _renderAttendees = (props) => {
     return (
       <div className="grid-container">
@@ -118,25 +109,129 @@ class EventInfoPage extends Component {
   _markEventCompleted = () => {
     const confirmed = window.confirm("Are you sure you would like to mark this event as complete? (This will delete the event and add its points to all attended members)");
     if (confirmed) {
-      console.log(true);
-    }
-    else {
-      console.log(false);
+      this._removeFromAttendedAndAddPoints(this.state.currentEvent.attended);
     }
   }
 
-  /*****
-   * TODO: THIS MUST REMOVE THE EVENT FROM THE USERS SHCEMAS WHEN IT DELETES
-  *****/
-  _deleteEvent = () => {
+  _removeFromAttendedAndAddPoints = (attended) => {
+    async.eachSeries(attended, (email, callback) => {
+      axios.get("/api/member/profile", {
+        params: {
+          email: email
+        }
+      }).then((res) => {
+        var toAttend = res.data.toAttend;
+        var index;
+        for (var i = 0; i < toAttend.length; i++) {
+          if (toAttend[i].eventId === this.state.currentEvent._id) {
+            index = i;
+            break;
+          }
+        }
+        var points = res.data.points + toAttend[index].eventPoints;
+        toAttend.splice(index, 1);
+        axios.post("/api/member/updateMember", {
+          id: res.data._id,
+          update: {
+            toAttend: toAttend,
+            points: points,
+          }
+        });
+      }).then(() => callback(null));
+    }, (err) => {
+      if (err) throw err;
+      else this._deleteEvent();
+    });
+  }
+
+  /*_updatePoints = (profile) => {
+    const points = profile.points + this.state.currentEvent.points;
+    axios.post("/api/member/updateMember", {
+      id: profile._id,
+      update: {
+        points: points
+      }
+    });
+  }*/
+
+  _onDeleteEvent = () => {
     const confirmed = window.confirm("Are you sure you would like to permanently delete this event? (No points will be added to users)");
     if (confirmed) {
-      axios.delete("/api/event/deleteEvent", {
-        data: {
-          _id: this.state.currentEvent._id,
-        }
-      }).then(() => window.location.replace("/events"));
+      this._removeFromAttended(this.state.currentEvent.attended);
     }
+  }
+
+  _removeFromAttended = (attended) => {
+    async.eachSeries(attended, (email, callback) => {
+      axios.get("/api/member/profile", {
+        params: {
+          email: email
+        }
+      }).then((res) => {
+        var toAttend = res.data.toAttend;
+        var index;
+        for (var i = 0; i < toAttend.length; i++) {
+          if (toAttend[i].eventId === this.state.currentEvent._id) {
+            index = i;
+            break;
+          }
+        }
+        toAttend.splice(index, 1);
+        axios.post("/api/member/updateMember", {
+          id: res.data._id,
+          update: {
+            toAttend: toAttend
+          }
+        });
+      }).then(() => callback(null));
+    }, (err) => {
+      if (err) throw err;
+      else this._deleteEvent();
+    });
+  }
+
+  _deleteEvent = () => {
+    axios.delete("/api/event/deleteEvent", {
+      data: {
+        _id: this.state.currentEvent._id,
+      }
+    }).then(() => window.location.replace("/events"));
+  }
+
+  _removeSignUp = () => {
+    var newToAttend = [];
+    var newAttended = this.state.currentEvent.attended;
+    for (let i = 0; i < newAttended.length; i++) {
+      if (newAttended[i] === this.props.currentUser.email) {
+        newAttended.splice(i, 1);
+        break;
+      }
+    }
+    axios.post("/api/event/updateEvent", {
+      id: this.state.currentEvent._id,
+      update: {
+        attended: newAttended
+      }
+    });
+    axios.get("/api/member/profile", {
+      params: {
+        email: this.props.currentUser.email
+      }
+    }).then((res) => {
+      newToAttend = res.data.toAttend;
+      for (let i = 0; i < newToAttend.length; i++) {
+        if (newToAttend[i].eventId === this.state.currentEvent._id) {
+          newToAttend.splice(i, 1);
+          break;
+        }
+      }
+      axios.post("/api/member/updateMember", {
+        id: res.data._id,
+        update: {
+          toAttend: newToAttend
+        }
+      });
+    }).then(() => window.location.reload());
   }
 
   render() {
@@ -157,7 +252,12 @@ class EventInfoPage extends Component {
         <button className="manage-btn" onClick={this._onSignUp}> Sign up</button>) : null;
 
     const signupMsg = this.state.currentEvent.attended ? 
-      (this.state.currentEvent.attended.includes(this.props.currentUser.email) ? <b>You are signed up to attend this event!</b> : null) : null
+      (this.state.currentEvent.attended.includes(this.props.currentUser.email) ? 
+        <div style={{display: "flex", flexDirection: "row"}}>
+          <b>You are signed up to attend this event!</b>
+          <button onClick={this._removeSignUp} style={{marginLeft: "1em"}} className="manage-btn">Cancel</button>
+        </div> : null) 
+      : null
 
     const attendeeList = this.props.currentUser.isAdmin ? 
       <div>
@@ -171,7 +271,7 @@ class EventInfoPage extends Component {
     const eventManagement = this.props.currentUser.isAdmin ? 
       <div className="event-btn-container">
         <button className="manage-btn" onClick={this._markEventCompleted}>Mark Completed</button>
-        <button className="manage-btn" onClick={this._deleteEvent}>
+        <button className="manage-btn" onClick={this._onDeleteEvent}>
           Delete Event</button>
       </div> : null;
     
@@ -191,6 +291,7 @@ class EventInfoPage extends Component {
             {this.state.currentEvent.location !== "" ? <p><b>Location: </b>{this.state.currentEvent.location}</p> : null}
             {date.getDate() ? <p><b>Date: </b>{months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</p> : null}
             {date.getDate() ? <p><b>Time: </b>{date.getHours()}:{date.getMinutes() < 10 ? '0'+date.getMinutes() : date.getMinutes()}</p> : null}
+            {this.state.currentEvent.description !== "" ? <p><b>Description: </b>{this.state.currentEvent.description}</p> : null}
             {signupMsg}
           </div>
           {attendeeList}

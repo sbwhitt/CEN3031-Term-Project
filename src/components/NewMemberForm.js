@@ -60,7 +60,7 @@ class NewMemberForm extends Component {
 
         if (this.state.birthday !== "")
             birthdayFormatted = this.state.birthday.substring(5,7) + "/"+ this.state.birthday.substring(8)
-        if (birthdayFormatted.substring(0,1) == 0) {
+        if (birthdayFormatted.substring(0,1) === 0) {
             birthdayFormatted = birthdayFormatted.substring(1);
         }
         if (birthdayFormatted.substring(birthdayFormatted.length-2,birthdayFormatted.length-1) === 0) {
@@ -77,7 +77,7 @@ class NewMemberForm extends Component {
             firstLast: this.state.firstName+this.state.lastName,
             isAdmin: false,
             isExecutive: false,
-            eventAttendedbyID: [],
+            toAttend: [],
             isActive: true,
             points: 0,
             inducted: this.state.inductionSeason+this.state.inductionYear.substring(2),
@@ -98,7 +98,7 @@ class NewMemberForm extends Component {
     };
 
 	_isFormFilled = () => {
-		const bool = this.state.firstName !== 0 &&
+		const bool = this.state.firstName !== "" &&
 		this.state.lastName !== "" &&
 		this.state.programs !== "" &&
 		this.state.email !== "" &&
