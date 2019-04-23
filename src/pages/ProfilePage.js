@@ -164,32 +164,35 @@ class ProfilePage extends Component {
   _promoteExecutive = () => {
     const confirmed = window.confirm("Are you sure you would like to promote this member?");
     if(confirmed) {
-    axios.post("/api/member/updateMember", {
-      id: this.state.currentMember._id,
-      update: {
-        isExecutive: true,
-      }
-    }).then(() => window.location.replace("/members"));
-  }
+      axios.post("/api/member/updateMember", {
+        id: this.state.currentMember._id,
+        update: {
+          isExecutive: true,
+        }
+      })
+    }
   }
   _demoteExecutive = () => {
     const confirmed = window.confirm("Are you sure you would like to demote this member?");
     if (confirmed) {
-    axios.post("/api/member/updateMember", {
-      id: this.state.currentMember._id,
-      update: {
-        isExecutive: false,
-      }
-    }).then(() => window.location.replace("/members"));
-  }
+      axios.post("/api/member/updateMember", {
+        id: this.state.currentMember._id,
+        update: {
+          isExecutive: false,
+        }
+      })
+    }
   }
   _promoteAdministrator = () => {
-    axios.post("/api/member/updateMember", {
-      id: this.state.currentMember._id,
-      update: {
-        isAdmin: true,
-      }
-    });
+    const confirmed = window.confirm("Are you sure you would like to make this member an administrator?");
+    if (confirmed) {
+      axios.post("/api/member/updateMember", {
+        id: this.state.currentMember._id,
+        update: {
+          isAdmin: true,
+        }
+      })
+    }
   }
   _permissionButton = () => {
     if (this.state.currentMember.isExecutive && !this.state.currentMember.isAdmin) {
@@ -207,21 +210,21 @@ class ProfilePage extends Component {
     }
   }
   render() {
-    const editButton = this.props.currentUser.isAdmin ? 
+    const editButton = this.props.currentUser.isExecutive ? 
       <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginLeft: "5%"}}
         onClick={() => this.setState({isEditFormOpen: !this.state.isEditFormOpen})}>Edit Profile</button> : null;
 
-    const editForm = this.props.currentUser.isAdmin ?
+    const editForm = this.props.currentUser.isExecutive ?
       <div style={this.state.isEditFormOpen ? {} : {display: "none"}}>
         <hr className="page-divider"/>
         <div style={{marginLeft: "5%"}}><ProfileEditForm isFormOpen={this.state.isEditFormOpen} currentMember={this.state.currentMember}/></div>
       </div> : null;
 
-    const questionButton = this.props.currentUser.isAdmin || this.props.currentUser.email === this.state.currentMember.email ? 
+    const questionButton = this.props.currentUser.isExecutive || this.props.currentUser.email === this.state.currentMember.email ? 
       <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginLeft: "5%"}}
         onClick={() => this.setState({isQuestionFormOpen: !this.state.isQuestionFormOpen})}>Edit Answers</button> : null;
 
-    const questionForm = this.props.currentUser.isAdmin || this.props.currentUser.email === this.state.currentMember.email ?
+    const questionForm = this.props.currentUser.isExecutive || this.props.currentUser.email === this.state.currentMember.email ?
       <div style={this.state.isQuestionFormOpen ? {} : {display: "none"}}>
         <hr className="page-divider"/>
         <div style={{marginLeft: "5%"}}><QuestionForm isFormOpen={this.state.isQuestionFormOpen} currentMember={this.state.currentMember}/></div>
@@ -248,7 +251,7 @@ class ProfilePage extends Component {
             <button className="manage-btn" onClick={this._onDeleteProfile}>Delete Profile</button>
           </div> : null;
     
-    const permissionLevel = this.props.currentUser.isAdmin ?
+    const permissionLevel = this.props.currentUser.isExecutive ?
       <div>
         {this._renderPermission()}
         {this.state.permission}
@@ -265,7 +268,7 @@ class ProfilePage extends Component {
               <InfoItem data="Programs: " item={this.state.currentMember.programs}/>
               <InfoItem data="Email: " item={this.state.currentMember.email}/>
               <InfoItem data="Office Hours: " item={this.state.currentMember.officeHours}/>
-              {this.props.currentUser.isAdmin ? <InfoItem data="Points: " item={this.state.currentMember.points}/> : null}
+              {this.props.currentUser.isExecutive ? <InfoItem data="Points: " item={this.state.currentMember.points}/> : null}
               {permissionLevel}
             </div>
           </div>            
