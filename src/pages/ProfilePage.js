@@ -44,6 +44,7 @@ class ProfilePage extends Component {
       isEditFormOpen:false,
       isQuestionFormOpen:false,
       eventsToAttend: [],
+      permission: "Regular User",
     }
   }
 
@@ -148,7 +149,59 @@ class ProfilePage extends Component {
       });
     });
   }
-
+  _renderPermission = () => {
+    if (this.state.currentMember.isAdmin) {
+      this.state.permission = "Administrator";
+    }
+    else if (this.state.currentMember.isExecutive) {
+      this.state.permission = "Executive User";
+    }
+  }
+  _promoteExecutive = () => {
+    const confirmed = window.confirm("Are you sure you would like to promote this member?");
+    if(confirmed) {
+    axios.post("/api/member/updateMember", {
+      id: this.state.currentMember._id,
+      update: {
+        isExecutive: true,
+      }
+    }).then(() => window.location.replace("/members"));
+  }
+  }
+  _demoteExecutive = () => {
+    const confirmed = window.confirm("Are you sure you would like to demote this member?");
+    if (confirmed) {
+    axios.post("/api/member/updateMember", {
+      id: this.state.currentMember._id,
+      update: {
+        isExecutive: false,
+      }
+    }).then(() => window.location.replace("/members"));
+  }
+  }
+  _promoteAdministrator = () => {
+    axios.post("/api/member/updateMember", {
+      id: this.state.currentMember._id,
+      update: {
+        isAdmin: true,
+      }
+    });
+  }
+  _permissionButton = () => {
+    if (this.state.currentMember.isExecutive && !this.state.currentMember.isAdmin) {
+      return(
+        <div>
+          <button onClick={this._demoteExecutive} className="manage-btn"> Demote Executive </button>
+          <button onClick={this._promoteAdministrator} className="manage-btn"> Promote to Administrator </button>
+        </div>
+      );
+    }
+    else if (!this.state.currentMember.isExecutive) {
+      return(
+        <button onClick={this._promoteExecutive} className="manage-btn"> Promote to Executive</button>
+      );
+    }
+  }
   render() {
     const editButton = this.props.currentUser.isAdmin ? 
       <button className="manage-btn" style={{height: "3.5em", marginTop: "1.25em", marginLeft: "5%"}}
@@ -191,6 +244,13 @@ class ProfilePage extends Component {
             <button className="manage-btn" onClick={this._onDeleteProfile}>Delete Profile</button>
           </div> : null;
     
+    const permissionLevel = this.props.currentUser.isAdmin ?
+      <div>
+        {this._renderPermission()}
+        {this.state.permission}
+        {this._permissionButton()}
+      </div> : null;
+
     return (
       <div className="page-wrapper">
         <div className="page-content">
@@ -202,6 +262,7 @@ class ProfilePage extends Component {
               <InfoItem data="Email: " item={this.state.currentMember.email}/>
               <InfoItem data="Office Hours: " item={this.state.currentMember.officeHours}/>
               {this.props.currentUser.isAdmin ? <InfoItem data="Points: " item={this.state.currentMember.points}/> : null}
+              {permissionLevel}
             </div>
           </div>            
           <div style={{display:"flex", flexDirection: "column",marginRight: "5%"}}>
