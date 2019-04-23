@@ -51,7 +51,7 @@ class QuestionForm extends Component {
     return (
       <div style={this.props.isFormOpen ? {} : { display: "none" }} className="event-modal">
 
-        <form onSubmit={this._updateProfile}>
+        <form style={{display: "flex", flexDirection: "column"}} onSubmit={this._updateProfile}>
 
             <label htmlFor="question1">{questionArray[0]}</label>
             <br/>
