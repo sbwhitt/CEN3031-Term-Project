@@ -27,15 +27,20 @@ class LoginWindow extends Component {
         email: this.state.emailInput,
       }
     }).then((res) => {
-      if (res.data) this._validateUser(res.data);
+      if (res.data) this._validateUser(res.data, this._testfunc);
       else this.setState({ badLogin: true });
     });
   }
 
   //uses bcrypt to compare hashed password from passed in user object with the password entered into the login form
-  _validateUser = (user) => {
+  _validateUser = (user, func) => {
     this.setState({ currentUser: user }, () => {
-      console.log(this.state.currentUser);
+      func();
+    });
+  }
+
+  _testfunc = () => {
+    console.log(this.state.currentUser);
       bcrypt.compare(this.state.passwordInput, this.state.currentUser.password).then(match => {
         if (match) {
           //password is correct, jwt payload created and sent to _loginUser
@@ -50,7 +55,6 @@ class LoginWindow extends Component {
         //sets badlogin if the password is incorrect
         else this.setState({ badLogin: true });
       });
-    });
   }
 
   //takes the payload created from a successful login attempt and sends it to backend to create jwt
